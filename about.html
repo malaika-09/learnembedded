@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="About Microcontrollers Hub – A free learning platform for students and engineering enthusiasts learning embedded systems." />
+  <title>About – MC Hub</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    body { font-family: 'Inter', var(--font); }
+    .about-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; margin-bottom: 5rem; }
+    .about-img-box {
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      border-radius: var(--radius); padding: 3rem 2rem; text-align: center;
+      color: white; position: relative; overflow: hidden;
+    }
+    .about-img-box::before {
+      content: ''; position: absolute; inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none'%3E%3Cg fill='%23ffffff' fill-opacity='0.06'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    .about-img-box .big-icon { font-size: 5rem; margin-bottom: 1rem; position: relative; }
+    .about-img-box h3 { font-size: 1.4rem; font-weight: 800; margin-bottom: 0.5rem; position: relative; }
+    .about-img-box p  { opacity: 0.9; font-size: 0.9rem; position: relative; }
+    .about-text h2 { font-size: 1.9rem; font-weight: 800; margin-bottom: 1rem; line-height: 1.3; }
+    .about-text p  { font-size: 0.95rem; color: var(--text-secondary); line-height: 1.8; margin-bottom: 1rem; }
+    .about-list { margin: 1.25rem 0; }
+    .about-list li { display: flex; align-items: flex-start; gap: 0.75rem; padding: 0.5rem 0; font-size: 0.9rem; color: var(--text-secondary); border-bottom: 1px solid var(--border); }
+    .about-list li:last-child { border-bottom: none; }
+    .about-list li i { color: var(--primary); margin-top: 3px; flex-shrink: 0; }
+    .mission-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; margin-bottom: 4rem; }
+    .mission-card { text-align: center; padding: 2.25rem 1.5rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow-sm); transition: transform var(--transition); }
+    .mission-card:hover { transform: translateY(-5px); }
+    .mission-icon { width: 68px; height: 68px; border-radius: 50%; background: var(--primary-light); color: var(--primary); display: flex; align-items: center; justify-content: center; font-size: 1.6rem; margin: 0 auto 1.25rem; }
+    [data-theme="dark"] .mission-icon { background: rgba(37,99,235,0.15); }
+    .mission-card h4 { font-weight: 700; margin-bottom: 0.5rem; }
+    .mission-card p  { font-size: 0.875rem; color: var(--text-secondary); line-height: 1.65; }
+    .tech-stack { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1rem; }
+    .tech-tag { display: flex; align-items: center; gap: 0.4rem; background: var(--bg-card); border: 1px solid var(--border); padding: 0.45rem 0.9rem; border-radius: var(--radius-sm); font-size: 0.85rem; font-weight: 500; transition: border-color var(--transition); }
+    .tech-tag:hover { border-color: var(--primary); }
+    .team-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; }
+    .team-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 2rem; text-align: center; box-shadow: var(--shadow-sm); transition: transform var(--transition); }
+    .team-card:hover { transform: translateY(-5px); }
+    .avatar { width: 80px; height: 80px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2rem; margin: 0 auto 1rem; }
+    .team-card h4 { font-weight: 700; margin-bottom: 0.25rem; }
+    .team-card .role { font-size: 0.82rem; color: var(--primary); font-weight: 600; margin-bottom: 0.5rem; }
+    .team-card p   { font-size: 0.82rem; color: var(--text-muted); line-height: 1.55; }
+    .stat-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 1.5rem; margin-bottom: 4rem; }
+    .stat-box { text-align: center; padding: 2rem 1rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); }
+    .stat-box .num { font-size: 2.2rem; font-weight: 800; color: var(--primary); display: block; }
+    .stat-box .lbl { font-size: 0.85rem; color: var(--text-muted); }
+    @media(max-width:900px) { .about-layout { grid-template-columns: 1fr; gap: 2.5rem; } .mission-grid { grid-template-columns: 1fr 1fr; } .team-grid { grid-template-columns: 1fr 1fr; } .stat-grid { grid-template-columns: 1fr 1fr; } }
+    @media(max-width:500px) { .mission-grid { grid-template-columns: 1fr; } .team-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar"><div class="nav-container">
+  <a href="index.html" class="nav-brand"><div class="brand-icon"><i class="fas fa-microchip"></i></div>MC Hub</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="microcontrollers.html">Boards</a></li>
+    <li><a href="projects.html">Projects</a></li>
+    <li><a href="tutorials.html">Tutorials</a></li>
+    <li><a href="components.html">Components</a></li>
+    <li><a href="resources.html">Resources</a></li>
+    <li><a href="about.html" class="active">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="nav-actions">
+    <div class="nav-search"><i class="fas fa-search search-icon"></i><input type="text" placeholder="Search…" aria-label="Search" /></div>
+    <button class="theme-toggle" aria-label="Toggle dark mode"><i class="fas fa-moon"></i></button>
+    <button class="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+  </div>
+</div></nav>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="container">
+    <h1 class="page-hero-title"><i class="fas fa-info-circle"></i> About Us</h1>
+    <p class="page-hero-desc">We're a passionate team building the best free resource for microcontrollers and embedded systems learning.</p>
+  </div>
+</section>
+
+<main class="section-padding">
+<div class="container">
+
+  <!-- ABOUT MAIN -->
+  <div class="about-layout">
+    <div class="about-img-box">
+      <div class="big-icon">🤖</div>
+      <h3>Microcontrollers Hub</h3>
+      <p>Your gateway to embedded systems — from beginner to advanced</p>
+      <div style="display:flex;justify-content:center;gap:1.5rem;margin-top:2rem;position:relative">
+        <div style="text-align:center"><span style="font-size:1.5rem;font-weight:800;display:block">4+</span><span style="font-size:0.78rem;opacity:0.8">Boards</span></div>
+        <div style="text-align:center"><span style="font-size:1.5rem;font-weight:800;display:block">20+</span><span style="font-size:0.78rem;opacity:0.8">Projects</span></div>
+        <div style="text-align:center"><span style="font-size:1.5rem;font-weight:800;display:block">15+</span><span style="font-size:0.78rem;opacity:0.8">Tutorials</span></div>
+        <div style="text-align:center"><span style="font-size:1.5rem;font-weight:800;display:block">100%</span><span style="font-size:0.78rem;opacity:0.8">Free</span></div>
+      </div>
+    </div>
+    <div class="about-text">
+      <h2>Helping <span class="highlight">Engineering Students</span> Build Real Things</h2>
+      <p>Microcontrollers Hub was created with a simple goal — make embedded systems learning accessible, practical, and enjoyable for every engineering student, regardless of their background or experience level.</p>
+      <p>We combine clear theory with hands-on projects. Every concept is backed by working code, circuit diagrams, and step-by-step explanations. No fluff, no paywalls — just solid engineering knowledge.</p>
+      <ul class="about-list">
+        <li><i class="fas fa-check-circle"></i> Structured content from absolute beginner to advanced level</li>
+        <li><i class="fas fa-check-circle"></i> Real working code for every project and tutorial</li>
+        <li><i class="fas fa-check-circle"></i> Covers Arduino, ESP32, PIC, and Raspberry Pi platforms</li>
+        <li><i class="fas fa-check-circle"></i> Free datasheets and software download links</li>
+        <li><i class="fas fa-check-circle"></i> Mobile-friendly — learn anywhere, anytime</li>
+        <li><i class="fas fa-check-circle"></i> Regularly updated with new projects and tutorials</li>
+      </ul>
+      <a href="tutorials.html" class="btn btn-primary" style="margin-top:0.5rem"><i class="fas fa-rocket"></i> Start Learning</a>
+    </div>
+  </div>
+
+  <!-- STATS -->
+  <div class="stat-grid">
+    <div class="stat-box"><span class="num">4+</span><span class="lbl">Microcontroller Boards</span></div>
+    <div class="stat-box"><span class="num">20+</span><span class="lbl">Hands-on Projects</span></div>
+    <div class="stat-box"><span class="num">15+</span><span class="lbl">Step-by-step Tutorials</span></div>
+    <div class="stat-box"><span class="num">100%</span><span class="lbl">Free to Access</span></div>
+  </div>
+
+  <!-- MISSION -->
+  <div class="section-header"><h2 class="section-title">Our <span class="highlight">Mission</span></h2><p class="section-subtitle">What drives us to keep building this platform</p></div>
+  <div class="mission-grid">
+    <div class="mission-card"><div class="mission-icon"><i class="fas fa-graduation-cap"></i></div><h4>Educate</h4><p>Provide structured, beginner-friendly education in embedded systems that complements university curricula and goes beyond textbooks.</p></div>
+    <div class="mission-card"><div class="mission-icon"><i class="fas fa-hands-helping"></i></div><h4>Empower</h4><p>Give students the tools, code, and confidence to build real hardware projects — turning theory into tangible, working prototypes.</p></div>
+    <div class="mission-card"><div class="mission-icon"><i class="fas fa-globe"></i></div><h4>Inspire</h4><p>Inspire the next generation of embedded engineers by making the world of microcontrollers exciting, approachable, and rewarding.</p></div>
+  </div>
+
+  <!-- TECH STACK -->
+  <div style="max-width:700px;margin:0 auto 4rem;text-align:center">
+    <h2 class="section-title" style="margin-bottom:0.5rem">Built With</h2>
+    <p style="color:var(--text-secondary);font-size:0.9rem;margin-bottom:1.5rem">Pure HTML, CSS, and JavaScript — lightweight, fast, and accessible.</p>
+    <div class="tech-stack" style="justify-content:center">
+      <span class="tech-tag"><i class="fab fa-html5" style="color:#e44d26"></i> HTML5</span>
+      <span class="tech-tag"><i class="fab fa-css3-alt" style="color:#264de4"></i> CSS3</span>
+      <span class="tech-tag"><i class="fab fa-js" style="color:#f7df1e"></i> JavaScript</span>
+      <span class="tech-tag"><i class="fab fa-font-awesome" style="color:#339af0"></i> Font Awesome</span>
+      <span class="tech-tag"><i class="fas fa-font" style="color:#4f46e5"></i> Google Fonts</span>
+    </div>
+  </div>
+
+  <!-- TEAM -->
+  <div class="section-header"><h2 class="section-title">Meet the <span class="highlight">Team</span></h2><p class="section-subtitle">Passionate engineers and educators building this platform</p></div>
+  <div class="team-grid">
+    <div class="team-card"><div class="avatar" style="background:var(--primary-light)">👨‍💻</div><h4>Ali Hassan</h4><p class="role">Founder & Lead Developer</p><p>Embedded systems engineer with 5+ years experience in Arduino, ESP32, and IoT. Passionate about making hardware accessible.</p></div>
+    <div class="team-card"><div class="avatar" style="background:#fce4ec">👩‍🔬</div><h4>Sara Ahmed</h4><p class="role">Content & Tutorials Lead</p><p>Electronics engineering graduate specializing in PIC microcontrollers and digital electronics. Creates all tutorial content.</p></div>
+    <div class="team-card"><div class="avatar" style="background:#e8f5e9">👨‍🎨</div><h4>Usman Raza</h4><p class="role">UI/UX Designer</p><p>Front-end developer and designer focused on accessible, responsive web design for technical education platforms.</p></div>
+  </div>
+
+</div></main>
+
+<!-- FOOTER -->
+<footer class="footer"><div class="container">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="brand-name"><div style="width:32px;height:32px;background:linear-gradient(135deg,#2563eb,#06b6d4);border-radius:8px;display:flex;align-items:center;justify-content:center;color:white;font-size:0.9rem"><i class="fas fa-microchip"></i></div> MC Hub</div>
+      <p>A complete learning platform for microcontrollers and embedded systems.</p>
+      <div class="social-links">
+        <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+    </div>
+    <div><h4 class="footer-heading">Boards</h4><ul class="footer-links">
+      <li><a href="microcontrollers.html#arduino">Arduino</a></li>
+      <li><a href="microcontrollers.html#esp32">ESP32</a></li>
+      <li><a href="microcontrollers.html#pic">PIC</a></li>
+      <li><a href="microcontrollers.html#raspi">Raspberry Pi</a></li>
+    </ul></div>
+    <div><h4 class="footer-heading">Learn</h4><ul class="footer-links">
+      <li><a href="tutorials.html">Tutorials</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="components.html">Components</a></li>
+      <li><a href="resources.html">Resources</a></li>
+    </ul></div>
+    <div><h4 class="footer-heading">Company</h4><ul class="footer-links">
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="#">Privacy Policy</a></li>
+    </ul></div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Microcontrollers Hub. All rights reserved.</p>
+    <p>Made with <span style="color:#ef4444">♥</span> for engineering students</p>
+  </div>
+</div></footer>
+<button class="scroll-top"><i class="fas fa-arrow-up"></i></button>
+<script src="js/main.js"></script>
+<script src="js/search.js"></script>
+</body>
+</html>

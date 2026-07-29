@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Learn about Arduino, ESP32, PIC, and Raspberry Pi microcontrollers – features, pin diagrams, applications, pros and cons." />
+  <title>Microcontrollers – MC Hub</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    body { font-family: 'Inter', var(--font); }
+    .mc-nav-tabs {
+      display: flex; gap: 0.5rem; flex-wrap: wrap;
+      background: var(--bg-card); padding: 1rem 1.5rem;
+      border-radius: var(--radius); border: 1px solid var(--border);
+      margin-bottom: 2.5rem; box-shadow: var(--shadow-sm);
+      position: sticky; top: 76px; z-index: 100;
+    }
+    .mc-tab-btn {
+      display: flex; align-items: center; gap: 0.5rem;
+      padding: 0.6rem 1.25rem; border-radius: var(--radius-sm);
+      border: 1.5px solid var(--border); background: transparent;
+      color: var(--text-secondary); font-weight: 600; font-size: 0.9rem;
+      cursor: pointer; transition: all var(--transition);
+    }
+    .mc-tab-btn:hover { border-color: var(--primary); color: var(--primary); }
+    .mc-tab-btn.active { background: var(--primary); border-color: var(--primary); color: white; }
+    .apps-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 0.75rem; margin-top: 0.75rem; }
+    .app-tag {
+      background: var(--bg); border: 1px solid var(--border);
+      border-radius: var(--radius-sm); padding: 0.6rem 0.9rem;
+      font-size: 0.82rem; display: flex; align-items: center; gap: 0.4rem;
+      color: var(--text-secondary);
+    }
+    .key-features { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; margin-top: 0.75rem; }
+    .kf-item {
+      display: flex; align-items: center; gap: 0.5rem;
+      padding: 0.55rem 0.85rem; background: var(--bg);
+      border: 1px solid var(--border); border-radius: 8px;
+      font-size: 0.85rem; color: var(--text-secondary);
+    }
+    .kf-item i { color: var(--primary); width: 16px; }
+    @media(max-width:768px) {
+      .apps-grid { grid-template-columns: 1fr 1fr; }
+      .key-features { grid-template-columns: 1fr; }
+      .mc-nav-tabs { position: static; }
+    }
+    @media(max-width:480px) { .apps-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar"><div class="nav-container">
+  <a href="index.html" class="nav-brand"><div class="brand-icon"><i class="fas fa-microchip"></i></div>MC Hub</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="microcontrollers.html" class="active">Boards</a></li>
+    <li><a href="projects.html">Projects</a></li>
+    <li><a href="tutorials.html">Tutorials</a></li>
+    <li><a href="components.html">Components</a></li>
+    <li><a href="resources.html">Resources</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="nav-actions">
+    <div class="nav-search"><i class="fas fa-search search-icon"></i><input type="text" placeholder="Search…" aria-label="Search" /></div>
+    <button class="theme-toggle" aria-label="Toggle dark mode"><i class="fas fa-moon"></i></button>
+    <button class="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+  </div>
+</div></nav>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="container">
+    <h1 class="page-hero-title"><i class="fas fa-microchip"></i> Microcontrollers</h1>
+    <p class="page-hero-desc">In-depth guides on Arduino, ESP32, PIC, and Raspberry Pi — specifications, pin diagrams, applications, and comparisons.</p>
+  </div>
+</section>
+
+<!-- MAIN CONTENT -->
+<main class="section-padding">
+<div class="container">
+
+  <!-- Sticky Tab Navigation -->
+  <div class="mc-nav-tabs">
+    <button class="mc-tab-btn active" onclick="scrollToBoard('arduino')">🤖 Arduino</button>
+    <button class="mc-tab-btn" onclick="scrollToBoard('esp32')">📡 ESP32</button>
+    <button class="mc-tab-btn" onclick="scrollToBoard('pic')">🔧 PIC</button>
+    <button class="mc-tab-btn" onclick="scrollToBoard('raspi')">🍓 Raspberry Pi</button>
+    <button class="mc-tab-btn" onclick="scrollToBoard('compare')">📊 Compare</button>
+  </div>
+
+  <!-- ======== ARDUINO ======== -->
+  <div id="arduino" class="mc-section" style="scroll-margin-top:140px">
+    <div class="mc-header" style="background:linear-gradient(135deg,#00838f,#00bcd4)">
+      <div class="mc-header-icon">🤖</div>
+      <div class="mc-header-info">
+        <h2>Arduino Uno</h2>
+        <p>The most popular open-source microcontroller board for beginners and prototyping</p>
+      </div>
+    </div>
+    <div class="mc-body">
+
+      <h3><i class="fas fa-info-circle"></i> Overview</h3>
+      <p style="color:var(--text-secondary);line-height:1.75;margin-bottom:1.5rem">
+        The Arduino Uno is based on the ATmega328P microcontroller and operates at 5V with a 16 MHz crystal oscillator.
+        It has 14 digital I/O pins, 6 analog inputs, a USB connection, a power jack, and a reset button. It is the most
+        used board for beginners due to its simple programming interface via the Arduino IDE using C/C++ language.
+      </p>
+
+      <h3><i class="fas fa-star"></i> Key Features</h3>
+      <div class="key-features">
+        <div class="kf-item"><i class="fas fa-microchip"></i> ATmega328P @ 16 MHz</div>
+        <div class="kf-item"><i class="fas fa-memory"></i> 32 KB Flash, 2 KB SRAM</div>
+        <div class="kf-item"><i class="fas fa-plug"></i> 14 Digital I/O Pins</div>
+        <div class="kf-item"><i class="fas fa-wave-square"></i> 6 PWM Outputs</div>
+        <div class="kf-item"><i class="fas fa-sliders-h"></i> 6 Analog Inputs (10-bit ADC)</div>
+        <div class="kf-item"><i class="fas fa-bolt"></i> 5V / 3.3V Operating Voltage</div>
+        <div class="kf-item"><i class="fas fa-usb"></i> USB Type-B for Programming</div>
+        <div class="kf-item"><i class="fas fa-exchange-alt"></i> UART, SPI, I2C Support</div>
+      </div>
+
+      <h3 style="margin-top:1.5rem"><i class="fas fa-project-diagram"></i> Pin Diagram</h3>
+      <div class="pin-diagram">
+        <div class="diagram-icon">🤖</div>
+        <strong style="color:#94a3b8">Arduino Uno – Pin Layout</strong>
+        <p style="color:#64748b;font-size:0.8rem">Digital 0–13 · Analog A0–A5 · PWM: 3,5,6,9,10,11 · SDA/SCL: A4/A5 · TX/RX: 0/1</p>
+        <div style="display:flex;gap:0.5rem;flex-wrap:wrap;justify-content:center;margin-top:0.5rem">
+          <span style="background:#1e3a5f;color:#7dd3fc;padding:0.25rem 0.6rem;border-radius:4px;font-size:0.75rem;font-family:monospace">5V</span>
+          <span style="background:#1e3a5f;color:#7dd3fc;padding:0.25rem 0.6rem;border-radius:4px;font-size:0.75rem;font-family:monospace">GND</span>
+          <span style="background:#1a2e1a;color:#86efac;padding:0.25rem 0.6rem;border-radius:4px;font-size:0.75rem;font-family:monospace">D0–D13</span>
+          <span style="background:#2e1a1a;color:#fca5a5;padding:0.25rem 0.6rem;border-radius:4px;font-size:0.75rem;font-family:monospace">A0–A5</span>
+          <span style="background:#2e2a1a;color:#fde68a;padding:0.25rem 0.6rem;border-radius:4px;font-size:0.75rem;font-family:monospace">PWM~</span>
+          <span style="background:#2a1a2e;color:#c4b5fd;padding:0.25rem 0.6rem;border-radius:4px;font-size:0.75rem;font-family:monospace">SDA/SCL</span>
+          <span style="background:#1a2a2e;color:#67e8f9;padding:0.25rem 0.6rem;border-radius:4px;font-size:0.75rem;font-family:monospace">TX/RX</span>
+        </div>
+      </div>
+
+      <h3 style="margin-top:1.5rem"><i class="fas fa-cogs"></i> Applications</h3>
+      <div class="apps-grid">
+        <div class="app-tag"><i class="fas fa-lightbulb" style="color:#f59e0b"></i> LED Control</div>
+        <div class="app-tag"><i class="fas fa-thermometer" style="color:#ef4444"></i> Sensor Reading</div>
+        <div class="app-tag"><i class="fas fa-robot" style="color:#3b82f6"></i> Simple Robots</div>
+        <div class="app-tag"><i class="fas fa-music" style="color:#8b5cf6"></i> Music Players</div>
+        <div class="app-tag"><i class="fas fa-lock" style="color:#10b981"></i> Security Systems</div>
+        <div class="app-tag"><i class="fas fa-car" style="color:#f97316"></i> RC Cars</div>
+      </div>
+
+      <h3 style="margin-top:1.5rem"><i class="fas fa-balance-scale"></i> Pros & Cons</h3>
+      <div class="pros-cons">
+        <div class="pros"><h5>✅ Pros</h5><ul>
+          <li>Beginner friendly with huge community</li>
+          <li>Free Arduino IDE with simple syntax</li>
+          <li>Thousands of free libraries</li>
+          <li>Cheap and widely available</li>
+          <li>USB plug-and-play programming</li>
+        </ul></div>
+        <div class="cons"><h5>❌ Cons</h5><ul>
+          <li>Limited processing speed (16 MHz)</li>
+          <li>Only 2 KB SRAM – very limited RAM</li>
+          <li>No built-in WiFi or Bluetooth</li>
+          <li>5V logic – not 3.3V compatible by default</li>
+          <li>Limited for complex real-time tasks</li>
+        </ul></div>
+      </div>
+
+      <div style="margin-top:1.5rem;display:flex;gap:1rem;flex-wrap:wrap">
+        <a href="tutorials.html#arduino-start" class="btn btn-primary btn-sm"><i class="fas fa-play"></i> Get Started</a>
+        <a href="projects.html#led" class="btn btn-outline btn-sm"><i class="fas fa-flask"></i> View Projects</a>
+        <a href="resources.html#arduino-ds" class="btn btn-outline btn-sm"><i class="fas fa-file-pdf"></i> Datasheet</a>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ======== ESP32 ======== -->
+  <div id="esp32" class="mc-section" style="scroll-margin-top:140px;margin-top:3rem">
+    <div class="mc-header" style="background:linear-gradient(135deg,#c62828,#ef5350)">
+      <div class="mc-header-icon">📡</div>
+      <div class="mc-header-info">
+        <h2>ESP32</h2>
+        <p>Low-cost, low-power microcontroller with integrated WiFi and Bluetooth for IoT projects</p>
+      </div>
+    </div>
+    <div class="mc-body">
+
+      <h3><i class="fas fa-info-circle"></i> Overview</h3>
+      <p style="color:var(--text-secondary);line-height:1.75;margin-bottom:1.5rem">
+        The ESP32 by Espressif Systems is a dual-core 32-bit microcontroller with built-in 2.4 GHz WiFi and
+        Bluetooth 4.2/BLE. Operating at up to 240 MHz, it is ideal for IoT applications. It supports Arduino IDE,
+        MicroPython, and ESP-IDF frameworks and features a rich set of peripherals including capacitive touch sensors,
+        Hall effect sensor, SD card interface, Ethernet, high-speed SPI, UART, I2S, and I2C.
+      </p>
+
+      <h3><i class="fas fa-star"></i> Key Features</h3>
+      <div class="key-features">
+        <div class="kf-item"><i class="fas fa-microchip"></i> Xtensa LX6 Dual-Core @ 240 MHz</div>
+        <div class="kf-item"><i class="fas fa-memory"></i> 520 KB SRAM, up to 16 MB Flash</div>
+        <div class="kf-item"><i class="fas fa-wifi"></i> Built-in 2.4 GHz WiFi (802.11 b/g/n)</div>
+        <div class="kf-item"><i class="fab fa-bluetooth"></i> Bluetooth 4.2 Classic + BLE</div>
+        <div class="kf-item"><i class="fas fa-plug"></i> 36 GPIO Pins</div>
+        <div class="kf-item"><i class="fas fa-sliders-h"></i> 18-ch 12-bit ADC, 2 DAC</div>
+        <div class="kf-item"><i class="fas fa-hand-pointer"></i> Capacitive Touch Sensing</div>
+        <div class="kf-item"><i class="fas fa-bolt"></i> Ultra-low Power Deep Sleep</div>
+      </div>
+
+      <h3 style="margin-top:1.5rem"><i class="fas fa-project-diagram"></i> Pin Diagram</h3>
+      <div class="pin-diagram">
+        <div class="diagram-icon">📡</div>
+        <strong style="color:#94a3b8">ESP32 DevKit – Pin Layout</strong>
+        <p style="color:#64748b;font-size:0.8rem">GPIO 0–39 · ADC1/ADC2 · DAC1/DAC2 · Touch 0–9 · SPI/I2C/I2S/UART</p>
+        <div style="display:flex;gap:0.5rem;flex-wrap:wrap;justify-content:center;margin-top:0.5rem">
+          <span style="background:#2e1a1a;color:#fca5a5;padding:0.25rem 0.6rem;border-radius:4px;font-size:0.75rem;font-family:monospace">3.3V</span>
+          <span style="background:#1e3a5f;color:#7dd3fc;padding:0.25rem 0.6rem;border-radius:4px;font-size:0.75rem;font-family:monospace">GND</span>
+          <span style="background:#1a2e1a;color:#86efac;padding:0.25rem 0.6rem;border-radius:4px;font-size:0.75rem;font-family:monospace">GPIO 0–39</span>
+          <span style="background:#2e2a1a;color:#fde68a;padding:0.25rem 0.6rem;border-radius:4px;font-size:0.75rem;font-family:monospace">ADC1/ADC2</span>
+          <span style="background:#2a1a2e;color:#c4b5fd;padding:0.25rem 0.6rem;border-radius:4px;font-size:0.75rem;font-family:monospace">Touch</span>
+          <span style="background:#1a2a2e;color:#67e8f9;padding:0.25rem 0.6rem;border-radius:4px;font-size:0.75rem;font-family:monospace">SDA/SCL</span>
+        </div>
+      </div>
+
+      <h3 style="margin-top:1.5rem"><i class="fas fa-cogs"></i> Applications</h3>
+      <div class="apps-grid">
+        <div class="app-tag"><i class="fas fa-home" style="color:#8b5cf6"></i> Smart Home IoT</div>
+        <div class="app-tag"><i class="fas fa-cloud" style="color:#3b82f6"></i> Cloud Data Logging</div>
+        <div class="app-tag"><i class="fas fa-broadcast-tower" style="color:#ef4444"></i> WiFi Web Server</div>
+        <div class="app-tag"><i class="fas fa-gamepad" style="color:#10b981"></i> BLE Game Controller</div>
+        <div class="app-tag"><i class="fas fa-camera" style="color:#f59e0b"></i> ESP32-CAM Projects</div>
+        <div class="app-tag"><i class="fas fa-wind" style="color:#06b6d4"></i> Weather Stations</div>
+      </div>
+
+      <h3 style="margin-top:1.5rem"><i class="fas fa-balance-scale"></i> Pros & Cons</h3>
+      <div class="pros-cons">
+        <div class="pros"><h5>✅ Pros</h5><ul>
+          <li>Built-in WiFi and Bluetooth — no extra modules</li>
+          <li>Powerful dual-core 240 MHz processor</li>
+          <li>Supports Arduino IDE and MicroPython</li>
+          <li>Very affordable (~$3–5)</li>
+          <li>Rich set of peripherals</li>
+        </ul></div>
+        <div class="cons"><h5>❌ Cons</h5><ul>
+          <li>3.3V logic — not directly 5V compatible</li>
+          <li>Higher power consumption than ATmega</li>
+          <li>Some ADC pins are restricted when WiFi is active</li>
+          <li>Boot issues on GPIO 0, 2, 15</li>
+          <li>More complex than Arduino for absolute beginners</li>
+        </ul></div>
+      </div>
+
+      <div style="margin-top:1.5rem;display:flex;gap:1rem;flex-wrap:wrap">
+        <a href="tutorials.html#esp32-wifi" class="btn btn-primary btn-sm"><i class="fas fa-play"></i> Get Started</a>
+        <a href="projects.html#smart-home" class="btn btn-outline btn-sm"><i class="fas fa-flask"></i> View Projects</a>
+        <a href="resources.html#esp32-ds" class="btn btn-outline btn-sm"><i class="fas fa-file-pdf"></i> Datasheet</a>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ======== PIC ======== -->
+  <div id="pic" class="mc-section" style="scroll-margin-top:140px;margin-top:3rem">
+    <div class="mc-header" style="background:linear-gradient(135deg,#2e7d32,#43a047)">
+      <div class="mc-header-icon">🔧</div>
+      <div class="mc-header-info">
+        <h2>PIC Microcontroller</h2>
+        <p>Industry-standard microcontrollers by Microchip Technology – widely used in professional embedded systems</p>
+      </div>
+    </div>
+    <div class="mc-body">
+
+      <h3><i class="fas fa-info-circle"></i> Overview</h3>
+      <p style="color:var(--text-secondary);line-height:1.75;margin-bottom:1.5rem">
+        PIC (Peripheral Interface Controller) microcontrollers by Microchip Technology are a family of 8/16/32-bit
+        controllers used extensively in industry. The PIC16F877A is the most commonly used in academics.
+        They are programmed using MPLAB X IDE with XC8/XC16 compiler in C language.
+        PIC controllers are known for their reliability, rich peripherals, and low power consumption.
+      </p>
+
+      <h3><i class="fas fa-star"></i> Key Features (PIC16F877A)</h3>
+      <div class="key-features">
+        <div class="kf-item"><i class="fas fa-microchip"></i> 8-bit RISC Architecture @ 20 MHz</div>
+        <div class="kf-item"><i class="fas fa-memory"></i> 14 KB Flash, 368 Bytes RAM</div>
+        <div class="kf-item"><i class="fas fa-plug"></i> 33 I/O Pins (5 Ports: A–E)</div>
+        <div class="kf-item"><i class="fas fa-sliders-h"></i> 8-ch 10-bit ADC</div>
+        <div class="kf-item"><i class="fas fa-clock"></i> 3 Timers (Timer0, Timer1, Timer2)</div>
+        <div class="kf-item"><i class="fas fa-wave-square"></i> 2 CCP (PWM/Capture/Compare)</div>
+        <div class="kf-item"><i class="fas fa-exchange-alt"></i> USART, SPI, I2C</div>
+        <div class="kf-item"><i class="fas fa-bolt"></i> 2.0V – 5.5V Operating Voltage</div>
+      </div>
+
+      <h3 style="margin-top:1.5rem"><i class="fas fa-project-diagram"></i> Pin Diagram</h3>
+      <div class="pin-diagram">
+        <div class="diagram-icon">🔧</div>
+        <strong style="color:#94a3b8">PIC16F877A – 40-Pin DIP Package</strong>
+        <p style="color:#64748b;font-size:0.8rem">PORTA (RA0–RA5) · PORTB (RB0–RB7) · PORTC (RC0–RC7) · PORTD · PORTE · MCLR · OSC1/OSC2</p>
+        <div style="display:flex;gap:0.5rem;flex-wrap:wrap;justify-content:center;margin-top:0.5rem">
+          <span style="background:#1a2e1a;color:#86efac;padding:0.25rem 0.6rem;border-radius:4px;font-size:0.75rem;font-family:monospace">PORTA</span>
+          <span style="background:#1e3a5f;color:#7dd3fc;padding:0.25rem 0.6rem;border-radius:4px;font-size:0.75rem;font-family:monospace">PORTB</span>
+          <span style="background:#2e1a1a;color:#fca5a5;padding:0.25rem 0.6rem;border-radius:4px;font-size:0.75rem;font-family:monospace">PORTC</span>
+          <span style="background:#2e2a1a;color:#fde68a;padding:0.25rem 0.6rem;border-radius:4px;font-size:0.75rem;font-family:monospace">PORTD</span>
+          <span style="background:#2a1a2e;color:#c4b5fd;padding:0.25rem 0.6rem;border-radius:4px;font-size:0.75rem;font-family:monospace">PORTE</span>
+          <span style="background:#1a2a2e;color:#67e8f9;padding:0.25rem 0.6rem;border-radius:4px;font-size:0.75rem;font-family:monospace">MCLR</span>
+        </div>
+      </div>
+
+      <h3 style="margin-top:1.5rem"><i class="fas fa-cogs"></i> Applications</h3>
+      <div class="apps-grid">
+        <div class="app-tag"><i class="fas fa-industry" style="color:#64748b"></i> Industrial Control</div>
+        <div class="app-tag"><i class="fas fa-car-battery" style="color:#f59e0b"></i> Automotive Systems</div>
+        <div class="app-tag"><i class="fas fa-heartbeat" style="color:#ef4444"></i> Medical Devices</div>
+        <div class="app-tag"><i class="fas fa-tachometer-alt" style="color:#3b82f6"></i> Motor Control</div>
+        <div class="app-tag"><i class="fas fa-broadcast-tower" style="color:#8b5cf6"></i> Communication Devices</div>
+        <div class="app-tag"><i class="fas fa-solar-panel" style="color:#10b981"></i> Energy Meters</div>
+      </div>
+
+      <h3 style="margin-top:1.5rem"><i class="fas fa-balance-scale"></i> Pros & Cons</h3>
+      <div class="pros-cons">
+        <div class="pros"><h5>✅ Pros</h5><ul>
+          <li>Industry standard — widely used professionally</li>
+          <li>Excellent documentation and application notes</li>
+          <li>Low power and high reliability</li>
+          <li>Wide voltage range (2V–5.5V)</li>
+          <li>Many variants for specific applications</li>
+        </ul></div>
+        <div class="cons"><h5>❌ Cons</h5><ul>
+          <li>Steeper learning curve than Arduino</li>
+          <li>Requires MPLAB IDE + programmer hardware</li>
+          <li>Less community support for beginners</li>
+          <li>Assembly or C required — no simplified IDE</li>
+          <li>Slower prototyping than Arduino</li>
+        </ul></div>
+      </div>
+
+      <div style="margin-top:1.5rem;display:flex;gap:1rem;flex-wrap:wrap">
+        <a href="tutorials.html#pic-basics" class="btn btn-primary btn-sm"><i class="fas fa-play"></i> Get Started</a>
+        <a href="resources.html" class="btn btn-outline btn-sm"><i class="fas fa-file-pdf"></i> Datasheet</a>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ======== RASPBERRY PI ======== -->
+  <div id="raspi" class="mc-section" style="scroll-margin-top:140px;margin-top:3rem">
+    <div class="mc-header" style="background:linear-gradient(135deg,#ad1457,#e91e63)">
+      <div class="mc-header-icon">🍓</div>
+      <div class="mc-header-info">
+        <h2>Raspberry Pi 4</h2>
+        <p>Powerful Linux-based single-board computer for advanced projects, media, and learning</p>
+      </div>
+    </div>
+    <div class="mc-body">
+
+      <h3><i class="fas fa-info-circle"></i> Overview</h3>
+      <p style="color:var(--text-secondary);line-height:1.75;margin-bottom:1.5rem">
+        The Raspberry Pi is a credit-card sized single-board computer developed by the Raspberry Pi Foundation.
+        Unlike typical microcontrollers, it runs a full Linux operating system (Raspberry Pi OS). It features
+        HDMI output, USB ports, camera interface, and 40 GPIO pins. It can run Python, C, Java, and many other
+        languages, making it suitable for complex applications like AI, computer vision, and servers.
+      </p>
+
+      <h3><i class="fas fa-star"></i> Key Features (Pi 4 Model B)</h3>
+      <div class="key-features">
+        <div class="kf-item"><i class="fas fa-microchip"></i> ARM Cortex-A72 Quad-Core @ 1.8 GHz</div>
+        <div class="kf-item"><i class="fas fa-memory"></i> 2 / 4 / 8 GB LPDDR4 RAM</div>
+        <div class="kf-item"><i class="fas fa-wifi"></i> Dual-band 2.4/5 GHz WiFi</div>
+        <div class="kf-item"><i class="fab fa-bluetooth"></i> Bluetooth 5.0 + BLE</div>
+        <div class="kf-item"><i class="fas fa-plug"></i> 40 GPIO Pins</div>
+        <div class="kf-item"><i class="fas fa-tv"></i> Dual Micro-HDMI (4K support)</div>
+        <div class="kf-item"><i class="fas fa-usb"></i> 2× USB 3.0 + 2× USB 2.0</div>
+        <div class="kf-item"><i class="fas fa-network-wired"></i> Gigabit Ethernet</div>
+      </div>
+
+      <h3 style="margin-top:1.5rem"><i class="fas fa-project-diagram"></i> GPIO Pin Layout</h3>
+      <div class="pin-diagram">
+        <div class="diagram-icon">🍓</div>
+        <strong style="color:#94a3b8">Raspberry Pi 4 – 40-Pin GPIO Header</strong>
+        <p style="color:#64748b;font-size:0.8rem">GPIO 0–27 · 3.3V & 5V Power · GND · SPI · I2C · UART · PWM</p>
+        <div style="display:flex;gap:0.5rem;flex-wrap:wrap;justify-content:center;margin-top:0.5rem">
+          <span style="background:#1e3a5f;color:#7dd3fc;padding:0.25rem 0.6rem;border-radius:4px;font-size:0.75rem;font-family:monospace">3.3V / 5V</span>
+          <span style="background:#1a2e1a;color:#86efac;padding:0.25rem 0.6rem;border-radius:4px;font-size:0.75rem;font-family:monospace">GPIO 0–27</span>
+          <span style="background:#2e2a1a;color:#fde68a;padding:0.25rem 0.6rem;border-radius:4px;font-size:0.75rem;font-family:monospace">PWM</span>
+          <span style="background:#2a1a2e;color:#c4b5fd;padding:0.25rem 0.6rem;border-radius:4px;font-size:0.75rem;font-family:monospace">SDA/SCL</span>
+          <span style="background:#2e1a1a;color:#fca5a5;padding:0.25rem 0.6rem;border-radius:4px;font-size:0.75rem;font-family:monospace">SPI MOSI/MISO</span>
+          <span style="background:#1a2a2e;color:#67e8f9;padding:0.25rem 0.6rem;border-radius:4px;font-size:0.75rem;font-family:monospace">TX/RX</span>
+        </div>
+      </div>
+
+      <h3 style="margin-top:1.5rem"><i class="fas fa-cogs"></i> Applications</h3>
+      <div class="apps-grid">
+        <div class="app-tag"><i class="fas fa-brain" style="color:#8b5cf6"></i> AI / Machine Learning</div>
+        <div class="app-tag"><i class="fas fa-eye" style="color:#3b82f6"></i> Computer Vision</div>
+        <div class="app-tag"><i class="fas fa-server" style="color:#64748b"></i> Home Server / NAS</div>
+        <div class="app-tag"><i class="fas fa-gamepad" style="color:#10b981"></i> Retro Gaming (RetroPie)</div>
+        <div class="app-tag"><i class="fas fa-robot" style="color:#f59e0b"></i> Robotics (ROS)</div>
+        <div class="app-tag"><i class="fas fa-desktop" style="color:#ef4444"></i> Desktop Computer</div>
+      </div>
+
+      <h3 style="margin-top:1.5rem"><i class="fas fa-balance-scale"></i> Pros & Cons</h3>
+      <div class="pros-cons">
+        <div class="pros"><h5>✅ Pros</h5><ul>
+          <li>Full Linux OS — runs any software</li>
+          <li>Very powerful (Quad-core + GBs of RAM)</li>
+          <li>Huge community and documentation</li>
+          <li>HDMI, USB, Ethernet, WiFi built-in</li>
+          <li>Supports Python, Node.js, Java, etc.</li>
+        </ul></div>
+        <div class="cons"><h5>❌ Cons</h5><ul>
+          <li>More expensive (~$35–$75)</li>
+          <li>No built-in ADC (analog reading)</li>
+          <li>Needs OS installation on microSD</li>
+          <li>Slower boot than bare microcontrollers</li>
+          <li>Higher power — not suitable for battery IoT</li>
+        </ul></div>
+      </div>
+
+      <div style="margin-top:1.5rem;display:flex;gap:1rem;flex-wrap:wrap">
+        <a href="tutorials.html" class="btn btn-primary btn-sm"><i class="fas fa-play"></i> Get Started</a>
+        <a href="projects.html" class="btn btn-outline btn-sm"><i class="fas fa-flask"></i> View Projects</a>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ======== COMPARISON TABLE ======== -->
+  <div id="compare" style="scroll-margin-top:140px;margin-top:3rem">
+    <h2 class="section-title" style="margin-bottom:1.5rem">📊 Board <span class="highlight">Comparison</span></h2>
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th>🤖 Arduino Uno</th>
+            <th>📡 ESP32</th>
+            <th>🔧 PIC16F877A</th>
+            <th>🍓 Raspberry Pi 4</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>CPU</strong></td><td>ATmega328P 8-bit</td><td>Xtensa LX6 32-bit</td><td>PIC 8-bit RISC</td><td>ARM Cortex-A72 64-bit</td></tr>
+          <tr><td><strong>Clock Speed</strong></td><td>16 MHz</td><td>240 MHz</td><td>20 MHz</td><td>1.8 GHz</td></tr>
+          <tr><td><strong>RAM</strong></td><td>2 KB SRAM</td><td>520 KB SRAM</td><td>368 Bytes</td><td>2–8 GB</td></tr>
+          <tr><td><strong>Flash</strong></td><td>32 KB</td><td>Up to 16 MB</td><td>14 KB</td><td>microSD (any size)</td></tr>
+          <tr><td><strong>WiFi</strong></td><td>❌ No</td><td>✅ Built-in</td><td>❌ No</td><td>✅ Built-in</td></tr>
+          <tr><td><strong>Bluetooth</strong></td><td>❌ No</td><td>✅ Built-in</td><td>❌ No</td><td>✅ Built-in</td></tr>
+          <tr><td><strong>OS Support</strong></td><td>❌ Bare Metal</td><td>❌ Bare Metal / RTOS</td><td>❌ Bare Metal</td><td>✅ Linux</td></tr>
+          <tr><td><strong>Language</strong></td><td>C/C++ (Arduino)</td><td>C/Python/Arduino</td><td>C (MPLAB)</td><td>Python, C, Java, etc.</td></tr>
+          <tr><td><strong>Price</strong></td><td>~$3–$5</td><td>~$3–$8</td><td>~$2–$4</td><td>~$35–$75</td></tr>
+          <tr><td><strong>Best For</strong></td><td>Beginners</td><td>IoT Projects</td><td>Industry/Academia</td><td>Advanced / Linux</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div><!-- /container -->
+</main>
+
+<!-- FOOTER -->
+<footer class="footer"><div class="container">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="brand-name"><div style="width:32px;height:32px;background:linear-gradient(135deg,#2563eb,#06b6d4);border-radius:8px;display:flex;align-items:center;justify-content:center;color:white;font-size:0.9rem"><i class="fas fa-microchip"></i></div> MC Hub</div>
+      <p>A complete learning platform for microcontrollers and embedded systems.</p>
+      <div class="social-links">
+        <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+      </div>
+    </div>
+    <div><h4 class="footer-heading">Boards</h4><ul class="footer-links">
+      <li><a href="#arduino">Arduino</a></li><li><a href="#esp32">ESP32</a></li>
+      <li><a href="#pic">PIC</a></li><li><a href="#raspi">Raspberry Pi</a></li>
+    </ul></div>
+    <div><h4 class="footer-heading">Learn</h4><ul class="footer-links">
+      <li><a href="tutorials.html">Tutorials</a></li><li><a href="projects.html">Projects</a></li>
+      <li><a href="components.html">Components</a></li><li><a href="resources.html">Resources</a></li>
+    </ul></div>
+    <div><h4 class="footer-heading">Company</h4><ul class="footer-links">
+      <li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li>
+    </ul></div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Microcontrollers Hub. All rights reserved.</p>
+    <p>Made with <span style="color:#ef4444">♥</span> for engineering students</p>
+  </div>
+</div></footer>
+
+<button class="scroll-top"><i class="fas fa-arrow-up"></i></button>
+<script src="js/main.js"></script>
+<script src="js/search.js"></script>
+<script>
+  function scrollToBoard(id) {
+    document.querySelectorAll('.mc-tab-btn').forEach(b => b.classList.remove('active'));
+    event.target.classList.add('active');
+    const el = document.getElementById(id);
+    if (el) { const top = el.getBoundingClientRect().top + window.scrollY - 150; window.scrollTo({top, behavior:'smooth'}); }
+  }
+</script>
+</body>
+</html>

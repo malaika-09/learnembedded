@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Contact Microcontrollers Hub – get in touch with questions, suggestions, or collaboration ideas." />
+  <title>Contact – MC Hub</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    body { font-family: 'Inter', var(--font); }
+    .contact-layout { display: grid; grid-template-columns: 1fr 1.4fr; gap: 3rem; align-items: start; }
+    .contact-info h2 { font-size: 1.75rem; font-weight: 800; margin-bottom: 0.75rem; }
+    .contact-info p  { font-size: 0.925rem; color: var(--text-secondary); line-height: 1.75; margin-bottom: 2rem; }
+    .info-item { display: flex; gap: 1rem; align-items: flex-start; padding: 1.1rem; border-radius: var(--radius); border: 1px solid var(--border); background: var(--bg-card); margin-bottom: 0.85rem; box-shadow: var(--shadow-sm); transition: border-color var(--transition); }
+    .info-item:hover { border-color: var(--primary); }
+    .info-icon { width: 44px; height: 44px; border-radius: var(--radius-sm); background: var(--primary-light); color: var(--primary); display: flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0; }
+    [data-theme="dark"] .info-icon { background: rgba(37,99,235,0.15); }
+    .info-text h5 { font-weight: 700; font-size: 0.9rem; margin-bottom: 0.2rem; }
+    .info-text p  { font-size: 0.84rem; color: var(--text-secondary); margin: 0; }
+    .info-text a  { color: var(--primary); font-size: 0.84rem; }
+    .social-section h4 { font-weight: 700; margin-bottom: 1rem; font-size: 0.9rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.07em; }
+    .social-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+    .social-card { display: flex; align-items: center; gap: 0.75rem; padding: 0.85rem 1rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-sm); text-decoration: none; transition: all var(--transition); }
+    .social-card:hover { border-color: var(--primary); transform: translateY(-2px); box-shadow: var(--shadow); }
+    .social-card .sc-icon { width: 36px; height: 36px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; }
+    .social-card .sc-text h6 { font-size: 0.82rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.1rem; }
+    .social-card .sc-text p  { font-size: 0.75rem; color: var(--text-muted); margin: 0; }
+    .form-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 2.5rem; box-shadow: var(--shadow-sm); }
+    .form-card h3 { font-size: 1.25rem; font-weight: 800; margin-bottom: 0.35rem; }
+    .form-card > p { font-size: 0.875rem; color: var(--text-secondary); margin-bottom: 2rem; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+    .faq-section { margin-top: 5rem; }
+    @media(max-width:900px) { .contact-layout { grid-template-columns: 1fr; } .form-row { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar"><div class="nav-container">
+  <a href="index.html" class="nav-brand"><div class="brand-icon"><i class="fas fa-microchip"></i></div>MC Hub</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="microcontrollers.html">Boards</a></li>
+    <li><a href="projects.html">Projects</a></li>
+    <li><a href="tutorials.html">Tutorials</a></li>
+    <li><a href="components.html">Components</a></li>
+    <li><a href="resources.html">Resources</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html" class="active">Contact</a></li>
+  </ul>
+  <div class="nav-actions">
+    <div class="nav-search"><i class="fas fa-search search-icon"></i><input type="text" placeholder="Search…" aria-label="Search" /></div>
+    <button class="theme-toggle" aria-label="Toggle dark mode"><i class="fas fa-moon"></i></button>
+    <button class="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+  </div>
+</div></nav>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="container">
+    <h1 class="page-hero-title"><i class="fas fa-envelope"></i> Contact Us</h1>
+    <p class="page-hero-desc">Have a question, suggestion, or want to collaborate? We'd love to hear from you!</p>
+  </div>
+</section>
+
+<main class="section-padding">
+<div class="container">
+<div class="contact-layout">
+
+  <!-- LEFT: Info -->
+  <div>
+    <div class="contact-info">
+      <h2>Get In <span class="highlight">Touch</span></h2>
+      <p>Whether you have a question about a tutorial, found a bug, want to suggest a project, or just want to say hello — fill out the form and we'll get back to you within 24 hours.</p>
+    </div>
+
+    <div class="info-item">
+      <div class="info-icon"><i class="fas fa-envelope"></i></div>
+      <div class="info-text"><h5>Email</h5><a href="mailto:hello@mchub.io">hello@mchub.io</a></div>
+    </div>
+    <div class="info-item">
+      <div class="info-icon"><i class="fab fa-github"></i></div>
+      <div class="info-text"><h5>GitHub</h5><a href="https://github.com" target="_blank">github.com/mc-hub</a></div>
+    </div>
+    <div class="info-item">
+      <div class="info-icon"><i class="fas fa-clock"></i></div>
+      <div class="info-text"><h5>Response Time</h5><p>Usually within 24–48 hours</p></div>
+    </div>
+    <div class="info-item">
+      <div class="info-icon"><i class="fas fa-map-marker-alt"></i></div>
+      <div class="info-text"><h5>Location</h5><p>Lahore, Pakistan 🇵🇰</p></div>
+    </div>
+
+    <div class="social-section" style="margin-top:2rem">
+      <h4>Follow Us</h4>
+      <div class="social-cards">
+        <a href="#" class="social-card">
+          <div class="sc-icon" style="background:#1d4ed8;color:white"><i class="fab fa-youtube"></i></div>
+          <div class="sc-text"><h6>YouTube</h6><p>Video tutorials</p></div>
+        </a>
+        <a href="#" class="social-card">
+          <div class="sc-icon" style="background:#1e293b;color:white"><i class="fab fa-github"></i></div>
+          <div class="sc-text"><h6>GitHub</h6><p>Source code</p></div>
+        </a>
+        <a href="#" class="social-card">
+          <div class="sc-icon" style="background:#0ea5e9;color:white"><i class="fab fa-twitter"></i></div>
+          <div class="sc-text"><h6>Twitter/X</h6><p>Updates & tips</p></div>
+        </a>
+        <a href="#" class="social-card">
+          <div class="sc-icon" style="background:#2563eb;color:white"><i class="fab fa-linkedin-in"></i></div>
+          <div class="sc-text"><h6>LinkedIn</h6><p>Professional network</p></div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- RIGHT: Form -->
+  <div class="form-card">
+    <h3>Send a Message</h3>
+    <p>We read every message and respond personally.</p>
+
+    <form id="contact-form" novalidate>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="fname">First Name *</label>
+          <input type="text" id="fname" name="fname" class="form-control" placeholder="Ali" required />
+        </div>
+        <div class="form-group">
+          <label for="lname">Last Name *</label>
+          <input type="text" id="lname" name="lname" class="form-control" placeholder="Hassan" required />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email Address *</label>
+        <input type="email" id="email" name="email" class="form-control" placeholder="ali@example.com" required />
+      </div>
+
+      <div class="form-group">
+        <label for="subject">Subject</label>
+        <select id="subject" name="subject" class="form-control">
+          <option value="">Select a topic…</option>
+          <option value="question">Question about a tutorial</option>
+          <option value="project">Project help</option>
+          <option value="bug">Report an error / bug</option>
+          <option value="suggest">Suggest a project/tutorial</option>
+          <option value="collab">Collaboration</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="message">Message *</label>
+        <textarea id="message" name="message" class="form-control" placeholder="Tell us what's on your mind…" rows="5" required></textarea>
+      </div>
+
+      <div class="form-group" style="display:flex;align-items:center;gap:0.6rem">
+        <input type="checkbox" id="newsletter" name="newsletter" style="width:16px;height:16px;accent-color:var(--primary)" />
+        <label for="newsletter" style="font-weight:400;font-size:0.875rem;color:var(--text-secondary);cursor:pointer">Subscribe to newsletter for new tutorials and projects</label>
+      </div>
+
+      <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;padding:0.9rem">
+        <i class="fas fa-paper-plane"></i> Send Message
+      </button>
+    </form>
+  </div>
+
+</div>
+
+<!-- FAQ -->
+<div class="faq-section">
+  <div class="section-header">
+    <h2 class="section-title">Frequently Asked <span class="highlight">Questions</span></h2>
+    <p class="section-subtitle">Quick answers to common questions</p>
+  </div>
+  <div style="max-width:760px;margin:0 auto">
+    <div class="accordion-item">
+      <div class="accordion-header">Is MC Hub completely free? <i class="fas fa-chevron-down accordion-icon"></i></div>
+      <div class="accordion-body"><div class="accordion-content">Yes! All content on Microcontrollers Hub — tutorials, projects, code samples, and resources — is completely free to access. No registration required.</div></div>
+    </div>
+    <div class="accordion-item">
+      <div class="accordion-header">What level of experience do I need to get started? <i class="fas fa-chevron-down accordion-icon"></i></div>
+      <div class="accordion-body"><div class="accordion-content">None at all! Our content starts from absolute zero. If you know basic algebra and have curiosity, you have everything you need. Start with the "Getting Started with Arduino" tutorial.</div></div>
+    </div>
+    <div class="accordion-item">
+      <div class="accordion-header">Can I suggest a new project or tutorial? <i class="fas fa-chevron-down accordion-icon"></i></div>
+      <div class="accordion-body"><div class="accordion-content">Absolutely! We love community suggestions. Use the contact form above and select "Suggest a project/tutorial" as the subject. We consider all suggestions for upcoming content.</div></div>
+    </div>
+    <div class="accordion-item">
+      <div class="accordion-header">I found an error in the code — what should I do? <i class="fas fa-chevron-down accordion-icon"></i></div>
+      <div class="accordion-body"><div class="accordion-content">Please report it! Use the contact form and select "Report an error / bug". Include the page name, the code block, and what you observed. We fix errors as quickly as possible.</div></div>
+    </div>
+    <div class="accordion-item">
+      <div class="accordion-header">Can I use the code from this site in my own projects? <i class="fas fa-chevron-down accordion-icon"></i></div>
+      <div class="accordion-body"><div class="accordion-content">Yes! All code on MC Hub is free to use in personal and educational projects. For commercial use, a credit mention is appreciated but not required.</div></div>
+    </div>
+  </div>
+</div>
+
+</div></main>
+
+<!-- FOOTER -->
+<footer class="footer"><div class="container">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="brand-name"><div style="width:32px;height:32px;background:linear-gradient(135deg,#2563eb,#06b6d4);border-radius:8px;display:flex;align-items:center;justify-content:center;color:white;font-size:0.9rem"><i class="fas fa-microchip"></i></div> MC Hub</div>
+      <p>A complete learning platform for microcontrollers and embedded systems.</p>
+      <div class="social-links">
+        <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+    </div>
+    <div><h4 class="footer-heading">Boards</h4><ul class="footer-links">
+      <li><a href="microcontrollers.html#arduino">Arduino</a></li>
+      <li><a href="microcontrollers.html#esp32">ESP32</a></li>
+      <li><a href="microcontrollers.html#pic">PIC</a></li>
+      <li><a href="microcontrollers.html#raspi">Raspberry Pi</a></li>
+    </ul></div>
+    <div><h4 class="footer-heading">Learn</h4><ul class="footer-links">
+      <li><a href="tutorials.html">Tutorials</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="components.html">Components</a></li>
+      <li><a href="resources.html">Resources</a></li>
+    </ul></div>
+    <div><h4 class="footer-heading">Company</h4><ul class="footer-links">
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="#">Privacy Policy</a></li>
+      <li><a href="#">Terms of Use</a></li>
+    </ul></div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Microcontrollers Hub. All rights reserved.</p>
+    <p>Made with <span style="color:#ef4444">♥</span> for engineering students</p>
+  </div>
+</div></footer>
+<button class="scroll-top"><i class="fas fa-arrow-up"></i></button>
+<script src="js/main.js"></script>
+<script src="js/search.js"></script>
+</body>
+</html>

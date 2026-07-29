@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Free downloads – Arduino IDE, Proteus, MPLAB X, datasheets, code files, and learning resources for embedded systems." />
+  <title>Resources – MC Hub</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    body { font-family: 'Inter', var(--font); }
+    .res-section-title { font-size: 1.4rem; font-weight: 800; margin: 3rem 0 1.25rem; display: flex; align-items: center; gap: 0.6rem; padding-bottom: 0.75rem; border-bottom: 2px solid var(--border); }
+    .res-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
+    .res-card {
+      background: var(--bg-card); border: 1px solid var(--border-card); border-radius: var(--radius);
+      padding: 1.4rem; display: flex; gap: 1rem; align-items: flex-start;
+      box-shadow: var(--shadow-sm); transition: all var(--transition); text-decoration: none; color: inherit;
+    }
+    .res-card:hover { transform: translateY(-3px); box-shadow: var(--shadow); border-color: var(--primary); }
+    .res-icon { width: 52px; height: 52px; border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; font-size: 1.4rem; flex-shrink: 0; }
+    .res-info h4 { font-weight: 700; margin-bottom: 0.3rem; font-size: 0.95rem; }
+    .res-info p { font-size: 0.82rem; color: var(--text-secondary); margin-bottom: 0.6rem; line-height: 1.55; }
+    .res-meta { display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center; }
+    .res-tag { font-size: 0.72rem; font-weight: 600; padding: 0.18rem 0.55rem; border-radius: 50px; }
+    .tag-free { background: #d1fae5; color: #065f46; }
+    .tag-pdf  { background: #fee2e2; color: #991b1b; }
+    .tag-zip  { background: #fef3c7; color: #78350f; }
+    .tag-link { background: #dbeafe; color: #1e40af; }
+    [data-theme="dark"] .tag-free { background: #052e16; color: #6ee7b7; }
+    [data-theme="dark"] .tag-pdf  { background: #450a0a; color: #fca5a5; }
+    [data-theme="dark"] .tag-zip  { background: #451a03; color: #fcd34d; }
+    [data-theme="dark"] .tag-link { background: #1e3a5f; color: #93c5fd; }
+    .download-btn {
+      display: inline-flex; align-items: center; gap: 0.35rem;
+      background: var(--primary); color: white; padding: 0.35rem 0.85rem;
+      border-radius: 6px; font-size: 0.78rem; font-weight: 600; margin-top: 0.5rem;
+      transition: background var(--transition); text-decoration: none;
+    }
+    .download-btn:hover { background: var(--primary-dark); color: white; }
+    @media(max-width:700px) { .res-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar"><div class="nav-container">
+  <a href="index.html" class="nav-brand"><div class="brand-icon"><i class="fas fa-microchip"></i></div>MC Hub</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="microcontrollers.html">Boards</a></li>
+    <li><a href="projects.html">Projects</a></li>
+    <li><a href="tutorials.html">Tutorials</a></li>
+    <li><a href="components.html">Components</a></li>
+    <li><a href="resources.html" class="active">Resources</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="nav-actions">
+    <div class="nav-search"><i class="fas fa-search search-icon"></i><input type="text" placeholder="Search…" aria-label="Search" /></div>
+    <button class="theme-toggle" aria-label="Toggle dark mode"><i class="fas fa-moon"></i></button>
+    <button class="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+  </div>
+</div></nav>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="container">
+    <h1 class="page-hero-title"><i class="fas fa-download"></i> Resources & Downloads</h1>
+    <p class="page-hero-desc">Everything you need — software tools, datasheets, code files, and learning materials, all in one place.</p>
+  </div>
+</section>
+
+<main class="section-padding">
+<div class="container">
+
+  <!-- SOFTWARE -->
+  <h2 class="res-section-title"><i class="fas fa-laptop-code" style="color:var(--primary)"></i> Software Tools</h2>
+  <div class="res-grid">
+
+    <a href="https://www.arduino.cc/en/software" target="_blank" rel="noopener" class="res-card" id="arduino-ide">
+      <div class="res-icon" style="background:#e0f7fa">🛠️</div>
+      <div class="res-info">
+        <h4>Arduino IDE 2.x</h4>
+        <p>The official development environment for programming all Arduino boards. Includes library manager, serial plotter, and debugger.</p>
+        <div class="res-meta">
+          <span class="res-tag tag-free">FREE</span>
+          <span class="res-tag tag-link">Official</span>
+          <span style="font-size:0.78rem;color:var(--text-muted)">Windows / Mac / Linux</span>
+        </div>
+        <span class="download-btn"><i class="fas fa-external-link-alt"></i> Visit arduino.cc</span>
+      </div>
+    </a>
+
+    <a href="https://www.microchip.com/en-us/tools-resources/develop/mplab-x-ide" target="_blank" rel="noopener" class="res-card">
+      <div class="res-icon" style="background:#e8f5e9">💾</div>
+      <div class="res-info">
+        <h4>MPLAB X IDE</h4>
+        <p>Microchip's free IDE for programming PIC and AVR microcontrollers. Includes simulator, debugger, and code configurator (MCC).</p>
+        <div class="res-meta">
+          <span class="res-tag tag-free">FREE</span>
+          <span class="res-tag tag-link">Official</span>
+          <span style="font-size:0.78rem;color:var(--text-muted)">Windows / Mac / Linux</span>
+        </div>
+        <span class="download-btn"><i class="fas fa-external-link-alt"></i> Visit microchip.com</span>
+      </div>
+    </a>
+
+    <a href="https://docs.espressif.com/projects/esp-idf/en/latest/esp32/get-started/" target="_blank" rel="noopener" class="res-card">
+      <div class="res-icon" style="background:#fce4ec">📡</div>
+      <div class="res-info">
+        <h4>ESP-IDF Framework</h4>
+        <p>Official Espressif IoT Development Framework for advanced ESP32 programming in pure C. More control than Arduino SDK.</p>
+        <div class="res-meta">
+          <span class="res-tag tag-free">FREE</span>
+          <span class="res-tag tag-link">Official</span>
+        </div>
+        <span class="download-btn"><i class="fas fa-external-link-alt"></i> Visit espressif.com</span>
+      </div>
+    </a>
+
+    <a href="https://thonny.org" target="_blank" rel="noopener" class="res-card" id="proteus">
+      <div class="res-icon" style="background:#ede9fe">🐍</div>
+      <div class="res-info">
+        <h4>Thonny IDE (MicroPython)</h4>
+        <p>Beginner-friendly Python IDE with built-in MicroPython support. Perfect for programming ESP32, Raspberry Pi Pico with Python.</p>
+        <div class="res-meta">
+          <span class="res-tag tag-free">FREE</span>
+          <span class="res-tag tag-link">Official</span>
+        </div>
+        <span class="download-btn"><i class="fas fa-external-link-alt"></i> Visit thonny.org</span>
+      </div>
+    </a>
+
+    <a href="https://www.labcenter.com/" target="_blank" rel="noopener" class="res-card">
+      <div class="res-icon" style="background:#fef9c3">🔬</div>
+      <div class="res-info">
+        <h4>Proteus Design Suite</h4>
+        <p>Industry-standard circuit simulation software. Simulate Arduino, PIC, and ESP32 circuits before building them on hardware.</p>
+        <div class="res-meta">
+          <span class="res-tag tag-link">Paid / Trial</span>
+          <span style="font-size:0.78rem;color:var(--text-muted)">Windows only</span>
+        </div>
+        <span class="download-btn"><i class="fas fa-external-link-alt"></i> Visit labcenter.com</span>
+      </div>
+    </a>
+
+    <a href="https://fritzing.org/download/" target="_blank" rel="noopener" class="res-card">
+      <div class="res-icon" style="background:#fdf4ff">🖊️</div>
+      <div class="res-info">
+        <h4>Fritzing – Circuit Designer</h4>
+        <p>Easy-to-use breadboard and schematic design tool. Great for documenting and sharing your circuit diagrams.</p>
+        <div class="res-meta">
+          <span class="res-tag tag-link">Paid</span>
+          <span style="font-size:0.78rem;color:var(--text-muted)">Windows / Mac / Linux</span>
+        </div>
+        <span class="download-btn"><i class="fas fa-external-link-alt"></i> Visit fritzing.org</span>
+      </div>
+    </a>
+
+  </div>
+
+  <!-- DATASHEETS -->
+  <h2 class="res-section-title"><i class="fas fa-file-pdf" style="color:#ef4444"></i> Datasheets</h2>
+  <div class="res-grid">
+
+    <a href="https://ww1.microchip.com/downloads/en/DeviceDoc/Atmel-7810-Automotive-Microcontrollers-ATmega328P_Datasheet.pdf" target="_blank" rel="noopener" class="res-card" id="arduino-ds">
+      <div class="res-icon" style="background:#e0f7fa">📄</div>
+      <div class="res-info">
+        <h4>ATmega328P Datasheet</h4>
+        <p>Complete technical reference for the ATmega328P chip used in Arduino Uno. Includes register maps, timing, and electrical specifications.</p>
+        <div class="res-meta"><span class="res-tag tag-pdf">PDF</span><span class="res-tag tag-free">FREE</span><span style="font-size:0.78rem;color:var(--text-muted)">Microchip / Atmel</span></div>
+        <span class="download-btn"><i class="fas fa-file-download"></i> Download PDF</span>
+      </div>
+    </a>
+
+    <a href="https://www.espressif.com/sites/default/files/documentation/esp32_datasheet_en.pdf" target="_blank" rel="noopener" class="res-card" id="esp32-ds">
+      <div class="res-icon" style="background:#fce4ec">📄</div>
+      <div class="res-info">
+        <h4>ESP32 Datasheet</h4>
+        <p>Official Espressif datasheet for ESP32 SoC. Covers all GPIO functions, electrical characteristics, RF specs, and memory maps.</p>
+        <div class="res-meta"><span class="res-tag tag-pdf">PDF</span><span class="res-tag tag-free">FREE</span><span style="font-size:0.78rem;color:var(--text-muted)">Espressif Systems</span></div>
+        <span class="download-btn"><i class="fas fa-file-download"></i> Download PDF</span>
+      </div>
+    </a>
+
+    <a href="https://ww1.microchip.com/downloads/en/DeviceDoc/39582b.pdf" target="_blank" rel="noopener" class="res-card">
+      <div class="res-icon" style="background:#e8f5e9">📄</div>
+      <div class="res-info">
+        <h4>PIC16F877A Datasheet</h4>
+        <p>Full datasheet for PIC16F877A microcontroller. Includes pinout, register definitions, instruction set, and peripheral details.</p>
+        <div class="res-meta"><span class="res-tag tag-pdf">PDF</span><span class="res-tag tag-free">FREE</span><span style="font-size:0.78rem;color:var(--text-muted)">Microchip Technology</span></div>
+        <span class="download-btn"><i class="fas fa-file-download"></i> Download PDF</span>
+      </div>
+    </a>
+
+    <a href="https://datasheets.raspberrypi.com/rpi4/raspberry-pi-4-datasheet.pdf" target="_blank" rel="noopener" class="res-card">
+      <div class="res-icon" style="background:#fce4ec">📄</div>
+      <div class="res-info">
+        <h4>Raspberry Pi 4 Datasheet</h4>
+        <p>Official technical brief for Raspberry Pi 4 Model B. Covers GPIO pinout, interfaces, power requirements, and mechanical specs.</p>
+        <div class="res-meta"><span class="res-tag tag-pdf">PDF</span><span class="res-tag tag-free">FREE</span><span style="font-size:0.78rem;color:var(--text-muted)">Raspberry Pi Foundation</span></div>
+        <span class="download-btn"><i class="fas fa-file-download"></i> Download PDF</span>
+      </div>
+    </a>
+
+  </div>
+
+  <!-- CODE FILES -->
+  <h2 class="res-section-title"><i class="fas fa-code" style="color:var(--primary)"></i> Code Files & Libraries</h2>
+  <div class="res-grid">
+
+    <a href="https://github.com/arduino-libraries" target="_blank" rel="noopener" class="res-card">
+      <div class="res-icon" style="background:#f1f5f9">🐙</div>
+      <div class="res-info">
+        <h4>Arduino Official Libraries</h4>
+        <p>All official Arduino libraries on GitHub — Servo, LiquidCrystal, SD, Wire, SPI, Ethernet and more.</p>
+        <div class="res-meta"><span class="res-tag tag-free">FREE</span><span class="res-tag tag-link">GitHub</span></div>
+        <span class="download-btn"><i class="fab fa-github"></i> View on GitHub</span>
+      </div>
+    </a>
+
+    <a href="https://github.com/espressif/arduino-esp32" target="_blank" rel="noopener" class="res-card">
+      <div class="res-icon" style="background:#fce4ec">🐙</div>
+      <div class="res-info">
+        <h4>ESP32 Arduino Core</h4>
+        <p>The official Espressif Arduino core for ESP32 — all WiFi, BT, I2C, SPI libraries and board support files.</p>
+        <div class="res-meta"><span class="res-tag tag-free">FREE</span><span class="res-tag tag-link">GitHub</span></div>
+        <span class="download-btn"><i class="fab fa-github"></i> View on GitHub</span>
+      </div>
+    </a>
+
+    <a href="https://github.com/adafruit" target="_blank" rel="noopener" class="res-card">
+      <div class="res-icon" style="background:#fdf4ff">📦</div>
+      <div class="res-info">
+        <h4>Adafruit Libraries</h4>
+        <p>Popular display, sensor, and hardware libraries by Adafruit — OLED (SSD1306), DHT, NeoPixel, and hundreds more.</p>
+        <div class="res-meta"><span class="res-tag tag-free">FREE</span><span class="res-tag tag-link">GitHub</span></div>
+        <span class="download-btn"><i class="fab fa-github"></i> View on GitHub</span>
+      </div>
+    </a>
+
+    <a href="projects.html" class="res-card">
+      <div class="res-icon" style="background:#d1fae5">💾</div>
+      <div class="res-info">
+        <h4>MC Hub Project Code</h4>
+        <p>All code samples from our projects page — LED Blink, Line Follower, BT Car, Smart Home — ready to copy and use.</p>
+        <div class="res-meta"><span class="res-tag tag-free">FREE</span><span class="res-tag tag-zip">Inline Code</span></div>
+        <span class="download-btn"><i class="fas fa-flask"></i> View Projects</span>
+      </div>
+    </a>
+
+  </div>
+
+  <!-- LEARNING RESOURCES -->
+  <h2 class="res-section-title"><i class="fas fa-graduation-cap" style="color:var(--primary)"></i> Learning Resources</h2>
+  <div class="res-grid">
+
+    <a href="https://docs.arduino.cc/language-reference/" target="_blank" rel="noopener" class="res-card">
+      <div class="res-icon" style="background:#e0f7fa">📚</div>
+      <div class="res-info">
+        <h4>Arduino Language Reference</h4>
+        <p>Official complete reference for all Arduino functions, constants, and data types with examples.</p>
+        <div class="res-meta"><span class="res-tag tag-free">FREE</span><span class="res-tag tag-link">Official Docs</span></div>
+        <span class="download-btn"><i class="fas fa-external-link-alt"></i> Open Docs</span>
+      </div>
+    </a>
+
+    <a href="https://randomnerdtutorials.com/esp32/" target="_blank" rel="noopener" class="res-card">
+      <div class="res-icon" style="background:#fce4ec">🌐</div>
+      <div class="res-info">
+        <h4>Random Nerd Tutorials – ESP32</h4>
+        <p>High-quality ESP32 tutorials covering WiFi, BLE, MQTT, sensors, displays, and IoT project guides.</p>
+        <div class="res-meta"><span class="res-tag tag-free">FREE</span><span class="res-tag tag-link">Web</span></div>
+        <span class="download-btn"><i class="fas fa-external-link-alt"></i> Visit Site</span>
+      </div>
+    </a>
+
+  </div>
+
+</div></main>
+
+<!-- FOOTER -->
+<footer class="footer"><div class="container">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="brand-name"><div style="width:32px;height:32px;background:linear-gradient(135deg,#2563eb,#06b6d4);border-radius:8px;display:flex;align-items:center;justify-content:center;color:white;font-size:0.9rem"><i class="fas fa-microchip"></i></div> MC Hub</div>
+      <p>A complete learning platform for microcontrollers and embedded systems.</p>
+      <div class="social-links">
+        <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+      </div>
+    </div>
+    <div><h4 class="footer-heading">Resources</h4><ul class="footer-links">
+      <li><a href="#arduino-ide">Arduino IDE</a></li>
+      <li><a href="#proteus">Thonny IDE</a></li>
+      <li><a href="#arduino-ds">Datasheets</a></li>
+    </ul></div>
+    <div><h4 class="footer-heading">Learn</h4><ul class="footer-links">
+      <li><a href="tutorials.html">Tutorials</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="components.html">Components</a></li>
+    </ul></div>
+    <div><h4 class="footer-heading">Company</h4><ul class="footer-links">
+      <li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li>
+    </ul></div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Microcontrollers Hub. All rights reserved.</p>
+    <p>Made with <span style="color:#ef4444">♥</span> for engineering students</p>
+  </div>
+</div></footer>
+<button class="scroll-top"><i class="fas fa-arrow-up"></i></button>
+<script src="js/main.js"></script>
+<script src="js/search.js"></script>
+</body>
+</html>

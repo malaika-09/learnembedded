@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Microcontroller projects – LED Blinking, Line Follower Robot, Bluetooth Car, Smart Home Automation with code and circuit diagrams." />
+  <title>Projects – MC Hub</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    body { font-family: 'Inter', var(--font); }
+    .project-card { background: var(--bg-card); border: 1px solid var(--border-card); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow-sm); transition: box-shadow var(--transition); }
+    .project-card:hover { box-shadow: var(--shadow); }
+    .project-header { padding: 2rem; display: flex; align-items: flex-start; gap: 1.25rem; border-bottom: 1px solid var(--border); }
+    .project-emoji { font-size: 3rem; line-height: 1; }
+    .project-meta { flex: 1; }
+    .project-meta h2 { font-size: 1.35rem; font-weight: 800; margin-bottom: 0.35rem; }
+    .project-meta p { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 0.75rem; }
+    .project-tags { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+    .project-body { padding: 2rem; }
+    .project-body h3 { font-size: 0.9rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; color: var(--primary); margin: 1.5rem 0 0.75rem; display: flex; align-items: center; gap: 0.4rem; }
+    .project-body h3:first-child { margin-top: 0; }
+    .components-list { display: grid; grid-template-columns: repeat(3,1fr); gap: 0.5rem; }
+    .comp-item { display: flex; align-items: center; gap: 0.5rem; padding: 0.55rem 0.85rem; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; font-size: 0.82rem; color: var(--text-secondary); }
+    .comp-item i { color: var(--primary); width: 14px; flex-shrink: 0; }
+    @media(max-width:768px) { .components-list { grid-template-columns: 1fr 1fr; } }
+    @media(max-width:480px) { .components-list { grid-template-columns: 1fr; } .project-header { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar"><div class="nav-container">
+  <a href="index.html" class="nav-brand"><div class="brand-icon"><i class="fas fa-microchip"></i></div>MC Hub</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="microcontrollers.html">Boards</a></li>
+    <li><a href="projects.html" class="active">Projects</a></li>
+    <li><a href="tutorials.html">Tutorials</a></li>
+    <li><a href="components.html">Components</a></li>
+    <li><a href="resources.html">Resources</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="nav-actions">
+    <div class="nav-search"><i class="fas fa-search search-icon"></i><input type="text" placeholder="Search…" aria-label="Search" /></div>
+    <button class="theme-toggle" aria-label="Toggle dark mode"><i class="fas fa-moon"></i></button>
+    <button class="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+  </div>
+</div></nav>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="container">
+    <h1 class="page-hero-title"><i class="fas fa-flask"></i> Projects</h1>
+    <p class="page-hero-desc">Hands-on microcontroller projects from beginner to advanced — with full code, components list, and circuit diagrams.</p>
+  </div>
+</section>
+
+<main class="section-padding">
+<div class="container">
+
+  <!-- Filter Bar -->
+  <div class="filter-bar">
+    <label><i class="fas fa-filter"></i> Filter:</label>
+    <button class="filter-btn active" data-filter="all">All Projects</button>
+    <button class="filter-btn" data-filter="beginner">Beginner</button>
+    <button class="filter-btn" data-filter="intermediate">Intermediate</button>
+    <button class="filter-btn" data-filter="advanced">Advanced</button>
+  </div>
+
+  <div style="display:flex;flex-direction:column;gap:2.5rem;">
+
+  <!-- PROJECT 1: LED BLINKING -->
+  <div id="led" class="project-card" data-difficulty="beginner" style="scroll-margin-top:90px">
+    <div class="project-header">
+      <div class="project-emoji">💡</div>
+      <div class="project-meta">
+        <h2>LED Blinking with Arduino</h2>
+        <p>The classic first project for every microcontroller beginner. Control an LED's on/off state using Arduino's digital output pin and learn the basic structure of an Arduino program.</p>
+        <div class="project-tags">
+          <span class="badge badge-beginner">Beginner</span>
+          <span class="badge badge-primary">Arduino</span>
+          <span class="badge badge-secondary">Digital I/O</span>
+        </div>
+      </div>
+    </div>
+    <div class="project-body">
+
+      <h3><i class="fas fa-tools"></i> Components Required</h3>
+      <div class="components-list">
+        <div class="comp-item"><i class="fas fa-microchip"></i> Arduino Uno × 1</div>
+        <div class="comp-item"><i class="fas fa-lightbulb"></i> LED (any colour) × 1</div>
+        <div class="comp-item"><i class="fas fa-grip-lines"></i> Resistor 220Ω × 1</div>
+        <div class="comp-item"><i class="fas fa-plug"></i> Breadboard × 1</div>
+        <div class="comp-item"><i class="fas fa-minus"></i> Jumper Wires</div>
+        <div class="comp-item"><i class="fas fa-usb"></i> USB Cable × 1</div>
+      </div>
+
+      <h3><i class="fas fa-sitemap"></i> Circuit Diagram</h3>
+      <div class="circuit-placeholder">
+        <span style="position:relative;font-size:1.5rem">💡</span>
+        <span style="position:relative">Arduino Pin 13 → 220Ω Resistor → LED Anode → LED Cathode → GND</span>
+        <span style="position:relative;font-size:0.78rem;opacity:0.7">[ Connect longer leg (+) of LED to resistor, shorter leg (-) to GND ]</span>
+      </div>
+
+      <h3><i class="fas fa-code"></i> Arduino Code</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span class="code-lang">Arduino C++</span>
+          <button class="copy-btn"><i class="fas fa-copy"></i> Copy</button>
+        </div>
+        <pre><code><span class="cm">// LED Blinking – Microcontrollers Hub</span>
+<span class="cm">// Blink an LED connected to digital pin 13</span>
+
+<span class="kw">const int</span> ledPin = <span class="num">13</span>;   <span class="cm">// Built-in LED pin</span>
+
+<span class="fn">void</span> <span class="fn">setup</span>() {
+  <span class="fn">pinMode</span>(ledPin, <span class="tp">OUTPUT</span>);   <span class="cm">// Set pin as output</span>
+}
+
+<span class="fn">void</span> <span class="fn">loop</span>() {
+  <span class="fn">digitalWrite</span>(ledPin, <span class="tp">HIGH</span>);  <span class="cm">// LED ON</span>
+  <span class="fn">delay</span>(<span class="num">1000</span>);                  <span class="cm">// Wait 1 second</span>
+  <span class="fn">digitalWrite</span>(ledPin, <span class="tp">LOW</span>);   <span class="cm">// LED OFF</span>
+  <span class="fn">delay</span>(<span class="num">1000</span>);                  <span class="cm">// Wait 1 second</span>
+}</code></pre>
+      </div>
+
+      <h3><i class="fas fa-check-circle"></i> Expected Output</h3>
+      <p style="color:var(--text-secondary);font-size:0.9rem;line-height:1.7">
+        The LED connected to pin 13 will turn ON for 1 second, then OFF for 1 second, repeating continuously.
+        You can change the delay values to control the blink speed. Try <code style="background:var(--bg);padding:2px 6px;border-radius:4px;font-size:0.85rem">delay(100)</code> for a fast blink!
+      </p>
+
+      <div style="margin-top:1.25rem;display:flex;gap:0.75rem;flex-wrap:wrap">
+        <a href="tutorials.html#arduino-start" class="btn btn-primary btn-sm"><i class="fas fa-book-open"></i> Arduino Tutorial</a>
+        <a href="resources.html" class="btn btn-outline btn-sm"><i class="fas fa-download"></i> Download Code</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROJECT 2: LINE FOLLOWER ROBOT -->
+  <div id="line-follower" class="project-card" data-difficulty="intermediate" style="scroll-margin-top:90px">
+    <div class="project-header">
+      <div class="project-emoji">🤖</div>
+      <div class="project-meta">
+        <h2>Line Follower Robot</h2>
+        <p>Build an autonomous robot that follows a black line on a white surface using IR sensors and an Arduino. This project teaches sensor interfacing, motor control, and basic robotics logic.</p>
+        <div class="project-tags">
+          <span class="badge badge-intermediate">Intermediate</span>
+          <span class="badge badge-primary">Arduino</span>
+          <span class="badge badge-secondary">IR Sensor · L298N</span>
+        </div>
+      </div>
+    </div>
+    <div class="project-body">
+
+      <h3><i class="fas fa-tools"></i> Components Required</h3>
+      <div class="components-list">
+        <div class="comp-item"><i class="fas fa-microchip"></i> Arduino Uno × 1</div>
+        <div class="comp-item"><i class="fas fa-eye"></i> IR Sensor Module × 2</div>
+        <div class="comp-item"><i class="fas fa-cog"></i> L298N Motor Driver × 1</div>
+        <div class="comp-item"><i class="fas fa-circle"></i> DC Motors × 2</div>
+        <div class="comp-item"><i class="fas fa-circle-notch"></i> Wheels × 2 + Caster × 1</div>
+        <div class="comp-item"><i class="fas fa-car"></i> Chassis Board × 1</div>
+        <div class="comp-item"><i class="fas fa-battery-full"></i> 9V Battery × 1</div>
+        <div class="comp-item"><i class="fas fa-minus"></i> Jumper Wires</div>
+      </div>
+
+      <h3><i class="fas fa-sitemap"></i> Circuit Diagram</h3>
+      <div class="circuit-placeholder">
+        <span style="position:relative;font-size:1.5rem">🤖</span>
+        <span style="position:relative">IR Left → D2 | IR Right → D3 | L298N IN1→D5 IN2→D6 IN3→D9 IN4→D10</span>
+        <span style="position:relative;font-size:0.78rem;opacity:0.7">[ L298N 12V from battery · 5V from Arduino · GND common ]</span>
+      </div>
+
+      <h3><i class="fas fa-code"></i> Arduino Code</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span class="code-lang">Arduino C++</span>
+          <button class="copy-btn"><i class="fas fa-copy"></i> Copy</button>
+        </div>
+        <pre><code><span class="cm">// Line Follower Robot – Microcontrollers Hub</span>
+<span class="cm">// Uses 2 IR sensors and L298N motor driver</span>
+
+<span class="cm">// IR Sensor pins</span>
+<span class="kw">const int</span> irLeft  = <span class="num">2</span>;
+<span class="kw">const int</span> irRight = <span class="num">3</span>;
+
+<span class="cm">// Motor driver pins (Left Motor)</span>
+<span class="kw">const int</span> in1 = <span class="num">5</span>, in2 = <span class="num">6</span>;
+<span class="cm">// Motor driver pins (Right Motor)</span>
+<span class="kw">const int</span> in3 = <span class="num">9</span>, in4 = <span class="num">10</span>;
+
+<span class="fn">void</span> <span class="fn">setup</span>() {
+  <span class="fn">pinMode</span>(irLeft,  <span class="tp">INPUT</span>);
+  <span class="fn">pinMode</span>(irRight, <span class="tp">INPUT</span>);
+  <span class="fn">pinMode</span>(in1, <span class="tp">OUTPUT</span>); <span class="fn">pinMode</span>(in2, <span class="tp">OUTPUT</span>);
+  <span class="fn">pinMode</span>(in3, <span class="tp">OUTPUT</span>); <span class="fn">pinMode</span>(in4, <span class="tp">OUTPUT</span>);
+}
+
+<span class="fn">void</span> <span class="fn">forward</span>()  { <span class="fn">digitalWrite</span>(in1,<span class="tp">HIGH</span>); <span class="fn">digitalWrite</span>(in2,<span class="tp">LOW</span>);  <span class="fn">digitalWrite</span>(in3,<span class="tp">HIGH</span>); <span class="fn">digitalWrite</span>(in4,<span class="tp">LOW</span>); }
+<span class="fn">void</span> <span class="fn">turnLeft</span>() { <span class="fn">digitalWrite</span>(in1,<span class="tp">LOW</span>);  <span class="fn">digitalWrite</span>(in2,<span class="tp">HIGH</span>); <span class="fn">digitalWrite</span>(in3,<span class="tp">HIGH</span>); <span class="fn">digitalWrite</span>(in4,<span class="tp">LOW</span>); }
+<span class="fn">void</span> <span class="fn">turnRight</span>(){ <span class="fn">digitalWrite</span>(in1,<span class="tp">HIGH</span>); <span class="fn">digitalWrite</span>(in2,<span class="tp">LOW</span>);  <span class="fn">digitalWrite</span>(in3,<span class="tp">LOW</span>);  <span class="fn">digitalWrite</span>(in4,<span class="tp">HIGH</span>); }
+<span class="fn">void</span> <span class="fn">stopMotors</span>(){ <span class="fn">digitalWrite</span>(in1,<span class="tp">LOW</span>);  <span class="fn">digitalWrite</span>(in2,<span class="tp">LOW</span>);  <span class="fn">digitalWrite</span>(in3,<span class="tp">LOW</span>);  <span class="fn">digitalWrite</span>(in4,<span class="tp">LOW</span>); }
+
+<span class="fn">void</span> <span class="fn">loop</span>() {
+  <span class="kw">int</span> L = <span class="fn">digitalRead</span>(irLeft);   <span class="cm">// 0 = black line detected</span>
+  <span class="kw">int</span> R = <span class="fn">digitalRead</span>(irRight);
+
+  <span class="kw">if</span>      (!L &amp;&amp; !R) <span class="fn">forward</span>();    <span class="cm">// Both on line → go forward</span>
+  <span class="kw">else if</span> (!L &amp;&amp;  R) <span class="fn">turnLeft</span>();   <span class="cm">// Only left on line → turn left</span>
+  <span class="kw">else if</span> ( L &amp;&amp; !R) <span class="fn">turnRight</span>(); <span class="cm">// Only right on line → turn right</span>
+  <span class="kw">else</span>               <span class="fn">stopMotors</span>(); <span class="cm">// Off line → stop</span>
+}</code></pre>
+      </div>
+
+      <h3><i class="fas fa-check-circle"></i> Expected Output</h3>
+      <p style="color:var(--text-secondary);font-size:0.9rem;line-height:1.7">
+        The robot will follow a black tape line on a white surface. When both IR sensors detect the line, it moves forward. When only one sensor detects the line, it corrects its direction accordingly. Place the robot on a track and watch it navigate autonomously!
+      </p>
+    </div>
+  </div>
+
+  <!-- PROJECT 3: BLUETOOTH CONTROLLED CAR -->
+  <div id="bt-car" class="project-card" data-difficulty="intermediate" style="scroll-margin-top:90px">
+    <div class="project-header">
+      <div class="project-emoji">📱</div>
+      <div class="project-meta">
+        <h2>Bluetooth Controlled Car</h2>
+        <p>Build a wireless RC car controlled from your Android smartphone via Bluetooth. Uses the HC-05 module with Arduino and the L298N motor driver for full directional control.</p>
+        <div class="project-tags">
+          <span class="badge badge-intermediate">Intermediate</span>
+          <span class="badge badge-primary">Arduino</span>
+          <span class="badge badge-secondary">HC-05 · Bluetooth</span>
+        </div>
+      </div>
+    </div>
+    <div class="project-body">
+
+      <h3><i class="fas fa-tools"></i> Components Required</h3>
+      <div class="components-list">
+        <div class="comp-item"><i class="fas fa-microchip"></i> Arduino Uno × 1</div>
+        <div class="comp-item"><i class="fab fa-bluetooth"></i> HC-05 BT Module × 1</div>
+        <div class="comp-item"><i class="fas fa-cog"></i> L298N Motor Driver × 1</div>
+        <div class="comp-item"><i class="fas fa-circle"></i> DC Motors × 4</div>
+        <div class="comp-item"><i class="fas fa-car"></i> Car Chassis × 1</div>
+        <div class="comp-item"><i class="fas fa-battery-full"></i> 12V Battery Pack × 1</div>
+        <div class="comp-item"><i class="fas fa-mobile-alt"></i> Android Phone</div>
+        <div class="comp-item"><i class="fas fa-minus"></i> Jumper Wires</div>
+      </div>
+
+      <h3><i class="fas fa-sitemap"></i> Circuit Diagram</h3>
+      <div class="circuit-placeholder">
+        <span style="position:relative;font-size:1.5rem">📱</span>
+        <span style="position:relative">HC-05 TX→D10 RX→D11(via divider) VCC→5V GND→GND</span>
+        <span style="position:relative;font-size:0.78rem;opacity:0.7">[ Use voltage divider on HC-05 RX: 1kΩ + 2kΩ to convert 5V→3.3V ]</span>
+      </div>
+
+      <h3><i class="fas fa-code"></i> Arduino Code</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span class="code-lang">Arduino C++</span>
+          <button class="copy-btn"><i class="fas fa-copy"></i> Copy</button>
+        </div>
+        <pre><code><span class="cm">// Bluetooth Controlled Car – Microcontrollers Hub</span>
+<span class="cm">// Commands: F=Forward, B=Back, L=Left, R=Right, S=Stop</span>
+
+<span class="kw">#include</span> <span class="str">&lt;SoftwareSerial.h&gt;</span>
+
+<span class="tp">SoftwareSerial</span> bt(<span class="num">10</span>, <span class="num">11</span>);  <span class="cm">// RX, TX for HC-05</span>
+
+<span class="kw">const int</span> in1=<span class="num">5</span>, in2=<span class="num">6</span>, in3=<span class="num">9</span>, in4=<span class="num">10</span>;
+<span class="kw">const int</span> ena=<span class="num">3</span>, enb=<span class="num">11</span>;  <span class="cm">// PWM speed pins</span>
+
+<span class="fn">void</span> <span class="fn">setup</span>() {
+  bt.<span class="fn">begin</span>(<span class="num">9600</span>);
+  <span class="kw">int</span> pins[] = {in1,in2,in3,in4,ena,enb};
+  <span class="kw">for</span>(<span class="kw">int</span> p : pins) <span class="fn">pinMode</span>(p, <span class="tp">OUTPUT</span>);
+  <span class="fn">analogWrite</span>(ena, <span class="num">200</span>);  <span class="cm">// Set speed (0–255)</span>
+  <span class="fn">analogWrite</span>(enb, <span class="num">200</span>);
+}
+
+<span class="fn">void</span> <span class="fn">loop</span>() {
+  <span class="kw">if</span> (bt.<span class="fn">available</span>()) {
+    <span class="kw">char</span> cmd = (<span class="kw">char</span>)bt.<span class="fn">read</span>();
+    <span class="kw">switch</span>(cmd) {
+      <span class="kw">case</span> <span class="str">'F'</span>: <span class="fn">move</span>(<span class="tp">HIGH</span>,<span class="tp">LOW</span>,<span class="tp">HIGH</span>,<span class="tp">LOW</span>); <span class="kw">break</span>;
+      <span class="kw">case</span> <span class="str">'B'</span>: <span class="fn">move</span>(<span class="tp">LOW</span>,<span class="tp">HIGH</span>,<span class="tp">LOW</span>,<span class="tp">HIGH</span>); <span class="kw">break</span>;
+      <span class="kw">case</span> <span class="str">'L'</span>: <span class="fn">move</span>(<span class="tp">LOW</span>,<span class="tp">HIGH</span>,<span class="tp">HIGH</span>,<span class="tp">LOW</span>); <span class="kw">break</span>;
+      <span class="kw">case</span> <span class="str">'R'</span>: <span class="fn">move</span>(<span class="tp">HIGH</span>,<span class="tp">LOW</span>,<span class="tp">LOW</span>,<span class="tp">HIGH</span>); <span class="kw">break</span>;
+      <span class="kw">default</span>:  <span class="fn">move</span>(<span class="tp">LOW</span>,<span class="tp">LOW</span>,<span class="tp">LOW</span>,<span class="tp">LOW</span>);   <span class="cm">// Stop</span>
+    }
+  }
+}
+
+<span class="fn">void</span> <span class="fn">move</span>(<span class="kw">int</span> a, <span class="kw">int</span> b, <span class="kw">int</span> c, <span class="kw">int</span> d) {
+  <span class="fn">digitalWrite</span>(in1,a); <span class="fn">digitalWrite</span>(in2,b);
+  <span class="fn">digitalWrite</span>(in3,c); <span class="fn">digitalWrite</span>(in4,d);
+}</code></pre>
+      </div>
+
+      <h3><i class="fas fa-check-circle"></i> Expected Output</h3>
+      <p style="color:var(--text-secondary);font-size:0.9rem;line-height:1.7">
+        Pair your phone with HC-05 (default PIN: 1234). Use any Bluetooth terminal app (e.g., "Arduino Bluetooth Controller") to send characters. Send <code style="background:var(--bg);padding:2px 5px;border-radius:4px">F</code> to go forward, <code style="background:var(--bg);padding:2px 5px;border-radius:4px">B</code> backward, <code style="background:var(--bg);padding:2px 5px;border-radius:4px">L</code> left, <code style="background:var(--bg);padding:2px 5px;border-radius:4px">R</code> right, <code style="background:var(--bg);padding:2px 5px;border-radius:4px">S</code> stop.
+      </p>
+    </div>
+  </div>
+
+  <!-- PROJECT 4: SMART HOME AUTOMATION -->
+  <div id="smart-home" class="project-card" data-difficulty="advanced" style="scroll-margin-top:90px">
+    <div class="project-header">
+      <div class="project-emoji">🏠</div>
+      <div class="project-meta">
+        <h2>Smart Home Automation (ESP32)</h2>
+        <p>Control home appliances like lights and fans from anywhere using a web browser. ESP32 hosts a WiFi web server accessible on your local network. Toggle relays from a mobile-friendly dashboard.</p>
+        <div class="project-tags">
+          <span class="badge badge-advanced">Advanced</span>
+          <span class="badge badge-primary">ESP32</span>
+          <span class="badge badge-secondary">WiFi · Web Server · IoT</span>
+        </div>
+      </div>
+    </div>
+    <div class="project-body">
+
+      <h3><i class="fas fa-tools"></i> Components Required</h3>
+      <div class="components-list">
+        <div class="comp-item"><i class="fas fa-microchip"></i> ESP32 DevKit × 1</div>
+        <div class="comp-item"><i class="fas fa-toggle-on"></i> 4-Ch Relay Module × 1</div>
+        <div class="comp-item"><i class="fas fa-lightbulb"></i> Bulb / Fan × 1–4</div>
+        <div class="comp-item"><i class="fas fa-thermometer"></i> DHT11 Sensor × 1</div>
+        <div class="comp-item"><i class="fas fa-plug"></i> Power Supply 5V/2A</div>
+        <div class="comp-item"><i class="fas fa-minus"></i> Jumper Wires</div>
+      </div>
+
+      <h3><i class="fas fa-sitemap"></i> Circuit Diagram</h3>
+      <div class="circuit-placeholder">
+        <span style="position:relative;font-size:1.5rem">🏠</span>
+        <span style="position:relative">Relay IN1→GPIO26 IN2→GPIO27 IN3→GPIO14 IN4→GPIO12 | DHT11→GPIO4</span>
+        <span style="position:relative;font-size:0.78rem;opacity:0.7">[ Relay VCC→5V · GND→GND · ESP32 GPIO are 3.3V, use optocoupler relay module ]</span>
+      </div>
+
+      <h3><i class="fas fa-code"></i> ESP32 Code (Arduino IDE)</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span class="code-lang">Arduino C++ (ESP32)</span>
+          <button class="copy-btn"><i class="fas fa-copy"></i> Copy</button>
+        </div>
+        <pre><code><span class="cm">// Smart Home Automation – Microcontrollers Hub</span>
+<span class="kw">#include</span> <span class="str">&lt;WiFi.h&gt;</span>
+<span class="kw">#include</span> <span class="str">&lt;WebServer.h&gt;</span>
+
+<span class="kw">const char</span>* ssid     = <span class="str">"Your_WiFi_SSID"</span>;
+<span class="kw">const char</span>* password = <span class="str">"Your_WiFi_Password"</span>;
+
+<span class="tp">WebServer</span> server(<span class="num">80</span>);
+
+<span class="kw">const int</span> relay[] = {<span class="num">26</span>, <span class="num">27</span>, <span class="num">14</span>, <span class="num">12</span>};
+<span class="kw">bool</span> state[] = {<span class="kw">false</span>, <span class="kw">false</span>, <span class="kw">false</span>, <span class="kw">false</span>};
+
+<span class="kw">const char</span>* labels[] = {<span class="str">"Light"</span>, <span class="str">"Fan"</span>, <span class="str">"AC"</span>, <span class="str">"TV"</span>};
+
+<span class="fn">void</span> <span class="fn">handleRoot</span>() {
+  <span class="tp">String</span> html = <span class="str">"&lt;!DOCTYPE html&gt;&lt;html&gt;&lt;head&gt;"</span>;
+  html += <span class="str">"&lt;meta name='viewport' content='width=device-width'&gt;"</span>;
+  html += <span class="str">"&lt;style&gt;body{font-family:sans-serif;text-align:center;background:#0f172a;color:white}"</span>;
+  html += <span class="str">"button{padding:12px 28px;margin:8px;border-radius:8px;border:none;cursor:pointer;font-size:1rem}"</span>;
+  html += <span class="str">".on{background:#10b981}.off{background:#ef4444}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;"</span>;
+  html += <span class="str">"&lt;h1&gt;🏠 Smart Home Control&lt;/h1&gt;"</span>;
+
+  <span class="kw">for</span>(<span class="kw">int</span> i = <span class="num">0</span>; i &lt; <span class="num">4</span>; i++) {
+    html += <span class="str">"&lt;p&gt;"</span> + <span class="tp">String</span>(labels[i]) + <span class="str">": &lt;a href='/toggle?pin="</span> + i + <span class="str">"'&gt;"</span>;
+    html += <span class="str">"&lt;button class='"</span> + <span class="tp">String</span>(state[i] ? <span class="str">"on"</span> : <span class="str">"off"</span>) + <span class="str">"'&gt;"</span>;
+    html += state[i] ? <span class="str">"ON"</span> : <span class="str">"OFF"</span>;
+    html += <span class="str">"&lt;/button&gt;&lt;/a&gt;&lt;/p&gt;"</span>;
+  }
+  html += <span class="str">"&lt;/body&gt;&lt;/html&gt;"</span>;
+  server.<span class="fn">send</span>(<span class="num">200</span>, <span class="str">"text/html"</span>, html);
+}
+
+<span class="fn">void</span> <span class="fn">handleToggle</span>() {
+  <span class="kw">int</span> pin = server.<span class="fn">arg</span>(<span class="str">"pin"</span>).<span class="fn">toInt</span>();
+  <span class="kw">if</span>(pin &gt;= <span class="num">0</span> &amp;&amp; pin &lt; <span class="num">4</span>) {
+    state[pin] = !state[pin];
+    <span class="fn">digitalWrite</span>(relay[pin], state[pin] ? <span class="tp">HIGH</span> : <span class="tp">LOW</span>);
+  }
+  server.<span class="fn">sendHeader</span>(<span class="str">"Location"</span>, <span class="str">"/"</span>);
+  server.<span class="fn">send</span>(<span class="num">302</span>);
+}
+
+<span class="fn">void</span> <span class="fn">setup</span>() {
+  <span class="tp">Serial</span>.<span class="fn">begin</span>(<span class="num">115200</span>);
+  <span class="kw">for</span>(<span class="kw">int</span> i=<span class="num">0</span>; i&lt;<span class="num">4</span>; i++) { <span class="fn">pinMode</span>(relay[i],<span class="tp">OUTPUT</span>); <span class="fn">digitalWrite</span>(relay[i],<span class="tp">LOW</span>); }
+  <span class="tp">WiFi</span>.<span class="fn">begin</span>(ssid, password);
+  <span class="kw">while</span>(<span class="tp">WiFi</span>.<span class="fn">status</span>() != <span class="tp">WL_CONNECTED</span>) { <span class="fn">delay</span>(<span class="num">500</span>); }
+  <span class="tp">Serial</span>.<span class="fn">println</span>(<span class="tp">WiFi</span>.<span class="fn">localIP</span>());
+  server.<span class="fn">on</span>(<span class="str">"/"</span>, handleRoot);
+  server.<span class="fn">on</span>(<span class="str">"/toggle"</span>, handleToggle);
+  server.<span class="fn">begin</span>();
+}
+
+<span class="fn">void</span> <span class="fn">loop</span>() { server.<span class="fn">handleClient</span>(); }</code></pre>
+      </div>
+
+      <h3><i class="fas fa-check-circle"></i> Expected Output</h3>
+      <p style="color:var(--text-secondary);font-size:0.9rem;line-height:1.7">
+        After uploading, open the Serial Monitor at 115200 baud to see the ESP32's IP address. Open that IP in any browser on the same WiFi network. You will see a web dashboard with toggle buttons for each appliance. Click to turn them ON/OFF and the relay will switch accordingly.
+      </p>
+      <div style="margin-top:1.25rem;display:flex;gap:0.75rem;flex-wrap:wrap">
+        <a href="tutorials.html#esp32-wifi" class="btn btn-primary btn-sm"><i class="fas fa-wifi"></i> ESP32 WiFi Tutorial</a>
+        <a href="resources.html" class="btn btn-outline btn-sm"><i class="fas fa-download"></i> Download Code</a>
+      </div>
+    </div>
+  </div>
+
+  </div><!-- /projects list -->
+</div></main>
+
+<!-- FOOTER -->
+<footer class="footer"><div class="container">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="brand-name"><div style="width:32px;height:32px;background:linear-gradient(135deg,#2563eb,#06b6d4);border-radius:8px;display:flex;align-items:center;justify-content:center;color:white;font-size:0.9rem"><i class="fas fa-microchip"></i></div> MC Hub</div>
+      <p>A complete learning platform for microcontrollers and embedded systems.</p>
+      <div class="social-links">
+        <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+      </div>
+    </div>
+    <div><h4 class="footer-heading">Projects</h4><ul class="footer-links">
+      <li><a href="#led">LED Blinking</a></li><li><a href="#line-follower">Line Follower</a></li>
+      <li><a href="#bt-car">Bluetooth Car</a></li><li><a href="#smart-home">Smart Home</a></li>
+    </ul></div>
+    <div><h4 class="footer-heading">Learn</h4><ul class="footer-links">
+      <li><a href="tutorials.html">Tutorials</a></li><li><a href="microcontrollers.html">Boards</a></li>
+      <li><a href="components.html">Components</a></li><li><a href="resources.html">Resources</a></li>
+    </ul></div>
+    <div><h4 class="footer-heading">Company</h4><ul class="footer-links">
+      <li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li>
+    </ul></div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Microcontrollers Hub. All rights reserved.</p>
+    <p>Made with <span style="color:#ef4444">♥</span> for engineering students</p>
+  </div>
+</div></footer>
+
+<button class="scroll-top"><i class="fas fa-arrow-up"></i></button>
+<script src="js/main.js"></script>
+<script src="js/search.js"></script>
+</body>
+</html>

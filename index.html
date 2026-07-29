@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Microcontrollers Hub – Learn Arduino, ESP32, PIC, Raspberry Pi with projects, tutorials, and resources for engineering students." />
+  <meta name="keywords" content="microcontroller, arduino, esp32, pic, raspberry pi, embedded systems, tutorials, projects" />
+  <meta name="author" content="Microcontrollers Hub" />
+  <meta property="og:title" content="Microcontrollers Hub – Learn, Build, Innovate" />
+  <meta property="og:description" content="Complete learning hub for microcontrollers and embedded systems." />
+  <meta property="og:type" content="website" />
+  <title>Microcontrollers Hub – Learn, Build, Innovate</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    body { font-family: 'Inter', var(--font); }
+
+    /* ---- Featured section ---- */
+    .features-section { background: var(--bg-card); }
+
+    .icon-box {
+      width: 56px; height: 56px; border-radius: var(--radius);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem; margin-bottom: 1rem;
+    }
+
+    /* ---- Boards grid on homepage ---- */
+    .boards-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+    }
+
+    .hboard-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-card);
+      border-radius: var(--radius);
+      padding: 1.75rem 1.25rem;
+      text-align: center;
+      box-shadow: var(--shadow-sm);
+      transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+      position: relative;
+      overflow: hidden;
+      text-decoration: none;
+      display: block;
+    }
+
+    .hboard-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+    }
+
+    .hboard-card.arduino::before { background: linear-gradient(90deg,#00838f,#00acc1); }
+    .hboard-card.esp32::before   { background: linear-gradient(90deg,#c62828,#e53935); }
+    .hboard-card.pic::before     { background: linear-gradient(90deg,#2e7d32,#43a047); }
+    .hboard-card.raspi::before   { background: linear-gradient(90deg,#ad1457,#d81b60); }
+
+    .hboard-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .hboard-card.arduino:hover { border-color: #00838f; }
+    .hboard-card.esp32:hover   { border-color: #c62828; }
+    .hboard-card.pic:hover     { border-color: #2e7d32; }
+    .hboard-card.raspi:hover   { border-color: #ad1457; }
+
+    .hboard-icon {
+      width: 80px; height: 80px; border-radius: var(--radius);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2.5rem; margin: 0 auto 1rem;
+    }
+
+    .arduino .hboard-icon  { background: #e0f7fa; }
+    .esp32   .hboard-icon  { background: #fce4ec; }
+    .pic     .hboard-icon  { background: #e8f5e9; }
+    .raspi   .hboard-icon  { background: #fce4ec; }
+
+    .hboard-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.4rem; color: var(--text-primary); }
+    .hboard-card p  { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem; line-height: 1.5; }
+    .hboard-tag {
+      display: inline-block;
+      font-size: 0.75rem; font-weight: 600;
+      padding: 0.25rem 0.75rem;
+      border-radius: 50px;
+    }
+
+    .arduino .hboard-tag  { background: #e0f7fa; color: #00838f; }
+    .esp32   .hboard-tag  { background: #fce4ec; color: #c62828; }
+    .pic     .hboard-tag  { background: #e8f5e9; color: #2e7d32; }
+    .raspi   .hboard-tag  { background: #fce4ec; color: #ad1457; }
+
+    /* ---- Projects preview ---- */
+    .project-preview-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-card);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      transition: transform var(--transition), box-shadow var(--transition);
+      text-decoration: none;
+      display: block;
+      color: inherit;
+    }
+
+    .project-preview-card:hover { transform: translateY(-6px); box-shadow: var(--shadow); }
+
+    .ppc-img {
+      height: 160px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 3.5rem;
+    }
+
+    .ppc-body { padding: 1.25rem; }
+    .ppc-body h4 { font-weight: 700; margin-bottom: 0.4rem; color: var(--text-primary); }
+    .ppc-body p  { font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 0.75rem; }
+
+    /* ---- Why section ---- */
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    .why-card {
+      text-align: center;
+      padding: 2.5rem 1.5rem;
+      border-radius: var(--radius);
+      background: var(--bg-card);
+      border: 1px solid var(--border-card);
+      box-shadow: var(--shadow-sm);
+      transition: transform var(--transition);
+    }
+    .why-card:hover { transform: translateY(-5px); }
+    .why-card .why-icon {
+      width: 70px; height: 70px;
+      border-radius: 50%;
+      background: var(--primary-light);
+      color: var(--primary);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.75rem;
+      margin: 0 auto 1.25rem;
+    }
+    [data-theme="dark"] .why-card .why-icon { background: rgba(37,99,235,0.15); }
+    .why-card h4 { font-weight: 700; font-size: 1.05rem; margin-bottom: 0.5rem; }
+    .why-card p  { font-size: 0.875rem; color: var(--text-secondary); line-height: 1.65; }
+
+    /* ---- CTA Banner ---- */
+    .cta-banner {
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      color: white; text-align: center;
+      padding: 5rem 2rem;
+      position: relative; overflow: hidden;
+    }
+    .cta-banner::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(circle at 30% 50%, rgba(255,255,255,0.08), transparent 60%),
+                  radial-gradient(circle at 70% 50%, rgba(255,255,255,0.05), transparent 60%);
+    }
+    .cta-banner h2 { font-size: clamp(1.6rem,3vw,2.4rem); font-weight: 800; margin-bottom: 1rem; position: relative; }
+    .cta-banner p  { font-size: 1.05rem; opacity: 0.9; max-width: 520px; margin: 0 auto 2rem; position: relative; }
+    .cta-banner .cta-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; position: relative; }
+    .btn-white { background: white; color: var(--primary); border: none; }
+    .btn-white:hover { background: #f0f9ff; color: var(--primary-dark); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.15); }
+    .btn-ghost { background: transparent; color: white; border: 2px solid rgba(255,255,255,0.6); }
+    .btn-ghost:hover { background: rgba(255,255,255,0.15); color: white; }
+
+    @media (max-width: 1024px) { .boards-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 768px)  { .boards-grid { grid-template-columns: 1fr 1fr; } .why-grid { grid-template-columns: 1fr; } }
+    @media (max-width: 480px)  { .boards-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+<!-- ============================================================
+     NAVBAR
+     ============================================================ -->
+<nav class="navbar" id="navbar">
+  <div class="nav-container">
+    <a href="index.html" class="nav-brand">
+      <div class="brand-icon"><i class="fas fa-microchip"></i></div>
+      MC Hub
+    </a>
+
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="microcontrollers.html">Boards</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="tutorials.html">Tutorials</a></li>
+      <li><a href="components.html">Components</a></li>
+      <li><a href="resources.html">Resources</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+
+    <div class="nav-actions">
+      <div class="nav-search">
+        <i class="fas fa-search search-icon"></i>
+        <input type="text" placeholder="Search boards, projects…" aria-label="Search" />
+      </div>
+      <button class="theme-toggle" aria-label="Toggle dark mode">
+        <i class="fas fa-moon"></i>
+      </button>
+      <button class="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- ============================================================
+     HERO
+     ============================================================ -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-content">
+      <!-- Left -->
+      <div>
+        <div class="hero-badge animate-fade-up">
+          <i class="fas fa-bolt"></i> Embedded Systems Learning Hub
+        </div>
+        <h1 class="hero-title animate-fade-up delay-1">
+          Microcontrollers Hub –<br>
+          <span class="gradient-text">Learn, Build, Innovate</span>
+        </h1>
+        <p class="hero-desc animate-fade-up delay-2">
+          Your complete guide to mastering microcontrollers — from blinking your first LED
+          to building smart IoT systems. Structured tutorials, real projects, and expert resources
+          for students and engineering enthusiasts.
+        </p>
+        <div class="hero-buttons animate-fade-up delay-3">
+          <a href="tutorials.html" class="btn btn-primary">
+            <i class="fas fa-play"></i> Start Learning
+          </a>
+          <a href="projects.html" class="btn btn-outline">
+            <i class="fas fa-flask"></i> Explore Projects
+          </a>
+        </div>
+        <div class="hero-stats animate-fade-up delay-4">
+          <div class="stat-item">
+            <span class="stat-number">4+</span>
+            <span class="stat-label">Boards</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">20+</span>
+            <span class="stat-label">Projects</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">15+</span>
+            <span class="stat-label">Tutorials</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">Free</span>
+            <span class="stat-label">Access</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right – Board Cards -->
+      <div class="hero-visual animate-float">
+        <div class="board-card arduino">
+          <div class="board-icon"><span>🤖</span></div>
+          <h4>Arduino</h4>
+          <p>Beginner friendly</p>
+        </div>
+        <div class="board-card esp32">
+          <div class="board-icon"><span>📡</span></div>
+          <h4>ESP32</h4>
+          <p>WiFi + BT</p>
+        </div>
+        <div class="board-card pic">
+          <div class="board-icon"><span>🔧</span></div>
+          <h4>PIC</h4>
+          <p>Industry grade</p>
+        </div>
+        <div class="board-card raspi">
+          <div class="board-icon"><span>🍓</span></div>
+          <h4>Raspberry Pi</h4>
+          <p>Linux SBC</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FEATURED BOARDS
+     ============================================================ -->
+<section class="section-padding">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Featured <span class="highlight">Boards</span></h2>
+      <p class="section-subtitle">Choose your microcontroller and start your embedded journey</p>
+    </div>
+    <div class="boards-grid">
+
+      <a href="microcontrollers.html#arduino" class="hboard-card arduino">
+        <div class="hboard-icon">🤖</div>
+        <h3>Arduino Uno</h3>
+        <p>The most popular beginner microcontroller board. Perfect for learning electronics.</p>
+        <span class="hboard-tag">ATmega328P · 16MHz</span>
+      </a>
+
+      <a href="microcontrollers.html#esp32" class="hboard-card esp32">
+        <div class="hboard-icon">📡</div>
+        <h3>ESP32</h3>
+        <p>Dual-core WiFi and Bluetooth enabled microcontroller for IoT applications.</p>
+        <span class="hboard-tag">Xtensa · 240MHz</span>
+      </a>
+
+      <a href="microcontrollers.html#pic" class="hboard-card pic">
+        <div class="hboard-icon">🔧</div>
+        <h3>PIC Microcontroller</h3>
+        <p>Industry-grade microcontrollers used in professional embedded systems.</p>
+        <span class="hboard-tag">Microchip · PIC16/18</span>
+      </a>
+
+      <a href="microcontrollers.html#raspi" class="hboard-card raspi">
+        <div class="hboard-icon">🍓</div>
+        <h3>Raspberry Pi</h3>
+        <p>Linux-based single-board computer for advanced projects and learning.</p>
+        <span class="hboard-tag">ARM Cortex · 1.8GHz</span>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FEATURED PROJECTS
+     ============================================================ -->
+<section class="section-padding features-section">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Popular <span class="highlight">Projects</span></h2>
+      <p class="section-subtitle">Hands-on projects from beginner to advanced level</p>
+    </div>
+    <div class="grid-4">
+
+      <a href="projects.html#led" class="project-preview-card">
+        <div class="ppc-img" style="background:linear-gradient(135deg,#fef9c3,#fef08a);">💡</div>
+        <div class="ppc-body">
+          <h4>LED Blinking</h4>
+          <p>Your first Arduino program – control an LED with code.</p>
+          <span class="badge badge-beginner">Beginner</span>
+        </div>
+      </a>
+
+      <a href="projects.html#line-follower" class="project-preview-card">
+        <div class="ppc-img" style="background:linear-gradient(135deg,#dcfce7,#bbf7d0);">🤖</div>
+        <div class="ppc-body">
+          <h4>Line Follower Robot</h4>
+          <p>Autonomous robot that follows a black line using IR sensors.</p>
+          <span class="badge badge-intermediate">Intermediate</span>
+        </div>
+      </a>
+
+      <a href="projects.html#bt-car" class="project-preview-card">
+        <div class="ppc-img" style="background:linear-gradient(135deg,#dbeafe,#bfdbfe);">📱</div>
+        <div class="ppc-body">
+          <h4>Bluetooth Car</h4>
+          <p>Control a car wirelessly via HC-05 and Android app.</p>
+          <span class="badge badge-intermediate">Intermediate</span>
+        </div>
+      </a>
+
+      <a href="projects.html#smart-home" class="project-preview-card">
+        <div class="ppc-img" style="background:linear-gradient(135deg,#ede9fe,#ddd6fe);">🏠</div>
+        <div class="ppc-body">
+          <h4>Smart Home</h4>
+          <p>IoT home automation with ESP32, relays and web dashboard.</p>
+          <span class="badge badge-advanced">Advanced</span>
+        </div>
+      </a>
+
+    </div>
+    <div style="text-align:center;margin-top:2.5rem;">
+      <a href="projects.html" class="btn btn-outline"><i class="fas fa-th"></i> View All Projects</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     WHY CHOOSE US
+     ============================================================ -->
+<section class="section-padding">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Why <span class="highlight">MC Hub?</span></h2>
+      <p class="section-subtitle">Everything you need to learn embedded systems in one place</p>
+    </div>
+    <div class="why-grid">
+
+      <div class="why-card">
+        <div class="why-icon"><i class="fas fa-graduation-cap"></i></div>
+        <h4>Beginner Friendly</h4>
+        <p>Step-by-step tutorials designed for students with no prior experience in electronics or programming.</p>
+      </div>
+
+      <div class="why-card">
+        <div class="why-icon"><i class="fas fa-code"></i></div>
+        <h4>Real Code Examples</h4>
+        <p>Every project and tutorial includes ready-to-use, well-commented code in C, Arduino, and Python.</p>
+      </div>
+
+      <div class="why-card">
+        <div class="why-icon"><i class="fas fa-project-diagram"></i></div>
+        <h4>Circuit Diagrams</h4>
+        <p>Visual circuit diagrams and pin-out references for every project to help you wire things correctly.</p>
+      </div>
+
+      <div class="why-card">
+        <div class="why-icon"><i class="fas fa-layer-group"></i></div>
+        <h4>Multiple Boards</h4>
+        <p>Covers Arduino, ESP32, PIC, and Raspberry Pi — compare and choose the right board for your project.</p>
+      </div>
+
+      <div class="why-card">
+        <div class="why-icon"><i class="fas fa-download"></i></div>
+        <h4>Free Resources</h4>
+        <p>Download datasheets, code files, and software tools — all free and ready to use.</p>
+      </div>
+
+      <div class="why-card">
+        <div class="why-icon"><i class="fas fa-mobile-alt"></i></div>
+        <h4>Mobile Friendly</h4>
+        <p>Fully responsive design — learn on your phone, tablet, or desktop without any compromise.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     TUTORIALS PREVIEW
+     ============================================================ -->
+<section class="section-padding features-section">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Latest <span class="highlight">Tutorials</span></h2>
+      <p class="section-subtitle">Structured guides to get you building fast</p>
+    </div>
+    <div class="grid-3">
+
+      <a href="tutorials.html#arduino-start" class="project-preview-card">
+        <div class="ppc-img" style="background:linear-gradient(135deg,#e0f7fa,#b2ebf2);">📖</div>
+        <div class="ppc-body">
+          <h4>Getting Started with Arduino</h4>
+          <p>Install Arduino IDE, understand the board, and write your first program.</p>
+          <span class="badge badge-beginner">Beginner</span>
+        </div>
+      </a>
+
+      <a href="tutorials.html#esp32-wifi" class="project-preview-card">
+        <div class="ppc-img" style="background:linear-gradient(135deg,#fce4ec,#f8bbd0);">📶</div>
+        <div class="ppc-body">
+          <h4>ESP32 WiFi Basics</h4>
+          <p>Connect ESP32 to WiFi, create a web server, and send sensor data online.</p>
+          <span class="badge badge-intermediate">Intermediate</span>
+        </div>
+      </a>
+
+      <a href="tutorials.html#pic-basics" class="project-preview-card">
+        <div class="ppc-img" style="background:linear-gradient(135deg,#e8f5e9,#c8e6c9);">💻</div>
+        <div class="ppc-body">
+          <h4>PIC Programming Basics</h4>
+          <p>Setup MPLAB X IDE, program PIC16F877A and control hardware with C.</p>
+          <span class="badge badge-intermediate">Intermediate</span>
+        </div>
+      </a>
+
+    </div>
+    <div style="text-align:center;margin-top:2.5rem;">
+      <a href="tutorials.html" class="btn btn-outline"><i class="fas fa-book-open"></i> View All Tutorials</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CTA BANNER
+     ============================================================ -->
+<section class="cta-banner">
+  <div class="container">
+    <h2>Ready to Start Building?</h2>
+    <p>Join thousands of engineering students learning microcontrollers with hands-on projects and clear tutorials.</p>
+    <div class="cta-btns">
+      <a href="tutorials.html" class="btn btn-white"><i class="fas fa-rocket"></i> Start Learning Now</a>
+      <a href="contact.html" class="btn btn-ghost"><i class="fas fa-envelope"></i> Get In Touch</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="brand-name">
+          <div class="brand-icon" style="width:32px;height:32px;background:linear-gradient(135deg,#2563eb,#06b6d4);border-radius:8px;display:flex;align-items:center;justify-content:center;color:white;font-size:0.9rem;">
+            <i class="fas fa-microchip"></i>
+          </div>
+          MC Hub
+        </div>
+        <p>A complete learning platform for microcontrollers and embedded systems, built for students and engineering enthusiasts.</p>
+        <div class="social-links">
+          <a href="#" class="social-link" aria-label="GitHub"><i class="fab fa-github"></i></a>
+          <a href="#" class="social-link" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+          <a href="#" class="social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="social-link" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+
+      <div>
+        <h4 class="footer-heading">Boards</h4>
+        <ul class="footer-links">
+          <li><a href="microcontrollers.html#arduino">Arduino</a></li>
+          <li><a href="microcontrollers.html#esp32">ESP32</a></li>
+          <li><a href="microcontrollers.html#pic">PIC</a></li>
+          <li><a href="microcontrollers.html#raspi">Raspberry Pi</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="footer-heading">Learn</h4>
+        <ul class="footer-links">
+          <li><a href="tutorials.html">Tutorials</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="components.html">Components</a></li>
+          <li><a href="resources.html">Resources</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="footer-heading">Company</h4>
+        <ul class="footer-links">
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Use</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2025 Microcontrollers Hub. All rights reserved.</p>
+      <p>Made with <span style="color:#ef4444">♥</span> for engineering students</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Scroll to Top -->
+<button class="scroll-top" aria-label="Scroll to top"><i class="fas fa-arrow-up"></i></button>
+
+<script src="js/main.js"></script>
+<script src="js/search.js"></script>
+</body>
+</html>
