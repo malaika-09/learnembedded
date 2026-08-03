@@ -1,198 +1,1246 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="About Microcontrollers Hub – A free learning platform for students and engineering enthusiasts learning embedded systems." />
-  <title>About – MC Hub</title>
+  <title>About Us – Microcontrollers Hub</title>
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <style>
-    body { font-family: 'Inter', var(--font); }
-    .about-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; margin-bottom: 5rem; }
-    .about-img-box {
-      background: linear-gradient(135deg, var(--primary), var(--accent));
-      border-radius: var(--radius); padding: 3rem 2rem; text-align: center;
-      color: white; position: relative; overflow: hidden;
+    :root {
+      --primary: #2563eb;
+      --accent: #06b6d4;
+      --dark-bg: #0f172a;
+      --dark-card: #1e293b;
+      --text-light: #f1f5f9;
+      --text-muted: #94a3b8;
+      --gold: #f59e0b;
+      --gold-light: #fde68a;
     }
-    .about-img-box::before {
-      content: ''; position: absolute; inset: 0;
-      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none'%3E%3Cg fill='%23ffffff' fill-opacity='0.06'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f8fafc;
+      color: #1e293b;
+      transition: background 0.3s, color 0.3s;
     }
-    .about-img-box .big-icon { font-size: 5rem; margin-bottom: 1rem; position: relative; }
-    .about-img-box h3 { font-size: 1.4rem; font-weight: 800; margin-bottom: 0.5rem; position: relative; }
-    .about-img-box p  { opacity: 0.9; font-size: 0.9rem; position: relative; }
-    .about-text h2 { font-size: 1.9rem; font-weight: 800; margin-bottom: 1rem; line-height: 1.3; }
-    .about-text p  { font-size: 0.95rem; color: var(--text-secondary); line-height: 1.8; margin-bottom: 1rem; }
-    .about-list { margin: 1.25rem 0; }
-    .about-list li { display: flex; align-items: flex-start; gap: 0.75rem; padding: 0.5rem 0; font-size: 0.9rem; color: var(--text-secondary); border-bottom: 1px solid var(--border); }
-    .about-list li:last-child { border-bottom: none; }
-    .about-list li i { color: var(--primary); margin-top: 3px; flex-shrink: 0; }
-    .mission-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; margin-bottom: 4rem; }
-    .mission-card { text-align: center; padding: 2.25rem 1.5rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow-sm); transition: transform var(--transition); }
-    .mission-card:hover { transform: translateY(-5px); }
-    .mission-icon { width: 68px; height: 68px; border-radius: 50%; background: var(--primary-light); color: var(--primary); display: flex; align-items: center; justify-content: center; font-size: 1.6rem; margin: 0 auto 1.25rem; }
-    [data-theme="dark"] .mission-icon { background: rgba(37,99,235,0.15); }
-    .mission-card h4 { font-weight: 700; margin-bottom: 0.5rem; }
-    .mission-card p  { font-size: 0.875rem; color: var(--text-secondary); line-height: 1.65; }
-    .tech-stack { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1rem; }
-    .tech-tag { display: flex; align-items: center; gap: 0.4rem; background: var(--bg-card); border: 1px solid var(--border); padding: 0.45rem 0.9rem; border-radius: var(--radius-sm); font-size: 0.85rem; font-weight: 500; transition: border-color var(--transition); }
-    .tech-tag:hover { border-color: var(--primary); }
-    .team-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; }
-    .team-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 2rem; text-align: center; box-shadow: var(--shadow-sm); transition: transform var(--transition); }
-    .team-card:hover { transform: translateY(-5px); }
-    .avatar { width: 80px; height: 80px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2rem; margin: 0 auto 1rem; }
-    .team-card h4 { font-weight: 700; margin-bottom: 0.25rem; }
-    .team-card .role { font-size: 0.82rem; color: var(--primary); font-weight: 600; margin-bottom: 0.5rem; }
-    .team-card p   { font-size: 0.82rem; color: var(--text-muted); line-height: 1.55; }
-    .stat-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 1.5rem; margin-bottom: 4rem; }
-    .stat-box { text-align: center; padding: 2rem 1rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); }
-    .stat-box .num { font-size: 2.2rem; font-weight: 800; color: var(--primary); display: block; }
-    .stat-box .lbl { font-size: 0.85rem; color: var(--text-muted); }
-    @media(max-width:900px) { .about-layout { grid-template-columns: 1fr; gap: 2.5rem; } .mission-grid { grid-template-columns: 1fr 1fr; } .team-grid { grid-template-columns: 1fr 1fr; } .stat-grid { grid-template-columns: 1fr 1fr; } }
-    @media(max-width:500px) { .mission-grid { grid-template-columns: 1fr; } .team-grid { grid-template-columns: 1fr; } }
+
+    body.dark-mode {
+      background: var(--dark-bg);
+      color: var(--text-light);
+    }
+
+    /* ── HERO BANNER ── */
+    .about-hero {
+      background: linear-gradient(135deg, var(--dark-bg) 0%, #1e3a5f 50%, var(--dark-card) 100%);
+      color: #fff;
+      text-align: center;
+      padding: 90px 20px 60px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .about-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 30% 50%, rgba(37,99,235,0.25) 0%, transparent 60%),
+                  radial-gradient(ellipse at 70% 50%, rgba(6,182,212,0.2) 0%, transparent 60%);
+    }
+
+    .about-hero h1 {
+      position: relative;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 900;
+      background: linear-gradient(90deg, #fff 0%, var(--accent) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 16px;
+    }
+
+    .about-hero p {
+      position: relative;
+      font-size: 1.15rem;
+      color: #cbd5e1;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* ── SECTION WRAPPER ── */
+    .section { padding: 80px 20px; }
+    .section-alt { background: #f1f5f9; }
+    body.dark-mode .section-alt { background: #0d1526; }
+
+    .container { max-width: 1100px; margin: 0 auto; }
+
+    .section-label {
+      display: inline-block;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+
+    .section-title {
+      font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+      font-weight: 800;
+      margin-bottom: 14px;
+      line-height: 1.2;
+    }
+
+    .section-sub {
+      color: var(--text-muted);
+      font-size: 1rem;
+      max-width: 640px;
+      line-height: 1.7;
+    }
+
+    .text-center { text-align: center; }
+    .text-center .section-sub { margin: 0 auto; }
+
+    /* ── CEO SPOTLIGHT ── */
+    .ceo-section {
+      background: linear-gradient(135deg, #080d18 0%, #0f1e3a 40%, #091528 100%);
+      padding: 90px 20px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .ceo-section::before {
+      content: '';
+      position: absolute;
+      top: -120px; left: -120px;
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(37,99,235,0.18) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .ceo-section::after {
+      content: '';
+      position: absolute;
+      bottom: -100px; right: -100px;
+      width: 450px; height: 450px;
+      background: radial-gradient(circle, rgba(6,182,212,0.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .ceo-card {
+      position: relative;
+      z-index: 2;
+      max-width: 900px;
+      margin: 0 auto;
+      background: linear-gradient(145deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.02) 100%);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 24px;
+      padding: 56px 48px;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 0 60px rgba(37,99,235,0.25), 0 0 100px rgba(6,182,212,0.1);
+    }
+
+    .ceo-inner {
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .ceo-avatar-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .ceo-avatar {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3.5rem;
+      font-weight: 900;
+      color: #fff;
+      box-shadow: 0 0 0 4px rgba(6,182,212,0.3), 0 0 40px rgba(37,99,235,0.5), 0 0 80px rgba(6,182,212,0.2);
+      animation: avatarPulse 3s ease-in-out infinite;
+      position: relative;
+    }
+
+    @keyframes avatarPulse {
+      0%, 100% { box-shadow: 0 0 0 4px rgba(6,182,212,0.3), 0 0 40px rgba(37,99,235,0.5), 0 0 80px rgba(6,182,212,0.2); }
+      50% { box-shadow: 0 0 0 8px rgba(6,182,212,0.5), 0 0 60px rgba(37,99,235,0.7), 0 0 120px rgba(6,182,212,0.35); }
+    }
+
+    .ceo-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: linear-gradient(90deg, var(--gold) 0%, #f97316 100%);
+      color: #000;
+      font-size: 0.78rem;
+      font-weight: 800;
+      padding: 5px 14px;
+      border-radius: 999px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .ceo-info { color: #fff; }
+
+    .ceo-crown {
+      font-size: 2rem;
+      margin-bottom: 4px;
+      filter: drop-shadow(0 0 8px var(--gold));
+    }
+
+    .ceo-name {
+      font-size: 2.2rem;
+      font-weight: 900;
+      background: linear-gradient(90deg, #fff 0%, var(--accent) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 4px;
+    }
+
+    .ceo-title {
+      font-size: 1rem;
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 16px;
+      letter-spacing: 0.04em;
+    }
+
+    .ceo-bio {
+      font-size: 0.97rem;
+      color: #94a3b8;
+      line-height: 1.75;
+      margin-bottom: 24px;
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 28px;
+    }
+
+    .skill-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      padding: 5px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(6,182,212,0.35);
+      background: rgba(6,182,212,0.08);
+      color: var(--accent);
+      transition: all 0.3s;
+      animation: tagFadeIn 0.5s ease both;
+    }
+
+    .skill-tag:hover {
+      background: rgba(6,182,212,0.18);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 14px rgba(6,182,212,0.3);
+    }
+
+    @keyframes tagFadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .ceo-stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .ceo-stat {
+      text-align: center;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 12px;
+      padding: 14px 8px;
+      transition: transform 0.3s;
+    }
+
+    .ceo-stat:hover { transform: translateY(-3px); }
+
+    .ceo-stat-num {
+      display: block;
+      font-size: 1.6rem;
+      font-weight: 900;
+      background: linear-gradient(90deg, var(--primary) 0%, var(--accent) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .ceo-stat-label {
+      display: block;
+      font-size: 0.72rem;
+      color: #64748b;
+      margin-top: 3px;
+      font-weight: 500;
+    }
+
+    /* ── ABOUT PLATFORM ── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .about-img-placeholder {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+      border-radius: 20px;
+      height: 360px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 6rem;
+      color: rgba(255,255,255,0.8);
+      box-shadow: 0 20px 60px rgba(37,99,235,0.3);
+    }
+
+    .about-text h2 { font-size: 2rem; font-weight: 800; margin-bottom: 16px; }
+    .about-text p { color: #475569; line-height: 1.8; margin-bottom: 14px; font-size: 0.97rem; }
+    body.dark-mode .about-text p { color: #94a3b8; }
+
+    /* ── COUNTER STATS ── */
+    .stats-band {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+      padding: 60px 20px;
+      color: #fff;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      text-align: center;
+    }
+
+    .stat-item { padding: 10px; }
+
+    .stat-num {
+      font-size: 3rem;
+      font-weight: 900;
+      display: block;
+      line-height: 1;
+    }
+
+    .stat-suffix { font-size: 2rem; }
+
+    .stat-desc {
+      font-size: 0.9rem;
+      margin-top: 8px;
+      opacity: 0.85;
+      font-weight: 500;
+    }
+
+    /* ── MISSION CARDS ── */
+    .mission-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+      margin-top: 48px;
+    }
+
+    .mission-card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 36px 28px;
+      text-align: center;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+      border-top: 4px solid var(--primary);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    body.dark-mode .mission-card { background: var(--dark-card); }
+
+    .mission-card:hover { transform: translateY(-6px); box-shadow: 0 12px 40px rgba(37,99,235,0.15); }
+
+    .mission-icon {
+      width: 64px; height: 64px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.6rem; color: #fff;
+      margin: 0 auto 20px;
+    }
+
+    .mission-card h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 10px; }
+    .mission-card p { font-size: 0.92rem; color: #64748b; line-height: 1.7; }
+    body.dark-mode .mission-card p { color: #94a3b8; }
+
+    /* ── VALUES ── */
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      margin-top: 48px;
+    }
+
+    .value-card {
+      background: #fff;
+      border-radius: 14px;
+      padding: 28px 20px;
+      text-align: center;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.05);
+      transition: transform 0.3s, box-shadow 0.3s;
+      cursor: default;
+    }
+
+    body.dark-mode .value-card { background: var(--dark-card); }
+
+    .value-card:hover { transform: translateY(-5px); box-shadow: 0 10px 32px rgba(6,182,212,0.15); }
+
+    .value-icon {
+      font-size: 2rem;
+      margin-bottom: 14px;
+      display: block;
+    }
+
+    .value-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 8px; color: var(--primary); }
+    .value-card p { font-size: 0.87rem; color: #64748b; line-height: 1.65; }
+    body.dark-mode .value-card p { color: #94a3b8; }
+
+    /* ── TIMELINE ── */
+    .timeline { margin-top: 56px; position: relative; }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      top: 0; bottom: 0;
+      width: 2px;
+      background: linear-gradient(180deg, var(--primary) 0%, var(--accent) 100%);
+    }
+
+    .tl-item {
+      display: grid;
+      grid-template-columns: 1fr 60px 1fr;
+      gap: 0;
+      align-items: center;
+      margin-bottom: 48px;
+    }
+
+    .tl-item:nth-child(odd) .tl-content { grid-column: 1; text-align: right; padding-right: 40px; }
+    .tl-item:nth-child(odd) .tl-empty  { grid-column: 3; }
+    .tl-item:nth-child(even) .tl-content { grid-column: 3; text-align: left; padding-left: 40px; }
+    .tl-item:nth-child(even) .tl-empty  { grid-column: 1; }
+    .tl-dot { grid-column: 2; display: flex; justify-content: center; }
+
+    .tl-dot-inner {
+      width: 52px; height: 52px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+      display: flex; align-items: center; justify-content: center;
+      color: #fff; font-weight: 800; font-size: 0.75rem;
+      box-shadow: 0 0 0 4px rgba(37,99,235,0.2), 0 4px 20px rgba(37,99,235,0.3);
+      position: relative; z-index: 2;
+    }
+
+    .tl-content h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 6px; color: var(--primary); }
+    .tl-content p { font-size: 0.9rem; color: #64748b; line-height: 1.6; }
+    body.dark-mode .tl-content p { color: #94a3b8; }
+
+    /* ── TEAM ── */
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+      margin-top: 48px;
+    }
+
+    .team-card {
+      background: #fff;
+      border-radius: 18px;
+      padding: 36px 24px;
+      text-align: center;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+      border-top: 4px solid #e2e8f0;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    body.dark-mode .team-card { background: var(--dark-card); border-top-color: #334155; }
+
+    .team-card:hover { transform: translateY(-6px); box-shadow: 0 14px 40px rgba(0,0,0,0.12); }
+
+    .team-card.ceo-card-team {
+      border-top: 4px solid var(--primary);
+      background: linear-gradient(160deg, #f0f7ff 0%, #fff 100%);
+      box-shadow: 0 6px 32px rgba(37,99,235,0.15);
+    }
+
+    body.dark-mode .team-card.ceo-card-team {
+      background: linear-gradient(160deg, #0f1e3a 0%, var(--dark-card) 100%);
+      box-shadow: 0 6px 32px rgba(37,99,235,0.25);
+    }
+
+    .team-avatar {
+      width: 90px; height: 90px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2rem; font-weight: 800; color: #fff;
+      margin: 0 auto 16px;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+    }
+
+    .ceo-card-team .team-avatar {
+      box-shadow: 0 0 0 3px var(--gold), 0 4px 24px rgba(37,99,235,0.4);
+    }
+
+    .member-badges { display: flex; justify-content: center; gap: 6px; flex-wrap: wrap; margin-bottom: 8px; }
+
+    .ceo-role-badge {
+      display: inline-flex; align-items: center; gap: 4px;
+      background: linear-gradient(90deg, var(--gold) 0%, #f97316 100%);
+      color: #000; font-size: 0.7rem; font-weight: 800;
+      padding: 3px 10px; border-radius: 999px; letter-spacing: 0.05em;
+    }
+
+    .team-card h3 { font-size: 1.1rem; font-weight: 800; margin-bottom: 4px; }
+    .team-role { font-size: 0.87rem; color: var(--primary); font-weight: 600; margin-bottom: 10px; }
+    .team-bio { font-size: 0.85rem; color: #64748b; line-height: 1.6; }
+    body.dark-mode .team-bio { color: #94a3b8; }
+
+    /* ── TESTIMONIALS ── */
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 48px;
+    }
+
+    .testimonial-card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 28px 24px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+      transition: transform 0.3s;
+    }
+
+    body.dark-mode .testimonial-card { background: var(--dark-card); }
+    .testimonial-card:hover { transform: translateY(-4px); }
+
+    .stars { color: var(--gold); font-size: 1rem; margin-bottom: 12px; }
+
+    .testimonial-card blockquote {
+      font-size: 0.92rem;
+      color: #475569;
+      line-height: 1.75;
+      margin-bottom: 18px;
+      font-style: italic;
+    }
+
+    body.dark-mode .testimonial-card blockquote { color: #94a3b8; }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .t-avatar {
+      width: 42px; height: 42px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem; font-weight: 700; color: #fff;
+      flex-shrink: 0;
+    }
+
+    .t-name { font-size: 0.88rem; font-weight: 700; }
+    .t-role { font-size: 0.78rem; color: #94a3b8; }
+
+    /* ── TECH STACK ── */
+    .tech-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 48px;
+    }
+
+    .tech-pill {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: #fff;
+      border-radius: 999px;
+      padding: 12px 24px;
+      font-size: 0.92rem;
+      font-weight: 600;
+      box-shadow: 0 2px 14px rgba(0,0,0,0.07);
+      border: 1px solid #e2e8f0;
+      transition: all 0.3s;
+    }
+
+    body.dark-mode .tech-pill { background: var(--dark-card); border-color: #334155; }
+    .tech-pill:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(37,99,235,0.15); border-color: var(--primary); }
+
+    .tech-pill i { font-size: 1.2rem; }
+
+    /* ── CTA BANNER ── */
+    .cta-banner {
+      background: linear-gradient(135deg, var(--dark-bg) 0%, #1e3a5f 50%, var(--dark-card) 100%);
+      color: #fff;
+      text-align: center;
+      padding: 80px 20px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-banner::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 50%, rgba(37,99,235,0.2) 0%, transparent 70%);
+    }
+
+    .cta-banner h2 {
+      position: relative;
+      font-size: clamp(1.6rem, 4vw, 2.5rem);
+      font-weight: 900;
+      margin-bottom: 14px;
+    }
+
+    .cta-banner p {
+      position: relative;
+      color: #94a3b8;
+      font-size: 1rem;
+      margin-bottom: 32px;
+    }
+
+    .cta-btns {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: linear-gradient(90deg, var(--primary) 0%, var(--accent) 100%);
+      color: #fff;
+      padding: 13px 30px;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: opacity 0.3s, transform 0.3s;
+      display: inline-flex; align-items: center; gap: 8px;
+    }
+
+    .btn-primary:hover { opacity: 0.9; transform: translateY(-2px); }
+
+    .btn-outline {
+      background: transparent;
+      color: #fff;
+      padding: 13px 30px;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      text-decoration: none;
+      border: 2px solid rgba(255,255,255,0.3);
+      transition: border-color 0.3s, background 0.3s, transform 0.3s;
+      display: inline-flex; align-items: center; gap: 8px;
+    }
+
+    .btn-outline:hover { border-color: var(--accent); background: rgba(6,182,212,0.1); transform: translateY(-2px); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .ceo-inner { grid-template-columns: 1fr; text-align: center; }
+      .ceo-avatar-wrap { flex-direction: row; justify-content: center; }
+      .ceo-stats { grid-template-columns: repeat(2, 1fr); }
+      .skill-tags { justify-content: center; }
+      .about-grid { grid-template-columns: 1fr; }
+      .about-img-placeholder { height: 220px; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .values-grid { grid-template-columns: repeat(2, 1fr); }
+      .team-grid { grid-template-columns: 1fr 1fr; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .timeline::before { left: 28px; transform: none; }
+      .tl-item { grid-template-columns: 60px 1fr; }
+      .tl-item:nth-child(odd) .tl-content,
+      .tl-item:nth-child(even) .tl-content { grid-column: 2; text-align: left; padding: 0 0 0 16px; }
+      .tl-item:nth-child(odd) .tl-empty,
+      .tl-item:nth-child(even) .tl-empty { display: none; }
+      .tl-dot { grid-column: 1; }
+    }
+
+    @media (max-width: 600px) {
+      .ceo-card { padding: 32px 20px; }
+      .ceo-stats { grid-template-columns: repeat(2, 1fr); }
+      .mission-grid { grid-template-columns: 1fr; }
+      .team-grid { grid-template-columns: 1fr; }
+      .values-grid { grid-template-columns: 1fr 1fr; }
+      .stats-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 400px) {
+      .values-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ── NAVBAR (shared style fallback) ── */
+    nav.navbar {
+      background: var(--dark-bg);
+      color: #fff;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.3);
+    }
+
+    .nav-brand {
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: #fff;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .nav-brand span { color: var(--accent); }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 4px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: #cbd5e1;
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 500;
+      padding: 6px 12px;
+      border-radius: 6px;
+      transition: color 0.2s, background 0.2s;
+    }
+
+    .nav-links a:hover { color: #fff; background: rgba(255,255,255,0.08); }
+    .nav-links a.active { color: var(--accent); font-weight: 700; }
+
+    .nav-actions { display: flex; align-items: center; gap: 10px; }
+
+    #dark-mode-toggle {
+      background: rgba(255,255,255,0.1);
+      border: none;
+      color: #fff;
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1rem;
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.2s;
+    }
+
+    #dark-mode-toggle:hover { background: rgba(255,255,255,0.2); }
+
+    .hamburger {
+      display: none;
+      background: none; border: none; color: #fff;
+      font-size: 1.4rem; cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; flex-direction: column; position: absolute; top: 64px; left: 0; right: 0; background: var(--dark-bg); padding: 16px 24px; gap: 4px; }
+      .nav-links.open { display: flex; }
+      .hamburger { display: block; }
+    }
+
+    /* ── FOOTER ── */
+    footer.site-footer {
+      background: var(--dark-bg);
+      color: #94a3b8;
+      text-align: center;
+      padding: 28px 20px;
+      font-size: 0.88rem;
+    }
+
+    footer.site-footer a { color: var(--accent); text-decoration: none; }
+    footer.site-footer a:hover { text-decoration: underline; }
   </style>
 </head>
+
 <body>
 
-<!-- NAVBAR -->
-<nav class="navbar"><div class="nav-container">
-  <a href="index.html" class="nav-brand"><div class="brand-icon"><i class="fas fa-microchip"></i></div>MC Hub</a>
-  <ul class="nav-links">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="microcontrollers.html">Boards</a></li>
-    <li><a href="projects.html">Projects</a></li>
-    <li><a href="tutorials.html">Tutorials</a></li>
-    <li><a href="components.html">Components</a></li>
-    <li><a href="resources.html">Resources</a></li>
-    <li><a href="about.html" class="active">About</a></li>
-    <li><a href="contact.html">Contact</a></li>
-  </ul>
-  <div class="nav-actions">
-    <div class="nav-search"><i class="fas fa-search search-icon"></i><input type="text" placeholder="Search…" aria-label="Search" /></div>
-    <button class="theme-toggle" aria-label="Toggle dark mode"><i class="fas fa-moon"></i></button>
-    <button class="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
-  </div>
-</div></nav>
-
-<!-- PAGE HERO -->
-<section class="page-hero">
-  <div class="container">
-    <h1 class="page-hero-title"><i class="fas fa-info-circle"></i> About Us</h1>
-    <p class="page-hero-desc">We're a passionate team building the best free resource for microcontrollers and embedded systems learning.</p>
-  </div>
-</section>
-
-<main class="section-padding">
-<div class="container">
-
-  <!-- ABOUT MAIN -->
-  <div class="about-layout">
-    <div class="about-img-box">
-      <div class="big-icon">🤖</div>
-      <h3>Microcontrollers Hub</h3>
-      <p>Your gateway to embedded systems — from beginner to advanced</p>
-      <div style="display:flex;justify-content:center;gap:1.5rem;margin-top:2rem;position:relative">
-        <div style="text-align:center"><span style="font-size:1.5rem;font-weight:800;display:block">4+</span><span style="font-size:0.78rem;opacity:0.8">Boards</span></div>
-        <div style="text-align:center"><span style="font-size:1.5rem;font-weight:800;display:block">20+</span><span style="font-size:0.78rem;opacity:0.8">Projects</span></div>
-        <div style="text-align:center"><span style="font-size:1.5rem;font-weight:800;display:block">15+</span><span style="font-size:0.78rem;opacity:0.8">Tutorials</span></div>
-        <div style="text-align:center"><span style="font-size:1.5rem;font-weight:800;display:block">100%</span><span style="font-size:0.78rem;opacity:0.8">Free</span></div>
-      </div>
-    </div>
-    <div class="about-text">
-      <h2>Helping <span class="highlight">Engineering Students</span> Build Real Things</h2>
-      <p>Microcontrollers Hub was created with a simple goal — make embedded systems learning accessible, practical, and enjoyable for every engineering student, regardless of their background or experience level.</p>
-      <p>We combine clear theory with hands-on projects. Every concept is backed by working code, circuit diagrams, and step-by-step explanations. No fluff, no paywalls — just solid engineering knowledge.</p>
-      <ul class="about-list">
-        <li><i class="fas fa-check-circle"></i> Structured content from absolute beginner to advanced level</li>
-        <li><i class="fas fa-check-circle"></i> Real working code for every project and tutorial</li>
-        <li><i class="fas fa-check-circle"></i> Covers Arduino, ESP32, PIC, and Raspberry Pi platforms</li>
-        <li><i class="fas fa-check-circle"></i> Free datasheets and software download links</li>
-        <li><i class="fas fa-check-circle"></i> Mobile-friendly — learn anywhere, anytime</li>
-        <li><i class="fas fa-check-circle"></i> Regularly updated with new projects and tutorials</li>
-      </ul>
-      <a href="tutorials.html" class="btn btn-primary" style="margin-top:0.5rem"><i class="fas fa-rocket"></i> Start Learning</a>
-    </div>
-  </div>
-
-  <!-- STATS -->
-  <div class="stat-grid">
-    <div class="stat-box"><span class="num">4+</span><span class="lbl">Microcontroller Boards</span></div>
-    <div class="stat-box"><span class="num">20+</span><span class="lbl">Hands-on Projects</span></div>
-    <div class="stat-box"><span class="num">15+</span><span class="lbl">Step-by-step Tutorials</span></div>
-    <div class="stat-box"><span class="num">100%</span><span class="lbl">Free to Access</span></div>
-  </div>
-
-  <!-- MISSION -->
-  <div class="section-header"><h2 class="section-title">Our <span class="highlight">Mission</span></h2><p class="section-subtitle">What drives us to keep building this platform</p></div>
-  <div class="mission-grid">
-    <div class="mission-card"><div class="mission-icon"><i class="fas fa-graduation-cap"></i></div><h4>Educate</h4><p>Provide structured, beginner-friendly education in embedded systems that complements university curricula and goes beyond textbooks.</p></div>
-    <div class="mission-card"><div class="mission-icon"><i class="fas fa-hands-helping"></i></div><h4>Empower</h4><p>Give students the tools, code, and confidence to build real hardware projects — turning theory into tangible, working prototypes.</p></div>
-    <div class="mission-card"><div class="mission-icon"><i class="fas fa-globe"></i></div><h4>Inspire</h4><p>Inspire the next generation of embedded engineers by making the world of microcontrollers exciting, approachable, and rewarding.</p></div>
-  </div>
-
-  <!-- TECH STACK -->
-  <div style="max-width:700px;margin:0 auto 4rem;text-align:center">
-    <h2 class="section-title" style="margin-bottom:0.5rem">Built With</h2>
-    <p style="color:var(--text-secondary);font-size:0.9rem;margin-bottom:1.5rem">Pure HTML, CSS, and JavaScript — lightweight, fast, and accessible.</p>
-    <div class="tech-stack" style="justify-content:center">
-      <span class="tech-tag"><i class="fab fa-html5" style="color:#e44d26"></i> HTML5</span>
-      <span class="tech-tag"><i class="fab fa-css3-alt" style="color:#264de4"></i> CSS3</span>
-      <span class="tech-tag"><i class="fab fa-js" style="color:#f7df1e"></i> JavaScript</span>
-      <span class="tech-tag"><i class="fab fa-font-awesome" style="color:#339af0"></i> Font Awesome</span>
-      <span class="tech-tag"><i class="fas fa-font" style="color:#4f46e5"></i> Google Fonts</span>
-    </div>
-  </div>
-
-  <!-- TEAM -->
-  <div class="section-header"><h2 class="section-title">Meet the <span class="highlight">Team</span></h2><p class="section-subtitle">Passionate engineers and educators building this platform</p></div>
-  <div class="team-grid">
-    <div class="team-card"><div class="avatar" style="background:var(--primary-light)">👨‍💻</div><h4>Ali Hassan</h4><p class="role">Founder & Lead Developer</p><p>Embedded systems engineer with 5+ years experience in Arduino, ESP32, and IoT. Passionate about making hardware accessible.</p></div>
-    <div class="team-card"><div class="avatar" style="background:#fce4ec">👩‍🔬</div><h4>Malaika Tauqeer</h4><p class="role">Content & Tutorials Lead</p><p>Electronics engineering graduate specializing in PIC microcontrollers and digital electronics. Creates all tutorial content.</p></div>div>
-    <div class="team-card"><div class="avatar" style="background:#e8f5e9">👨‍🎨</div><h4>Usman Raza</h4><p class="role">UI/UX Designer</p><p>Front-end developer and designer focused on accessible, responsive web design for technical education platforms.</p></div>
-  </div>
-
-</div></main>
-
-<!-- FOOTER -->
-<footer class="footer"><div class="container">
-  <div class="footer-grid">
-    <div class="footer-brand">
-      <div class="brand-name"><div style="width:32px;height:32px;background:linear-gradient(135deg,#2563eb,#06b6d4);border-radius:8px;display:flex;align-items:center;justify-content:center;color:white;font-size:0.9rem"><i class="fas fa-microchip"></i></div> MC Hub</div>
-      <p>A complete learning platform for microcontrollers and embedded systems.</p>
-      <div class="social-links">
-        <a href="#" class="social-link"><i class="fab fa-github"></i></a>
-        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
-        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
-      </div>
-    </div>
-    <div><h4 class="footer-heading">Boards</h4><ul class="footer-links">
-      <li><a href="microcontrollers.html#arduino">Arduino</a></li>
-      <li><a href="microcontrollers.html#esp32">ESP32</a></li>
-      <li><a href="microcontrollers.html#pic">PIC</a></li>
-      <li><a href="microcontrollers.html#raspi">Raspberry Pi</a></li>
-    </ul></div>
-    <div><h4 class="footer-heading">Learn</h4><ul class="footer-links">
-      <li><a href="tutorials.html">Tutorials</a></li>
+  <!-- ══ NAVBAR ══ -->
+  <nav class="navbar">
+    <a href="index.html" class="nav-brand">
+      <i class="fas fa-microchip"></i> Micro<span>controllers</span>&nbsp;Hub
+    </a>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <i class="fas fa-bars"></i>
+    </button>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="microcontrollers.html">Boards</a></li>
       <li><a href="projects.html">Projects</a></li>
+      <li><a href="tutorials.html">Tutorials</a></li>
       <li><a href="components.html">Components</a></li>
       <li><a href="resources.html">Resources</a></li>
-    </ul></div>
-    <div><h4 class="footer-heading">Company</h4><ul class="footer-links">
-      <li><a href="about.html">About</a></li>
+      <li><a href="about.html" class="active">About</a></li>
       <li><a href="contact.html">Contact</a></li>
-      <li><a href="#">Privacy Policy</a></li>
-    </ul></div>
-  </div>
-  <div class="footer-bottom">
-    <p>© 2026 Malaika Tauqeer. All rights reserved.</p>
-    <p>Made with <span style="color:#ef4444">♥</span> for engineering students</p>
-  </div>
-</div></footer>
-<button class="scroll-top"><i class="fas fa-arrow-up"></i></button>
-<script src="js/main.js"></script>
-<script src="js/search.js"></script>
+    </ul>
+    <div class="nav-actions">
+      <button id="dark-mode-toggle" aria-label="Toggle dark mode">
+        <i class="fas fa-moon" id="dm-icon"></i>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ══ HERO ══ -->
+  <section class="about-hero">
+    <h1><i class="fas fa-microchip"></i> About Microcontrollers Hub</h1>
+    <p>Learn, build, and grow with a platform built by engineers, for engineers — 100% free, always.</p>
+  </section>
+
+  <!-- ══ CEO SPOTLIGHT ══ -->
+  <section class="ceo-section">
+    <div class="container">
+      <div style="text-align:center; margin-bottom: 40px; position:relative; z-index:2;">
+        <span class="section-label" style="color:#fde68a;">✦ Leadership Spotlight</span>
+        <h2 style="color:#fff; font-size:clamp(1.6rem,3.5vw,2.2rem); font-weight:900; margin-top:8px;">Meet the Visionary Behind the Hub</h2>
+      </div>
+
+      <div class="ceo-card">
+        <div class="ceo-inner">
+          <div class="ceo-avatar-wrap">
+            <div class="ceo-avatar">MT</div>
+            <div class="ceo-badge"><i class="fas fa-crown"></i> CEO &amp; Founder</div>
+          </div>
+
+          <div class="ceo-info">
+            <div class="ceo-crown">👑</div>
+            <h2 class="ceo-name">Malaika Tauqeer</h2>
+            <p class="ceo-title">CEO &amp; Founder · Microcontrollers Hub</p>
+            <p class="ceo-bio">
+              Malaika Tauqeer is the visionary founder of Microcontrollers Hub — a passionate embedded systems engineer and educator dedicated to democratizing hardware knowledge. With hands-on expertise across Arduino, ESP32, PIC, and Raspberry Pi platforms, she created this platform to give every student free, world-class resources to build real-world projects.
+            </p>
+
+            <div class="skill-tags">
+              <span class="skill-tag"><i class="fas fa-microchip"></i> Arduino</span>
+              <span class="skill-tag"><i class="fas fa-wifi"></i> ESP32</span>
+              <span class="skill-tag"><i class="fas fa-cpu"></i> PIC</span>
+              <span class="skill-tag"><i class="fab fa-raspberry-pi"></i> Raspberry Pi</span>
+              <span class="skill-tag"><i class="fas fa-code"></i> Embedded C</span>
+              <span class="skill-tag"><i class="fas fa-globe"></i> Web Dev</span>
+              <span class="skill-tag"><i class="fas fa-users"></i> Leadership</span>
+            </div>
+
+            <div class="ceo-stats">
+              <div class="ceo-stat">
+                <span class="ceo-stat-num">4+</span>
+                <span class="ceo-stat-label">Boards</span>
+              </div>
+              <div class="ceo-stat">
+                <span class="ceo-stat-num">20+</span>
+                <span class="ceo-stat-label">Projects</span>
+              </div>
+              <div class="ceo-stat">
+                <span class="ceo-stat-num">15+</span>
+                <span class="ceo-stat-label">Tutorials</span>
+              </div>
+              <div class="ceo-stat">
+                <span class="ceo-stat-num">100%</span>
+                <span class="ceo-stat-label">Free</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ ABOUT THE PLATFORM ══ -->
+  <section class="section">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-img-placeholder">
+          <i class="fas fa-microchip"></i>
+        </div>
+        <div class="about-text">
+          <span class="section-label">Our Platform</span>
+          <h2 class="section-title">What is Microcontrollers Hub?</h2>
+          <p>
+            Microcontrollers Hub is a free, community-driven educational platform built for students, hobbyists, and engineers who want to master embedded systems — from blinking their first LED to designing complex IoT solutions.
+          </p>
+          <p>
+            We cover a broad spectrum of microcontroller boards including Arduino, ESP32, PIC, and Raspberry Pi, providing step-by-step tutorials, project guides, component references, and curated resources — all in one place.
+          </p>
+          <p>
+            Our commitment is simple: no paywalls, no subscriptions. Every tutorial, schematic, and code snippet is freely available because we believe great education should be accessible to everyone, everywhere.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ ANIMATED STATS BAND ══ -->
+  <section class="stats-band" id="stats-section">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-item">
+          <span class="stat-num"><span class="counter" data-target="4">0</span><span class="stat-suffix">+</span></span>
+          <p class="stat-desc">Microcontroller Boards</p>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num"><span class="counter" data-target="20">0</span><span class="stat-suffix">+</span></span>
+          <p class="stat-desc">Hands-On Projects</p>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num"><span class="counter" data-target="15">0</span><span class="stat-suffix">+</span></span>
+          <p class="stat-desc">Step-by-Step Tutorials</p>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num"><span class="counter" data-target="100">0</span><span class="stat-suffix">%</span></span>
+          <p class="stat-desc">Free Forever</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ MISSION ══ -->
+  <section class="section section-alt">
+    <div class="container text-center">
+      <span class="section-label">Our Mission</span>
+      <h2 class="section-title">Why We Built This</h2>
+      <p class="section-sub">Three simple pillars guide everything we create and share on this platform.</p>
+
+      <div class="mission-grid">
+        <div class="mission-card">
+          <div class="mission-icon"><i class="fas fa-book-open"></i></div>
+          <h3>Educate</h3>
+          <p>We provide clear, well-structured tutorials and project guides that make embedded systems approachable for beginners and valuable for advanced learners.</p>
+        </div>
+        <div class="mission-card">
+          <div class="mission-icon"><i class="fas fa-bolt"></i></div>
+          <h3>Empower</h3>
+          <p>We give you the tools, code, schematics, and confidence to turn ideas into working hardware — removing barriers between imagination and creation.</p>
+        </div>
+        <div class="mission-card">
+          <div class="mission-icon"><i class="fas fa-star"></i></div>
+          <h3>Inspire</h3>
+          <p>We showcase real-world projects and innovations to spark curiosity and show what's possible when creativity meets engineering knowledge.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ VALUES ══ -->
+  <section class="section">
+    <div class="container text-center">
+      <span class="section-label">Our Values</span>
+      <h2 class="section-title">What We Stand For</h2>
+      <p class="section-sub">These principles shape every piece of content and every decision we make.</p>
+
+      <div class="values-grid">
+        <div class="value-card">
+          <span class="value-icon">🎯</span>
+          <h3>Accuracy</h3>
+          <p>Every schematic, code example, and technical explanation is reviewed for correctness. We don't publish content we haven't tested ourselves.</p>
+        </div>
+        <div class="value-card">
+          <span class="value-icon">🔓</span>
+          <h3>Accessibility</h3>
+          <p>All content is free, jargon is explained, and resources are structured for learners at every level — from complete beginners to seasoned makers.</p>
+        </div>
+        <div class="value-card">
+          <span class="value-icon">🔧</span>
+          <h3>Practicality</h3>
+          <p>We focus on real, buildable projects and applied knowledge — not just theory. If you can't put it on a breadboard, it doesn't belong here.</p>
+        </div>
+        <div class="value-card">
+          <span class="value-icon">🤝</span>
+          <h3>Community</h3>
+          <p>We build together. Every learner, contributor, and tinkerer is welcome. Sharing knowledge multiplies its value for everyone.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ JOURNEY TIMELINE ══ -->
+  <section class="section section-alt">
+    <div class="container">
+      <div class="text-center">
+        <span class="section-label">Our Journey</span>
+        <h2 class="section-title">How We Got Here</h2>
+        <p class="section-sub">From a spark of an idea to a growing platform — here's the story so far.</p>
+      </div>
+
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-content">
+            <h3>💡 The Idea is Born — 2023</h3>
+            <p>Frustrated by scattered, paywalled, and low-quality embedded systems content, Malaika Tauqeer sketches out the vision for a free, comprehensive hub for microcontroller learners worldwide.</p>
+          </div>
+          <div class="tl-dot"><div class="tl-dot-inner">2023</div></div>
+          <div class="tl-empty"></div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-empty"></div>
+          <div class="tl-dot"><div class="tl-dot-inner">2024</div></div>
+          <div class="tl-content">
+            <h3>🚀 First Launch — 2024</h3>
+            <p>Microcontrollers Hub goes live with its first set of Arduino and ESP32 tutorials. The site gains its first users and early feedback shapes the platform's direction.</p>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-content">
+            <h3>📈 Expansion — 2025</h3>
+            <p>The platform expands to cover PIC and Raspberry Pi boards, launches a components reference library, and adds a curated resources section. The team grows.</p>
+          </div>
+          <div class="tl-dot"><div class="tl-dot-inner">2025</div></div>
+          <div class="tl-empty"></div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-empty"></div>
+          <div class="tl-dot"><div class="tl-dot-inner">2026</div></div>
+          <div class="tl-content">
+            <h3>🌍 Going Live — 2026</h3>
+            <p>Full public launch with a polished, professionally designed site. Interactive tools, community features, and a commitment to staying 100% free are at the core of this milestone.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ TEAM ══ -->
+  <section class="section">
+    <div class="container text-center">
+      <span class="section-label">The Team</span>
+      <h2 class="section-title">People Behind the Platform</h2>
+      <p class="section-sub">A small, dedicated team passionate about making embedded systems education accessible to all.</p>
+
+      <div class="team-grid">
+
+        <!-- CEO Card -->
+        <div class="team-card ceo-card-team">
+          <div class="team-avatar">MT</div>
+          <div class="member-badges">
+            <span class="ceo-role-badge"><i class="fas fa-crown"></i> CEO &amp; Founder</span>
+          </div>
+          <h3>👑 Malaika Tauqeer</h3>
+          <p class="team-role">Chief Executive Officer &amp; Founder</p>
+          <p class="team-bio">Embedded systems engineer and educator. Creator of Microcontrollers Hub, with expertise in Arduino, ESP32, PIC, and Raspberry Pi. Drives the vision, content strategy, and platform growth.</p>
+        </div>
+
+        <!-- Lead Developer -->
+        <div class="team-card">
+          <div class="team-avatar">AH</div>
+          <h3>Ali Hassan</h3>
+          <p class="team-role">Lead Developer</p>
+          <p class="team-bio">Full-stack developer responsible for building and maintaining the platform's frontend architecture, interactive features, and performance optimization.</p>
+        </div>
+
+        <!-- UI/UX Designer -->
+        <div class="team-card">
+          <div class="team-avatar">UR</div>
+          <h3>Usman Raza</h3>
+          <p class="team-role">UI/UX Designer</p>
+          <p class="team-bio">Designs the user experience and visual identity of Microcontrollers Hub — ensuring the platform is intuitive, beautiful, and accessible on every device.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ TESTIMONIALS ══ -->
+  <section class="section section-alt">
+    <div class="container text-center">
+      <span class="section-label">Student Voices</span>
+      <h2 class="section-title">What Our Learners Say</h2>
+      <p class="section-sub">Real feedback from students who've used Microcontrollers Hub to build their skills.</p>
+
+      <div class="testimonials-grid">
+
+        <div class="testimonial-card">
+          <div class="stars">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+            <i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+          <blockquote>"I went from knowing nothing about Arduino to building a full home automation system in a month. The tutorials here are clearer than anything I found on YouTube or paid courses."</blockquote>
+          <div class="testimonial-author">
+            <div class="t-avatar">ZA</div>
+            <div>
+              <p class="t-name">Zain Ahmed</p>
+              <p class="t-role">CS Student, Lahore</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="stars">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+            <i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+          <blockquote>"The ESP32 projects section saved my final year project. Everything was explained step by step, the code worked first try, and I finally understood what I was doing. Incredible resource."</blockquote>
+          <div class="testimonial-author">
+            <div class="t-avatar">SF</div>
+            <div>
+              <p class="t-name">Sara Fatima</p>
+              <p class="t-role">Engineering Student, Karachi</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="stars">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+            <i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+          <blockquote>"I've been tinkering with microcontrollers for years but never had a single place with this level of depth and clarity. Malaika and the team have built something genuinely special here."</blockquote>
+          <div class="testimonial-author">
+            <div class="t-avatar">HK</div>
+            <div>
+              <p class="t-name">Hamza Khan</p>
+              <p class="t-role">Hobbyist Maker, Islamabad</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ TECH STACK ══ -->
+  <section class="section">
+    <div class="container text-center">
+      <span class="section-label">Under the Hood</span>
+      <h2 class="section-title">Built With</h2>
+      <p class="section-sub">Microcontrollers Hub is built with reliable, open web technologies — no heavy frameworks, no bloat.</p>
+
+      <div class="tech-grid">
+        <div class="tech-pill">
+          <i class="fab fa-html5" style="color:#e34f26;"></i>
+          <span>HTML5</span>
+        </div>
+        <div class="tech-pill">
+          <i class="fab fa-css3-alt" style="color:#264de4;"></i>
+          <span>CSS3</span>
+        </div>
+        <div class="tech-pill">
+          <i class="fab fa-js" style="color:#f7df1e; background:#222; border-radius:4px; padding:1px 3px;"></i>
+          <span>JavaScript</span>
+        </div>
+        <div class="tech-pill">
+          <i class="fab fa-font-awesome" style="color:#528dd3;"></i>
+          <span>Font Awesome 6.5</span>
+        </div>
+        <div class="tech-pill">
+          <i class="fab fa-google" style="color:#4285f4;"></i>
+          <span>Google Fonts · Inter</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ CTA BANNER ══ -->
+  <section class="cta-banner">
+    <div class="container">
+      <h2>Ready to Start Building?</h2>
+      <p>Browse tutorials, explore projects, and discover components — all completely free.</p>
+      <div class="cta-btns">
+        <a href="tutorials.html" class="btn-primary"><i class="fas fa-book-open"></i> Explore Tutorials</a>
+        <a href="projects.html" class="btn-outline"><i class="fas fa-wrench"></i> View Projects</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ FOOTER ══ -->
+  <footer class="site-footer">
+    <p>© 2026 <a href="about.html">Malaika Tauqeer</a>. All rights reserved. · <a href="index.html">Microcontrollers Hub</a></p>
+  </footer>
+
+  <!-- ══ SCRIPTS ══ -->
+  <script src="js/main.js"></script>
+  <script src="js/search.js"></script>
+
+  <script>
+    // ── Dark Mode Toggle ──
+    const dmBtn = document.getElementById('dark-mode-toggle');
+    const dmIcon = document.getElementById('dm-icon');
+    const body = document.body;
+
+    function applyDark(on) {
+      body.classList.toggle('dark-mode', on);
+      dmIcon.className = on ? 'fas fa-sun' : 'fas fa-moon';
+    }
+
+    const saved = localStorage.getItem('darkMode');
+    if (saved === 'true') applyDark(true);
+
+    dmBtn.addEventListener('click', () => {
+      const isDark = body.classList.contains('dark-mode');
+      applyDark(!isDark);
+      localStorage.setItem('darkMode', !isDark);
+    });
+
+    // ── Hamburger ──
+    document.getElementById('hamburger').addEventListener('click', () => {
+      document.getElementById('nav-links').classList.toggle('open');
+    });
+
+    // ── Counter Animation (IntersectionObserver) ──
+    const counters = document.querySelectorAll('.counter');
+
+    function animateCounter(el) {
+      const target = parseInt(el.dataset.target, 10);
+      const duration = 1600;
+      const start = performance.now();
+
+      function step(now) {
+        const elapsed = now - start;
+        const progress = Math.min(elapsed / duration, 1);
+        // Ease-out cubic
+        const eased = 1 - Math.pow(1 - progress, 3);
+        el.textContent = Math.floor(eased * target);
+        if (progress < 1) requestAnimationFrame(step);
+        else el.textContent = target;
+      }
+
+      requestAnimationFrame(step);
+    }
+
+    const statsObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          counters.forEach(c => animateCounter(c));
+          statsObserver.disconnect();
+        }
+      });
+    }, { threshold: 0.3 });
+
+    const statsSection = document.getElementById('stats-section');
+    if (statsSection) statsObserver.observe(statsSection);
+  </script>
+
 </body>
 </html>
