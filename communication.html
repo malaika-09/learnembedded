@@ -29,6 +29,31 @@
     .proj-tag { background: var(--primary-light); color: var(--primary); font-size: .75rem; font-weight: 600; padding: .2rem .65rem; border-radius: 50px; }
     [data-theme="dark"] .proj-tag { background: rgba(37,99,235,.15); }
     @media(max-width:768px) { .sensor-grid { grid-template-columns: 1fr; } }
+    .pin-table { width:100%; border-collapse:collapse; font-size:.8rem; margin:.5rem 0; }
+    .pin-table th { background:var(--primary); color:white; padding:.5rem .75rem; text-align:left; font-size:.78rem; }
+    .pin-table td { padding:.45rem .75rem; border-bottom:1px solid var(--border); color:var(--text-secondary); }
+    .pin-table tr:last-child td { border:none; }
+    .pin-table tr:hover td { background:var(--primary-light); }
+    [data-theme="dark"] .pin-table tr:hover td { background:rgba(37,99,235,.1); }
+    .pin-diagram-visual {
+      background: #0f172a; border-radius:8px; padding:1rem;
+      font-family:monospace; font-size:.78rem; color:#94a3b8;
+      margin:.5rem 0; border:1px solid #1e293b; line-height:1.8;
+      overflow-x:auto;
+    }
+    .pin-diagram-visual .pin-vcc  { color:#f87171; font-weight:700; }
+    .pin-diagram-visual .pin-gnd  { color:#94a3b8; font-weight:700; }
+    .pin-diagram-visual .pin-sig  { color:#34d399; font-weight:700; }
+    .pin-diagram-visual .pin-data { color:#60a5fa; font-weight:700; }
+    .pin-diagram-visual .pin-out  { color:#fbbf24; font-weight:700; }
+    .datasheet-grid { display:grid; grid-template-columns:1fr 1fr; gap:.3rem; margin:.5rem 0; }
+    .ds-item { display:flex; justify-content:space-between; padding:.3rem .5rem; background:var(--bg); border-radius:4px; font-size:.78rem; border:1px solid var(--border); }
+    .ds-item .dk { color:var(--text-muted); }
+    .ds-item .dv { font-weight:700; color:var(--text-primary); }
+    .warn-box { background:#fff7ed; border-left:3px solid #f97316; border-radius:0 6px 6px 0; padding:.65rem .9rem; font-size:.8rem; color:#92400e; margin:.5rem 0; display:flex; gap:.5rem; align-items:flex-start; }
+    [data-theme="dark"] .warn-box { background:#1c0a00; color:#fdba74; }
+    .note-box { background:#eff6ff; border-left:3px solid #3b82f6; border-radius:0 6px 6px 0; padding:.65rem .9rem; font-size:.8rem; color:#1e40af; margin:.5rem 0; display:flex; gap:.5rem; align-items:flex-start; }
+    [data-theme="dark"] .note-box { background:#0c1a3a; color:#93c5fd; }
   </style>
 </head>
 <body>
@@ -74,6 +99,35 @@
       <div class="spec-row"><span>Common Baud</span><span>9600, 115200</span></div>
       <div class="spec-row"><span>Arduino Pins</span><span>D0 (RX), D1 (TX)</span></div>
       <div class="spec-row"><span>Library</span><span>Built-in Serial</span></div>
+      <h4><i class="fas fa-microchip"></i> Protocol Diagram</h4>
+      <div class="pin-diagram-visual">
+<pre>  UART Cross-Connection (TX → RX, RX ← TX)
+
+  Arduino Uno          External Module
+  ┌──────────┐         ┌──────────┐
+  │       <span class="pin-sig">TX</span> │────────→│ <span class="pin-data">RX</span>       │
+  │  D0   <span class="pin-data">RX</span> │←────────│ <span class="pin-sig">TX</span>       │
+  │      <span class="pin-gnd">GND</span> │─────────│ <span class="pin-gnd">GND</span>      │
+  │       <span class="pin-vcc">5V</span> │─────────│ <span class="pin-vcc">VCC</span>      │
+  └──────────┘         └──────────┘
+
+  Hardware UART: D0(RX), D1(TX) — shared with USB!
+  SoftwareSerial: any 2 digital pins (e.g. D10, D11)
+
+  Baud rates: 300, 1200, 2400, 4800, 9600,
+              19200, 38400, 57600, 115200, 230400</pre>
+      </div>
+      <h4><i class="fas fa-plug"></i> HC-05 Bluetooth via SoftwareSerial</h4>
+      <table class="pin-table">
+        <thead><tr><th>Arduino Pin</th><th>HC-05 Pin</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td>5V</td><td>VCC</td><td>Power</td></tr>
+          <tr><td>GND</td><td>GND</td><td>Common ground</td></tr>
+          <tr><td>D10 (SS RX)</td><td>TX</td><td>Direct connection</td></tr>
+          <tr><td>D11 (SS TX)</td><td>RX</td><td>Via 1kΩ+2kΩ voltage divider (5V→3.3V)</td></tr>
+        </tbody>
+      </table>
+      <div class="warn-box"><span>⚠️</span><span>HC-05 RX pin is 3.3V logic — use a voltage divider (1kΩ + 2kΩ) from Arduino TX. Connecting 5V directly may damage the module.</span></div>
       <h4><i class="fas fa-code"></i> Code</h4>
       <div class="code-block">
         <div class="code-header"><span class="code-lang">Arduino C++</span><button class="copy-btn"><i class="fas fa-copy"></i> Copy</button></div>
@@ -103,6 +157,35 @@
       <div class="spec-row"><span>Arduino Pins</span><span>A4 (SDA), A5 (SCL)</span></div>
       <div class="spec-row"><span>Devices</span><span>Up to 127 on same bus</span></div>
       <div class="spec-row"><span>Library</span><span>Wire.h (built-in)</span></div>
+      <h4><i class="fas fa-microchip"></i> Protocol Diagram</h4>
+      <div class="pin-diagram-visual">
+<pre>  I2C Bus — Multiple Devices on 2 Wires
+
+  Arduino         Device 1         Device 2
+  ┌──────┐        ┌───────┐        ┌───────┐
+  │  <span class="pin-data">SDA</span> │────────│ <span class="pin-data">SDA</span>   │────────│ <span class="pin-data">SDA</span>   │
+  │  <span class="pin-sig">SCL</span> │────────│ <span class="pin-sig">SCL</span>   │────────│ <span class="pin-sig">SCL</span>   │
+  │  <span class="pin-vcc">VCC</span> │────────│ <span class="pin-vcc">VCC</span>   │────────│ <span class="pin-vcc">VCC</span>   │
+  │  <span class="pin-gnd">GND</span> │────────│ <span class="pin-gnd">GND</span>   │────────│ <span class="pin-gnd">GND</span>   │
+  └──────┘        └───────┘        └───────┘
+         │                │
+       <span class="pin-out">4.7kΩ</span>           <span class="pin-out">4.7kΩ</span>   ← pullup resistors to VCC
+         │                │             (required!)
+        <span class="pin-vcc">VCC</span>             <span class="pin-vcc">VCC</span>
+
+  Speeds: Standard 100 kHz | Fast 400 kHz | Fast+ 1 MHz</pre>
+      </div>
+      <h4><i class="fas fa-plug"></i> Pin Connection Table</h4>
+      <table class="pin-table">
+        <thead><tr><th>Device Pin</th><th>Arduino Uno</th><th>Arduino Mega</th><th>ESP32</th></tr></thead>
+        <tbody>
+          <tr><td>SDA</td><td>A4</td><td>D20</td><td>GPIO21</td></tr>
+          <tr><td>SCL</td><td>A5</td><td>D21</td><td>GPIO22</td></tr>
+          <tr><td>VCC</td><td>3.3V or 5V</td><td>3.3V or 5V</td><td>3.3V</td></tr>
+          <tr><td>GND</td><td>GND</td><td>GND</td><td>GND</td></tr>
+        </tbody>
+      </table>
+      <div class="note-box"><span>ℹ️</span><span>Common I2C addresses: LCD = 0x27 or 0x3F · OLED = 0x3C · MPU6050 = 0x68 · BMP180 = 0x77. Use I2C Scanner to find unknown addresses.</span></div>
       <h4><i class="fas fa-code"></i> I2C Scanner Code</h4>
       <div class="code-block">
         <div class="code-header"><span class="code-lang">Arduino C++</span><button class="copy-btn"><i class="fas fa-copy"></i> Copy</button></div>
@@ -136,6 +219,35 @@
       <div class="spec-row"><span>Arduino Pins</span><span>D11,D12,D13,D10</span></div>
       <div class="spec-row"><span>Speed</span><span>Up to 10 Mbps</span></div>
       <div class="spec-row"><span>Library</span><span>SPI.h (built-in)</span></div>
+      <h4><i class="fas fa-microchip"></i> Protocol Diagram</h4>
+      <div class="pin-diagram-visual">
+<pre>  SPI Bus — Master-Slave Architecture
+
+       Arduino (Master)
+       ┌────────────┐
+       │ <span class="pin-sig">MOSI</span> D11   │──────────────────────────→ Device MOSI
+       │ <span class="pin-data">MISO</span> D12   │←────────────────────────── Device MISO
+       │ <span class="pin-out">SCK</span>  D13   │──────────────────────────→ Device SCK
+       │ <span class="pin-vcc">CS</span>   D10   │──────────────────────────→ Device CS (LOW=active)
+       │ <span class="pin-gnd">GND</span>        │──────────────────────────→ Device GND
+       └────────────┘
+  Each SPI device needs its own CS pin!
+  Multiple devices share MOSI, MISO, SCK but NOT CS.
+  Full-duplex: data flows in both directions simultaneously.</pre>
+      </div>
+      <h4><i class="fas fa-plug"></i> Pin Connection Table</h4>
+      <table class="pin-table">
+        <thead><tr><th>SPI Signal</th><th>Arduino Uno</th><th>Arduino Mega</th><th>ESP32</th></tr></thead>
+        <tbody>
+          <tr><td>MOSI</td><td>D11</td><td>D51</td><td>GPIO23</td></tr>
+          <tr><td>MISO</td><td>D12</td><td>D50</td><td>GPIO19</td></tr>
+          <tr><td>SCK</td><td>D13</td><td>D52</td><td>GPIO18</td></tr>
+          <tr><td>CS/SS</td><td>D10</td><td>D53</td><td>GPIO5</td></tr>
+          <tr><td>VCC</td><td>3.3V or 5V</td><td>3.3V or 5V</td><td>3.3V</td></tr>
+          <tr><td>GND</td><td>GND</td><td>GND</td><td>GND</td></tr>
+        </tbody>
+      </table>
+      <div class="note-box"><span>ℹ️</span><span>SPI has 4 modes (0–3) based on clock polarity and phase. Most modules use Mode 0. Check device datasheet if communication fails — try SPI.setDataMode(SPI_MODE0).</span></div>
       <h4><i class="fas fa-code"></i> Code</h4>
       <div class="code-block">
         <div class="code-header"><span class="code-lang">Arduino C++</span><button class="copy-btn"><i class="fas fa-copy"></i> Copy</button></div>
@@ -167,6 +279,51 @@
       <div class="spec-row"><span>Range</span><span>Up to 10 meters</span></div>
       <div class="spec-row"><span>Default PIN</span><span>1234</span></div>
       <div class="spec-row"><span>Baud Rate</span><span>9600 (default)</span></div>
+      <h4><i class="fas fa-microchip"></i> Module Pin Diagram</h4>
+      <div class="pin-diagram-visual">
+<pre>   HC-05 Module (6-pin version)
+  ┌──────────────────────────┐
+  │  [ANT]  Bluetooth 2.0   │  ← antenna
+  │  ┌────────────────────┐  │
+  │  │    HC-05 MODULE    │  │
+  │  └────────────────────┘  │
+  │  [STATUS LED]            │  ← blinks when unpaired
+  ├──────────────────────────┤
+  │ <span class="pin-vcc">VCC</span> <span class="pin-gnd">GND</span> <span class="pin-sig">TX</span> <span class="pin-data">RX</span> <span class="pin-out">ST</span> <span class="pin-out">EN</span>    │
+  └──────────────────────────┘
+  <span class="pin-vcc">■ VCC</span>   → 5V
+  <span class="pin-gnd">■ GND</span>   → GND
+  <span class="pin-sig">■ TX</span>    → D10 (SoftwareSerial RX) — direct 3.3V out
+  <span class="pin-data">■ RX</span>    → D11 via voltage divider  — 3.3V max!
+  <span class="pin-out">■ STATE</span> → optional D4 (HIGH=connected)
+  <span class="pin-out">■ EN/KEY</span>→ optional D5 (HIGH=AT cmd mode)</pre>
+      </div>
+      <h4><i class="fas fa-table"></i> Full Datasheet (HC-05)</h4>
+      <div class="datasheet-grid">
+        <div class="ds-item"><span class="dk">Bluetooth Version</span><span class="dv">2.0 + EDR</span></div>
+        <div class="ds-item"><span class="dk">Frequency</span><span class="dv">2.4 GHz ISM band</span></div>
+        <div class="ds-item"><span class="dk">Range</span><span class="dv">Up to 10 m</span></div>
+        <div class="ds-item"><span class="dk">Default Baud</span><span class="dv">9600 bps</span></div>
+        <div class="ds-item"><span class="dk">AT Mode Baud</span><span class="dv">38400 bps</span></div>
+        <div class="ds-item"><span class="dk">Supply Voltage</span><span class="dv">3.3V – 6V</span></div>
+        <div class="ds-item"><span class="dk">TX/RX Voltage</span><span class="dv">3.3V logic</span></div>
+        <div class="ds-item"><span class="dk">Default PIN</span><span class="dv">1234 or 0000</span></div>
+        <div class="ds-item"><span class="dk">Mode</span><span class="dv">Master / Slave switchable</span></div>
+        <div class="ds-item"><span class="dk">AT Commands</span><span class="dv">EN/KEY pin HIGH</span></div>
+      </div>
+      <h4><i class="fas fa-plug"></i> Pin Connection Table</h4>
+      <table class="pin-table">
+        <thead><tr><th>HC-05 Pin</th><th>Function</th><th>Arduino Connection</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td>VCC</td><td>Power</td><td>5V</td><td></td></tr>
+          <tr><td>GND</td><td>Ground</td><td>GND</td><td></td></tr>
+          <tr><td>TX</td><td>Transmit</td><td>D10 (SS RX)</td><td>Direct — 3.3V safe</td></tr>
+          <tr><td>RX</td><td>Receive</td><td>D11 via divider</td><td>5V→3.3V divider needed!</td></tr>
+          <tr><td>STATE</td><td>Status LED</td><td>Optional D4</td><td>HIGH when connected</td></tr>
+          <tr><td>EN/KEY</td><td>AT Mode</td><td>Optional D5</td><td>HIGH for AT commands</td></tr>
+        </tbody>
+      </table>
+      <div class="warn-box"><span>⚠️</span><span>HC-05 RX operates at 3.3V. Connecting Arduino 5V TX directly will damage the module over time. Use a 1kΩ + 2kΩ resistor voltage divider on the TX→RX line.</span></div>
       <h4><i class="fas fa-plug"></i> Wiring</h4>
       <div class="wiring-box">VCC→5V | GND→GND | TX→D10 | RX→D11(via divider)</div>
       <h4><i class="fas fa-code"></i> Code</h4>
@@ -203,6 +360,58 @@
         <div class="spec-row"><span>Mode</span><span>Station / AP / Both</span></div>
         <div class="spec-row"><span>Library</span><span>WiFi.h (ESP32 core)</span></div>
       </div>
+      <h4><i class="fas fa-microchip"></i> ESP32 DevKit Pin Diagram</h4>
+      <div class="pin-diagram-visual">
+<pre>  ESP32 DevKit v1 (38-pin layout — top view)
+
+  ┌─────────────────────────────────┐
+  │  [USB]      ESP32 DevKit       │
+  │              ┌────────┐        │
+  │              │  WiFi  │ ←BT    │  ← RF module
+  │              │  + BT  │        │
+  │              └────────┘        │
+  │                                │
+  │  <span class="pin-vcc">3V3</span> ○                   ○ <span class="pin-vcc">VIN</span>  │  ← 5V in / 3.3V out
+  │  <span class="pin-gnd">GND</span> ○                   ○ <span class="pin-gnd">GND</span>  │
+  │  <span class="pin-sig">IO4</span> ○  DHT11 data        ○ <span class="pin-sig">IO0</span>  │
+  │ <span class="pin-data">IO21</span> ○  I2C SDA           ○ <span class="pin-sig">IO2</span>  │  ← built-in LED
+  │ <span class="pin-data">IO22</span> ○  I2C SCL           ○ <span class="pin-out">IO26</span>  │
+  │  <span class="pin-sig">IO1</span> ○  UART TX (USB)     ○ <span class="pin-out">IO34</span>  │  ← input only
+  │  <span class="pin-sig">IO3</span> ○  UART RX (USB)     ○ <span class="pin-out">IO35</span>  │  ← input only
+  └─────────────────────────────────┘</pre>
+      </div>
+      <h4><i class="fas fa-table"></i> Full Datasheet (ESP32 WiFi)</h4>
+      <div class="datasheet-grid">
+        <div class="ds-item"><span class="dk">Standard</span><span class="dv">802.11 b/g/n</span></div>
+        <div class="ds-item"><span class="dk">Frequency</span><span class="dv">2.4 GHz</span></div>
+        <div class="ds-item"><span class="dk">Max TX Power</span><span class="dv">20 dBm</span></div>
+        <div class="ds-item"><span class="dk">RX Sensitivity</span><span class="dv">-97 dBm</span></div>
+        <div class="ds-item"><span class="dk">Antenna</span><span class="dv">PCB trace (built-in)</span></div>
+        <div class="ds-item"><span class="dk">Security</span><span class="dv">WPA / WPA2 / WPA3</span></div>
+        <div class="ds-item"><span class="dk">Protocols</span><span class="dv">TCP/UDP/HTTP/HTTPS/MQTT</span></div>
+        <div class="ds-item"><span class="dk">Modes</span><span class="dv">Station + AP simultaneous</span></div>
+        <div class="ds-item"><span class="dk">Deep Sleep</span><span class="dv">10 µA</span></div>
+        <div class="ds-item"><span class="dk">Flash</span><span class="dv">4 MB (typical DevKit)</span></div>
+      </div>
+      <h4><i class="fas fa-plug"></i> ESP32 GPIO Pin Assignment Table</h4>
+      <table class="pin-table">
+        <thead><tr><th>Purpose</th><th>GPIO</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td>Built-in LED indicator</td><td>GPIO2</td><td>HIGH = ON</td></tr>
+          <tr><td>Relay / Digital output</td><td>GPIO26</td><td>Any output GPIO</td></tr>
+          <tr><td>DHT11 data pin</td><td>GPIO4</td><td>Any digital pin</td></tr>
+          <tr><td>Analog sensor input</td><td>GPIO34</td><td>Input only — no OUTPUT</td></tr>
+          <tr><td>I2C SDA</td><td>GPIO21</td><td>Standard I2C SDA</td></tr>
+          <tr><td>I2C SCL</td><td>GPIO22</td><td>Standard I2C SCL</td></tr>
+          <tr><td>UART TX (USB/debug)</td><td>GPIO1</td><td>Serial0 TX</td></tr>
+          <tr><td>UART RX (USB/debug)</td><td>GPIO3</td><td>Serial0 RX</td></tr>
+          <tr><td>SPI MOSI</td><td>GPIO23</td><td>Default SPI</td></tr>
+          <tr><td>SPI MISO</td><td>GPIO19</td><td>Default SPI</td></tr>
+          <tr><td>SPI SCK</td><td>GPIO18</td><td>Default SPI</td></tr>
+          <tr><td>SPI CS</td><td>GPIO5</td><td>Default SPI SS</td></tr>
+        </tbody>
+      </table>
+      <div class="warn-box"><span>⚠️</span><span>GPIO34, 35, 36, 39 are INPUT ONLY — cannot use as OUTPUT. GPIO0, 2, 5, 12, 15 affect boot mode — avoid using them for general I/O if possible.</span></div>
       <h4><i class="fas fa-code"></i> Connect to WiFi + Web Server</h4>
       <div class="code-block">
         <div class="code-header"><span class="code-lang">Arduino C++ (ESP32)</span><button class="copy-btn"><i class="fas fa-copy"></i> Copy</button></div>
@@ -228,6 +437,7 @@
   </div>
 
 </div></div></main>
+
 <footer class="footer"><div class="container">
   <div class="footer-grid">
     <div class="footer-brand">
