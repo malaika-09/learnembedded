@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>About Us – Microcontrollers Hub</title>
+  <title>About – LearnEmbedded</title>
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
@@ -513,6 +513,11 @@
       padding: 3px 10px; border-radius: 999px; letter-spacing: 0.05em;
     }
 
+    .ceo-badges-row { display:flex; gap:8px; flex-wrap:wrap; justify-content:center; margin-bottom:10px; }
+    .badge-ceo { background:linear-gradient(90deg,#7c3aed,#2563eb); color:white; font-size:0.75rem; font-weight:800; padding:5px 14px; border-radius:999px; display:inline-flex; align-items:center; gap:5px; }
+    .badge-vision { background:linear-gradient(90deg,#0891b2,#06b6d4); color:white; font-size:0.75rem; font-weight:700; padding:5px 14px; border-radius:999px; display:inline-flex; align-items:center; gap:5px; }
+    .badge-builder { background:linear-gradient(90deg,#059669,#10b981); color:white; font-size:0.75rem; font-weight:700; padding:5px 14px; border-radius:999px; display:inline-flex; align-items:center; gap:5px; }
+
     .team-card h3 { font-size: 1.1rem; font-weight: 800; margin-bottom: 4px; }
     .team-role { font-size: 0.87rem; color: var(--primary); font-weight: 600; margin-bottom: 10px; }
     .team-bio { font-size: 0.85rem; color: #64748b; line-height: 1.6; }
@@ -791,7 +796,7 @@
   <!-- ══ NAVBAR ══ -->
   <nav class="navbar">
     <a href="index.html" class="nav-brand">
-      <i class="fas fa-microchip"></i> Micro<span>controllers</span>&nbsp;Hub
+      <i class="fas fa-microchip"></i> Learn<span>Embedded</span>
     </a>
     <button class="hamburger" id="hamburger" aria-label="Toggle menu">
       <i class="fas fa-bars"></i>
@@ -815,7 +820,7 @@
 
   <!-- ══ HERO ══ -->
   <section class="about-hero">
-    <h1><i class="fas fa-microchip"></i> About Microcontrollers Hub</h1>
+    <h1><i class="fas fa-microchip"></i> About LearnEmbedded</h1>
     <p>Learn, build, and grow with a platform built by engineers, for engineers — 100% free, always.</p>
   </section>
 
@@ -824,29 +829,27 @@
     <div class="container">
       <div style="text-align:center; margin-bottom: 40px; position:relative; z-index:2;">
         <span class="section-label" style="color:#fde68a;">✦ Leadership Spotlight</span>
-        <h2 style="color:#fff; font-size:clamp(1.6rem,3.5vw,2.2rem); font-weight:900; margin-top:8px;">Meet the Visionary Behind the Hub</h2>
+        <h2 style="color:#fff; font-size:clamp(1.6rem,3.5vw,2.2rem); font-weight:900; margin-top:8px;">Meet the Visionary Behind LearnEmbedded</h2>
       </div>
 
       <div class="ceo-card">
         <div class="ceo-inner">
           <div class="ceo-avatar-wrap">
             <div class="ceo-avatar">MT</div>
-            <div class="ceo-badge"><i class="fas fa-crown"></i> CEO &amp; Founder</div>
+            <div class="ceo-badge"><i class="fas fa-bolt"></i> CEO &amp; Founder</div>
           </div>
 
           <div class="ceo-info">
-            <div class="ceo-crown">👑</div>
             <h2 class="ceo-name">Malaika Tauqeer</h2>
-            <p class="ceo-title">CEO &amp; Founder · Microcontrollers Hub</p>
+            <p class="ceo-title">CEO &amp; Founder · LearnEmbedded</p>
             <p class="ceo-bio">
-              Malaika Tauqeer is the visionary founder of Microcontrollers Hub — a passionate embedded systems engineer and educator dedicated to democratizing hardware knowledge. With hands-on expertise across Arduino, ESP32, PIC, and Raspberry Pi platforms, she created this platform to give every student free, world-class resources to build real-world projects.
+              Malaika Tauqeer is the visionary founder of LearnEmbedded — a passionate embedded systems engineer and educator dedicated to democratizing hardware knowledge. With hands-on expertise across Arduino, ESP32, and PIC platforms, she created this platform to give every student free, world-class resources to build real-world projects.
             </p>
 
             <div class="skill-tags">
               <span class="skill-tag"><i class="fas fa-microchip"></i> Arduino</span>
               <span class="skill-tag"><i class="fas fa-wifi"></i> ESP32</span>
               <span class="skill-tag"><i class="fas fa-cpu"></i> PIC</span>
-              <span class="skill-tag"><i class="fab fa-raspberry-pi"></i> Raspberry Pi</span>
               <span class="skill-tag"><i class="fas fa-code"></i> Embedded C</span>
               <span class="skill-tag"><i class="fas fa-globe"></i> Web Dev</span>
               <span class="skill-tag"><i class="fas fa-users"></i> Leadership</span>
@@ -885,9 +888,9 @@
         </div>
         <div class="about-text">
           <span class="section-label">Our Platform</span>
-          <h2 class="section-title">What is Microcontrollers Hub?</h2>
+          <h2 class="section-title">What is LearnEmbedded?</h2>
           <p>
-            Microcontrollers Hub is a free, community-driven educational platform built for students, hobbyists, and engineers who want to master embedded systems — from blinking their first LED to designing complex IoT solutions.
+            LearnEmbedded is a free, community-driven educational platform built for students, hobbyists, and engineers who want to master embedded systems — from blinking their first LED to designing complex IoT solutions.
           </p>
           <p>
             We cover a broad spectrum of microcontroller boards including Arduino, ESP32, PIC, and Raspberry Pi, providing step-by-step tutorials, project guides, component references, and curated resources — all in one place.
@@ -983,55 +986,6 @@
     </div>
   </section>
 
-  <!-- ══ JOURNEY TIMELINE ══ -->
-  <section class="section section-alt">
-    <div class="container">
-      <div class="text-center">
-        <span class="section-label">Our Journey</span>
-        <h2 class="section-title">How We Got Here</h2>
-        <p class="section-sub">From a spark of an idea to a growing platform — here's the story so far.</p>
-      </div>
-
-      <div class="timeline">
-        <div class="tl-item">
-          <div class="tl-content">
-            <h3>💡 The Idea is Born — 2023</h3>
-            <p>Frustrated by scattered, paywalled, and low-quality embedded systems content, Malaika Tauqeer sketches out the vision for a free, comprehensive hub for microcontroller learners worldwide.</p>
-          </div>
-          <div class="tl-dot"><div class="tl-dot-inner">2023</div></div>
-          <div class="tl-empty"></div>
-        </div>
-
-        <div class="tl-item">
-          <div class="tl-empty"></div>
-          <div class="tl-dot"><div class="tl-dot-inner">2024</div></div>
-          <div class="tl-content">
-            <h3>🚀 First Launch — 2024</h3>
-            <p>Microcontrollers Hub goes live with its first set of Arduino and ESP32 tutorials. The site gains its first users and early feedback shapes the platform's direction.</p>
-          </div>
-        </div>
-
-        <div class="tl-item">
-          <div class="tl-content">
-            <h3>📈 Expansion — 2025</h3>
-            <p>The platform expands to cover PIC and Raspberry Pi boards, launches a components reference library, and adds a curated resources section. The team grows.</p>
-          </div>
-          <div class="tl-dot"><div class="tl-dot-inner">2025</div></div>
-          <div class="tl-empty"></div>
-        </div>
-
-        <div class="tl-item">
-          <div class="tl-empty"></div>
-          <div class="tl-dot"><div class="tl-dot-inner">2026</div></div>
-          <div class="tl-content">
-            <h3>🌍 Going Live — 2026</h3>
-            <p>Full public launch with a polished, professionally designed site. Interactive tools, community features, and a commitment to staying 100% free are at the core of this milestone.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- ══ TEAM ══ -->
   <section class="section">
     <div class="container text-center">
@@ -1045,17 +999,21 @@
         <div class="team-card ceo-card-team">
           <div class="team-avatar">MT</div>
           <div class="member-badges">
-            <span class="ceo-role-badge"><i class="fas fa-crown"></i> CEO &amp; Founder</span>
+            <div class="ceo-badges-row">
+              <span class="badge-ceo"><i class="fas fa-bolt"></i> CEO & Founder</span>
+              <span class="badge-vision"><i class="fas fa-eye"></i> Visionary</span>
+              <span class="badge-builder"><i class="fas fa-microchip"></i> Hardware Expert</span>
+            </div>
           </div>
-          <h3>👑 Malaika Tauqeer</h3>
+          <h3>Malaika Tauqeer</h3>
           <p class="team-role">Chief Executive Officer &amp; Founder</p>
-          <p class="team-bio">Embedded systems engineer and educator. Creator of Microcontrollers Hub, with expertise in Arduino, ESP32, PIC, and Raspberry Pi. Drives the vision, content strategy, and platform growth.</p>
+          <p class="team-bio">Embedded systems engineer and educator. Creator of LearnEmbedded, with expertise in Arduino, ESP32, and PIC. Drives the vision, content strategy, and platform growth.</p>
         </div>
 
         <!-- Lead Developer -->
         <div class="team-card">
-          <div class="team-avatar">AH</div>
-          <h3>Ali Hassan</h3>
+          <div class="team-avatar">MJ</div>
+          <h3>Muhammad Bin Javaid</h3>
           <p class="team-role">Lead Developer</p>
           <p class="team-bio">Full-stack developer responsible for building and maintaining the platform's frontend architecture, interactive features, and performance optimization.</p>
         </div>
@@ -1065,7 +1023,7 @@
           <div class="team-avatar">UR</div>
           <h3>Usman Raza</h3>
           <p class="team-role">UI/UX Designer</p>
-          <p class="team-bio">Designs the user experience and visual identity of Microcontrollers Hub — ensuring the platform is intuitive, beautiful, and accessible on every device.</p>
+          <p class="team-bio">Designs the user experience and visual identity of LearnEmbedded — ensuring the platform is intuitive, beautiful, and accessible on every device.</p>
         </div>
 
       </div>
@@ -1077,7 +1035,7 @@
     <div class="container text-center">
       <span class="section-label">Student Voices</span>
       <h2 class="section-title">What Our Learners Say</h2>
-      <p class="section-sub">Real feedback from students who've used Microcontrollers Hub to build their skills.</p>
+      <p class="section-sub">Real feedback from students who've used LearnEmbedded to build their skills.</p>
 
       <div class="testimonials-grid">
 
@@ -1135,7 +1093,7 @@
     <div class="container text-center">
       <span class="section-label">Under the Hood</span>
       <h2 class="section-title">Built With</h2>
-      <p class="section-sub">Microcontrollers Hub is built with reliable, open web technologies — no heavy frameworks, no bloat.</p>
+      <p class="section-sub">LearnEmbedded is built with reliable, open web technologies — no heavy frameworks, no bloat.</p>
 
       <div class="tech-grid">
         <div class="tech-pill">
@@ -1176,7 +1134,7 @@
 
   <!-- ══ FOOTER ══ -->
   <footer class="site-footer">
-    <p>© 2026 <a href="about.html">Malaika Tauqeer</a>. All rights reserved. · <a href="index.html">Microcontrollers Hub</a></p>
+    <p>© 2026 <a href="about.html">Malaika Tauqeer</a> · LearnEmbedded. All rights reserved.</p>
   </footer>
 
   <!-- ══ SCRIPTS ══ -->
