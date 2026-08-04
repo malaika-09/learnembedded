@@ -54,6 +54,9 @@
     [data-theme="dark"] .warn-box { background:#1c0a00; color:#fdba74; }
     .note-box { background:#eff6ff; border-left:3px solid #3b82f6; border-radius:0 6px 6px 0; padding:.65rem .9rem; font-size:.8rem; color:#1e40af; margin:.5rem 0; display:flex; gap:.5rem; align-items:flex-start; }
     [data-theme="dark"] .note-box { background:#0c1a3a; color:#93c5fd; }
+    .sensor-img-wrap { width:64px; height:64px; border-radius:var(--radius-sm); overflow:hidden; flex-shrink:0; border:1px solid var(--border); }
+    .sensor-img-wrap img { width:100%; height:100%; object-fit:cover; display:block; }
+    .sensor-emoji-fallback { font-size:2.5rem; width:64px; height:64px; border-radius:var(--radius-sm); align-items:center; justify-content:center; flex-shrink:0; }
   </style>
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-D660F72PGC"></script>
@@ -98,7 +101,10 @@
   <!-- UART -->
   <div class="sensor-card">
     <div class="sensor-head">
-      <div class="sensor-emoji" style="background:#dbeafe">📡</div>
+      <div class="sensor-img-wrap">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Arduino-uno-perspective-transparent.png/120px-Arduino-uno-perspective-transparent.png" alt="UART Serial" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" loading="lazy" />
+        <div class="sensor-emoji-fallback" style="background:#dbeafe;display:none">📡</div>
+      </div>
       <div><h3>UART / Serial</h3><p>Simplest serial protocol. TX→RX cross-connection. Used for debugging and module communication.</p></div>
     </div>
     <div class="sensor-body">
@@ -156,7 +162,10 @@
   <!-- I2C -->
   <div class="sensor-card">
     <div class="sensor-head">
-      <div class="sensor-emoji" style="background:#e8f5e9">🔗</div>
+      <div class="sensor-img-wrap">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/I2C_controller-target.svg/120px-I2C_controller-target.svg.png" alt="I2C Protocol" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" loading="lazy" />
+        <div class="sensor-emoji-fallback" style="background:#e8f5e9;display:none">🔗</div>
+      </div>
       <div><h3>I2C Protocol</h3><p>2-wire protocol (SDA + SCL). Multiple devices on same bus using unique addresses (0x27, 0x3C etc.).</p></div>
     </div>
     <div class="sensor-body">
@@ -218,7 +227,10 @@
   <!-- SPI -->
   <div class="sensor-card">
     <div class="sensor-head">
-      <div class="sensor-emoji" style="background:#fce4ec">⚡</div>
+      <div class="sensor-img-wrap">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ed/SPI_single_slave.svg/120px-SPI_single_slave.svg.png" alt="SPI Protocol" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" loading="lazy" />
+        <div class="sensor-emoji-fallback" style="background:#fce4ec;display:none">⚡</div>
+      </div>
       <div><h3>SPI Protocol</h3><p>4-wire high-speed protocol. Master-slave architecture. Faster than I2C, used for SD cards and displays.</p></div>
     </div>
     <div class="sensor-body">
@@ -278,7 +290,10 @@
   <!-- HC-05 BLUETOOTH -->
   <div class="sensor-card">
     <div class="sensor-head">
-      <div class="sensor-emoji" style="background:#ede9fe">🔵</div>
+      <div class="sensor-img-wrap">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/HC-05_Bluetooth_Module.jpg/120px-HC-05_Bluetooth_Module.jpg" alt="Bluetooth HC-05" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" loading="lazy" />
+        <div class="sensor-emoji-fallback" style="background:#ede9fe;display:none">🔵</div>
+      </div>
       <div><h3>Bluetooth HC-05</h3><p>Classic Bluetooth module for wireless serial communication up to 10m. Pair with Android app easily.</p></div>
     </div>
     <div class="sensor-body">
@@ -357,7 +372,10 @@
   <!-- ESP32 WIFI -->
   <div class="sensor-card" style="grid-column: 1 / -1;">
     <div class="sensor-head">
-      <div class="sensor-emoji" style="background:#fce4ec">📶</div>
+      <div class="sensor-img-wrap">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/ESP32_Espressif_ESP-WROOM-32_DevKitC_front.jpg/120px-ESP32_Espressif_ESP-WROOM-32_DevKitC_front.jpg" alt="ESP32 WiFi" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" loading="lazy" />
+        <div class="sensor-emoji-fallback" style="background:#fce4ec;display:none">📶</div>
+      </div>
       <div><h3>ESP32 WiFi</h3><p>ESP32 built-in 2.4GHz WiFi. Connect to network, create web server, send HTTP requests, use MQTT for IoT.</p></div>
     </div>
     <div class="sensor-body">

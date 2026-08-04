@@ -54,6 +54,9 @@
     [data-theme="dark"] .warn-box { background:#1c0a00; color:#fdba74; }
     .note-box { background:#eff6ff; border-left:3px solid #3b82f6; border-radius:0 6px 6px 0; padding:.65rem .9rem; font-size:.8rem; color:#1e40af; margin:.5rem 0; display:flex; gap:.5rem; align-items:flex-start; }
     [data-theme="dark"] .note-box { background:#0c1a3a; color:#93c5fd; }
+    .sensor-img-wrap { width:64px; height:64px; border-radius:var(--radius-sm); overflow:hidden; flex-shrink:0; border:1px solid var(--border); }
+    .sensor-img-wrap img { width:100%; height:100%; object-fit:cover; display:block; }
+    .sensor-emoji-fallback { font-size:2.5rem; width:64px; height:64px; border-radius:var(--radius-sm); align-items:center; justify-content:center; flex-shrink:0; }
   </style>
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-D660F72PGC"></script>
@@ -98,7 +101,10 @@
   <!-- IR SENSOR -->
   <div class="sensor-card">
     <div class="sensor-head">
-      <div class="sensor-emoji" style="background:#fef9c3">👁️</div>
+      <div class="sensor-img-wrap">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/IR_Sensor.jpg/120px-IR_Sensor.jpg" alt="IR Sensor" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" loading="lazy" />
+        <div class="sensor-emoji-fallback" style="background:#fef9c3;display:none">👁️</div>
+      </div>
       <div><h3>IR Sensor (FC-51)</h3><p>Detects objects and black/white surfaces using infrared light. Digital output HIGH/LOW.</p></div>
     </div>
     <div class="sensor-body">
@@ -173,7 +179,10 @@
   <!-- ULTRASONIC -->
   <div class="sensor-card">
     <div class="sensor-head">
-      <div class="sensor-emoji" style="background:#dbeafe">📏</div>
+      <div class="sensor-img-wrap">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/HC-SR04_Ultrasonic_Sensor.jpg/120px-HC-SR04_Ultrasonic_Sensor.jpg" alt="Ultrasonic HC-SR04" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" loading="lazy" />
+        <div class="sensor-emoji-fallback" style="background:#dbeafe;display:none">📏</div>
+      </div>
       <div><h3>Ultrasonic HC-SR04</h3><p>Measures distance using sound waves. TRIG sends pulse, ECHO returns time-of-flight.</p></div>
     </div>
     <div class="sensor-body">
@@ -247,7 +256,10 @@
   <!-- DHT11 -->
   <div class="sensor-card">
     <div class="sensor-head">
-      <div class="sensor-emoji" style="background:#d1fae5">🌡️</div>
+      <div class="sensor-img-wrap">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/DHT11_Sensor.jpg/120px-DHT11_Sensor.jpg" alt="DHT11 Sensor" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" loading="lazy" />
+        <div class="sensor-emoji-fallback" style="background:#d1fae5;display:none">🌡️</div>
+      </div>
       <div><h3>DHT11 – Temp &amp; Humidity</h3><p>Digital sensor measuring temperature 0-50°C and humidity 20-90% with single wire protocol.</p></div>
     </div>
     <div class="sensor-body">
@@ -324,7 +336,10 @@
   <!-- PIR -->
   <div class="sensor-card">
     <div class="sensor-head">
-      <div class="sensor-emoji" style="background:#fce4ec">🕵️</div>
+      <div class="sensor-img-wrap">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/PIR_Sensor.jpg/120px-PIR_Sensor.jpg" alt="PIR HC-SR501" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" loading="lazy" />
+        <div class="sensor-emoji-fallback" style="background:#fce4ec;display:none">🕵️</div>
+      </div>
       <div><h3>PIR Motion Sensor (HC-SR501)</h3><p>Detects human/animal movement via infrared radiation. Adjustable sensitivity up to 7m range.</p></div>
     </div>
     <div class="sensor-body">
@@ -399,7 +414,10 @@
   <!-- LDR -->
   <div class="sensor-card">
     <div class="sensor-head">
-      <div class="sensor-emoji" style="background:#fef9c3">☀️</div>
+      <div class="sensor-img-wrap">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/LDR_1480405_6_7_HDR_Enhancer.jpg/120px-LDR_1480405_6_7_HDR_Enhancer.jpg" alt="LDR Light Sensor" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" loading="lazy" />
+        <div class="sensor-emoji-fallback" style="background:#fef9c3;display:none">☀️</div>
+      </div>
       <div><h3>LDR – Light Sensor</h3><p>Resistance decreases with light intensity. Used with voltage divider to read analog light levels.</p></div>
     </div>
     <div class="sensor-body">
@@ -472,7 +490,10 @@
   <!-- MQ-2 -->
   <div class="sensor-card">
     <div class="sensor-head">
-      <div class="sensor-emoji" style="background:#fee2e2">💨</div>
+      <div class="sensor-img-wrap">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/MQ-2_Gas_Sensor.jpg/120px-MQ-2_Gas_Sensor.jpg" alt="MQ-2 Gas Sensor" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" loading="lazy" />
+        <div class="sensor-emoji-fallback" style="background:#fee2e2;display:none">💨</div>
+      </div>
       <div><h3>MQ-2 Gas Sensor</h3><p>Detects LPG, smoke, alcohol, propane. Analog output proportional to gas concentration.</p></div>
     </div>
     <div class="sensor-body">
