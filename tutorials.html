@@ -41,7 +41,15 @@
     [data-theme="dark"] .info-box.tip  { background: #052e16; color: #6ee7b7; }
     [data-theme="dark"] .info-box.warn { background: #451a03; color: #fcd34d; }
     [data-theme="dark"] .info-box.note { background: #1e3a5f; color: #93c5fd; }
-    @media(max-width:900px) { .tut-layout { grid-template-columns: 1fr; } .tut-sidebar { position: static; } }
+    /* YouTube video embed */
+    .video-section { margin: 1.5rem 0; }
+    .video-section h3 { font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; color: #ef4444; margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.4rem; }
+    .video-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 1rem; }
+    .video-wrap { position: relative; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); background: #000; }
+    .video-wrap iframe { width: 100%; height: 220px; border: none; display: block; }
+    .video-label { padding: 0.6rem 0.85rem; background: var(--bg-card); border-top: 1px solid var(--border); font-size: 0.8rem; font-weight: 600; color: var(--text-secondary); display: flex; align-items: center; gap: 0.4rem; }
+    .video-label i { color: #ef4444; }
+    @media(max-width:900px) { .tut-layout { grid-template-columns: 1fr; } .tut-sidebar { position: static; } .video-grid { grid-template-columns: 1fr; } }
   </style>
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-D660F72PGC"></script>
@@ -210,6 +218,22 @@
 <span class="str">LED is ON</span>
 <span class="str">LED is OFF</span></code></pre>
         </div>
+
+        <!-- YouTube Videos -->
+        <div class="video-section">
+          <h3><i class="fab fa-youtube"></i> Watch Video Tutorials</h3>
+          <div class="video-grid">
+            <div class="video-wrap">
+              <iframe src="https://www.youtube.com/embed/fJWR7dBuc18" title="Arduino Getting Started" allowfullscreen loading="lazy"></iframe>
+              <div class="video-label"><i class="fab fa-youtube"></i> Arduino Uno – Complete Beginner Guide</div>
+            </div>
+            <div class="video-wrap">
+              <iframe src="https://www.youtube.com/embed/BtLwoNJ6klE" title="Arduino Tutorial for Beginners" allowfullscreen loading="lazy"></iframe>
+              <div class="video-label"><i class="fab fa-youtube"></i> Arduino Tutorial – First Sketch & IDE</div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
 
@@ -265,6 +289,22 @@
 }</code></pre>
         </div>
         <div class="info-box tip"><i class="fas fa-lightbulb"></i><span><strong>Tip:</strong> Arduino PWM pins are 3, 5, 6, 9, 10, 11. Only these support <code>analogWrite()</code>.</span></div>
+
+        <!-- YouTube Videos -->
+        <div class="video-section">
+          <h3><i class="fab fa-youtube"></i> Watch Video Tutorials</h3>
+          <div class="video-grid">
+            <div class="video-wrap">
+              <iframe src="https://www.youtube.com/embed/nL34zDTPkcs" title="Arduino Digital IO PWM" allowfullscreen loading="lazy"></iframe>
+              <div class="video-label"><i class="fab fa-youtube"></i> Arduino Digital I/O & PWM Explained</div>
+            </div>
+            <div class="video-wrap">
+              <iframe src="https://www.youtube.com/embed/CfdaJ4z4nZw" title="Arduino Analog Read" allowfullscreen loading="lazy"></iframe>
+              <div class="video-label"><i class="fab fa-youtube"></i> Arduino analogRead & Serial Monitor</div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
 
@@ -403,6 +443,22 @@
 <span class="fn">void</span> <span class="fn">loop</span>() {}</code></pre>
         </div>
         </div>
+
+        <!-- YouTube Videos ESP32 -->
+        <div class="video-section">
+          <h3><i class="fab fa-youtube"></i> Watch Video Tutorials</h3>
+          <div class="video-grid">
+            <div class="video-wrap">
+              <iframe src="https://www.youtube.com/embed/xPlN_Tk3VLQ" title="ESP32 WiFi Tutorial" allowfullscreen loading="lazy"></iframe>
+              <div class="video-label"><i class="fab fa-youtube"></i> ESP32 WiFi – Connect & Web Server</div>
+            </div>
+            <div class="video-wrap">
+              <iframe src="https://www.youtube.com/embed/jF6EA7C0_I8" title="ESP32 Getting Started" allowfullscreen loading="lazy"></iframe>
+              <div class="video-label"><i class="fab fa-youtube"></i> ESP32 Complete Beginner Guide</div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
 
@@ -480,6 +536,22 @@
 }</code></pre>
         </div>
         <div class="info-box tip"><i class="fas fa-lightbulb"></i><span><strong>Tip:</strong> In MPLAB X, use the simulator (Debug → Simulate) to test your code without physical hardware. Toggle pins in the Stimulus window.</span></div>
+
+        <!-- YouTube Videos PIC -->
+        <div class="video-section">
+          <h3><i class="fab fa-youtube"></i> Watch Video Tutorials</h3>
+          <div class="video-grid">
+            <div class="video-wrap">
+              <iframe src="https://www.youtube.com/embed/fKLHPSgBSGE" title="PIC Microcontroller Tutorial" allowfullscreen loading="lazy"></iframe>
+              <div class="video-label"><i class="fab fa-youtube"></i> PIC16F877A – MPLAB Setup & First Program</div>
+            </div>
+            <div class="video-wrap">
+              <iframe src="https://www.youtube.com/embed/DBGxHLBFQnk" title="PIC Programming Basics" allowfullscreen loading="lazy"></iframe>
+              <div class="video-label"><i class="fab fa-youtube"></i> PIC Microcontroller Programming in C</div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
 
