@@ -136,26 +136,6 @@
           <text x="202" y="180" text-anchor="middle" fill="#9ca3af" font-size="8" font-family="monospace">Orange</text>
         </svg>
       </div>
-      <div class="pin-diagram-visual">
-<pre>   SG90 Servo (3-wire connector)
-  ┌────────────────────┐
-  │    [Motor Body]    │
-  │    ┌──────────┐    │
-  │    │  [Gear]  │    │  ← Nylon gear system
-  │    └──────────┘    │
-  └────────┬───────────┘
-           │
-     ┌─────┴──────┐
-     │  3-pin JST │
-     └──┬──┬──┬───┘
-        <span class="pin-gnd">Br</span> <span class="pin-vcc">Rd</span> <span class="pin-sig">Or</span>
-        <span class="pin-gnd">G</span>  <span class="pin-vcc">V</span>  <span class="pin-sig">S</span>
-        <span class="pin-gnd">N</span>  <span class="pin-vcc">C</span>  <span class="pin-sig">I</span>
-        <span class="pin-gnd">D</span>  <span class="pin-vcc">C</span>  <span class="pin-sig">G</span>
-  <span class="pin-gnd">■ Brown  = GND</span>  → GND
-  <span class="pin-vcc">■ Red    = VCC</span>  → 5V (external recommended)
-  <span class="pin-sig">■ Orange = SIG</span>  → D9 (PWM ~)</pre>
-      </div>
       <h4><i class="fas fa-table"></i> Full Datasheet</h4>
       <div class="datasheet-grid">
         <div class="ds-item"><span class="dk">Operating Voltage</span><span class="dv">4.8V – 6V DC</span></div>
@@ -236,24 +216,6 @@
           <text x="160" y="162" text-anchor="middle" fill="#6b7280" font-size="8" font-family="monospace">D3  D5  D6  D7  D8  D9</text>
           <text x="160" y="175" text-anchor="middle" fill="#9ca3af" font-size="8" font-family="monospace">Speed — Direction — Speed</text>
         </svg>
-      </div>
-      <div class="pin-diagram-visual">
-<pre>     L298N Driver Module (top view)
-  ┌──────────────────────────┐
-  │  [<span class="pin-vcc">12V</span>] [<span class="pin-vcc">5V</span>] [<span class="pin-gnd">GND</span>]      │  ← Power terminals
-  │  ┌──────────────────┐   │
-  │  │   L298N CHIP     │   │
-  │  └──────────────────┘   │
-  │  [<span class="pin-out">OUT1</span>][<span class="pin-out">OUT2</span>] [<span class="pin-out">OUT3</span>][<span class="pin-out">OUT4</span>]│  ← Motor terminals
-  ├──────────────────────────┤
-  │ <span class="pin-sig">ENA</span> <span class="pin-data">IN1</span> <span class="pin-data">IN2</span> <span class="pin-data">IN3</span> <span class="pin-data">IN4</span> <span class="pin-sig">ENB</span>│  ← Arduino control
-  └──────────────────────────┘
-  <span class="pin-sig">■ ENA</span> → D3(~)  Speed Motor A
-  <span class="pin-data">■ IN1</span> → D5     Direction A
-  <span class="pin-data">■ IN2</span> → D6     Direction A
-  <span class="pin-data">■ IN3</span> → D7     Direction B
-  <span class="pin-data">■ IN4</span> → D8     Direction B
-  <span class="pin-sig">■ ENB</span> → D9(~)  Speed Motor B</pre>
       </div>
       <h4><i class="fas fa-table"></i> Full Datasheet (L298N)</h4>
       <div class="datasheet-grid">
@@ -341,25 +303,6 @@
           <text x="160" y="166" text-anchor="middle" fill="#9ca3af" font-size="8" font-family="monospace">VCC→5V  GND→GND</text>
         </svg>
       </div>
-      <div class="pin-diagram-visual">
-<pre>   ULN2003 Driver Board
-  ┌────────────────────┐
-  │  [Motor Connector] │  ← 5-pin JST to motor
-  │  ┌──────────────┐  │
-  │  │ ULN2003 IC   │  │
-  │  └──────────────┘  │
-  │  [●IN1][●IN2]      │  ← LEDs show step sequence
-  │  [●IN3][●IN4]      │
-  ├────────────────────┤
-  │ <span class="pin-data">IN1</span> <span class="pin-data">IN2</span> <span class="pin-data">IN3</span> <span class="pin-data">IN4</span> │  ← Arduino pins
-  │ <span class="pin-vcc">VCC</span>          <span class="pin-gnd">GND</span> │  ← Power
-  └────────────────────┘
-  <span class="pin-data">■ IN1</span> → D8   Phase 1
-  <span class="pin-data">■ IN2</span> → D9   Phase 2
-  <span class="pin-data">■ IN3</span> → D10  Phase 3
-  <span class="pin-data">■ IN4</span> → D11  Phase 4
-  <span class="pin-vcc">■ VCC</span> → 5V   <span class="pin-gnd">■ GND</span> → GND</pre>
-      </div>
       <h4><i class="fas fa-table"></i> Full Datasheet (28BYJ-48)</h4>
       <div class="datasheet-grid">
         <div class="ds-item"><span class="dk">Voltage</span><span class="dv">5V DC</span></div>
@@ -441,23 +384,6 @@
           <text x="161" y="172" text-anchor="middle" fill="#c03000" font-size="9" font-weight="bold" font-family="monospace">IN</text>
         </svg>
       </div>
-      <div class="pin-diagram-visual">
-<pre>   Relay Module (single channel)
-  ┌──────────────────────┐
-  │  ┌────────────────┐  │
-  │  │  RELAY COIL    │  │  ← electromagnet
-  │  └────────────────┘  │
-  │  [LED] [Diode]       │
-  ├──────────────────────┤
-  │ <span class="pin-vcc">VCC</span>   <span class="pin-gnd">GND</span>   <span class="pin-sig">IN</span>    │  ← Arduino side (low voltage)
-  ├──────────────────────┤
-  │ <span class="pin-out">NO</span>  <span class="pin-data">COM</span>  <span class="pin-out">NC</span>         │  ← AC/DC appliance side
-  └──────────────────────┘
-  <span class="pin-vcc">■ VCC</span> → 5V       <span class="pin-gnd">■ GND</span>  → GND
-  <span class="pin-sig">■ IN</span>  → D7       (LOW = relay ON)
-  <span class="pin-data">■ COM</span> = Common   <span class="pin-out">■ NO</span>   = Normally Open
-  <span class="pin-out">■ NC</span>  = Normally Closed</pre>
-      </div>
       <h4><i class="fas fa-table"></i> Full Datasheet</h4>
       <div class="datasheet-grid">
         <div class="ds-item"><span class="dk">Coil Voltage</span><span class="dv">5V DC</span></div>
@@ -533,22 +459,6 @@
           <text x="207" y="180" text-anchor="middle" fill="#9ca3af" font-size="8" font-family="monospace">GND</text>
           <text x="160" y="155" text-anchor="middle" fill="#6b7280" font-size="8" font-family="monospace">Longer leg = (+)</text>
         </svg>
-      </div>
-      <div class="pin-diagram-visual">
-<pre>   Active Buzzer (bottom view)
-      ┌───────┐
-      │ ( + ) │  ← longer leg or marked +
-      │       │
-      │ ( - ) │  ← shorter leg or marked -
-      └───────┘
-       │     │
-       <span class="pin-vcc">+</span>     <span class="pin-gnd">-</span>
-       │     │
-      <span class="pin-vcc">D8</span>   <span class="pin-gnd">GND</span>
-
-  Active type: Sound on  → write HIGH
-               Sound off → write LOW
-  Passive type: Use tone(pin, freq, duration)</pre>
       </div>
       <h4><i class="fas fa-table"></i> Full Datasheet (Active Buzzer)</h4>
       <div class="datasheet-grid">

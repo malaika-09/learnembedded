@@ -249,19 +249,6 @@
           <text x="192" y="180" text-anchor="middle" fill="#9ca3af" font-size="8" font-family="monospace">4</text>
         </svg>
       </div>
-      <div class="pin-diagram-visual">
-<pre>       HC-SR04
-  ┌─────────────────┐
-  │  [TX]    [RX]   │  ← Ultrasonic transducers
-  ├─────────────────┤
-  │ <span class="pin-vcc">VCC</span> <span class="pin-sig">TRIG</span> <span class="pin-data">ECHO</span> <span class="pin-gnd">GND</span> │
-  │  <span class="pin-vcc">1</span>    <span class="pin-sig">2</span>    <span class="pin-data">3</span>   <span class="pin-gnd">4</span>  │
-  └─────────────────┘
-  <span class="pin-vcc">■ Pin 1 VCC</span>  → 5V
-  <span class="pin-sig">■ Pin 2 TRIG</span> → D9 (trigger pulse)
-  <span class="pin-data">■ Pin 3 ECHO</span> → D10 (measure time)
-  <span class="pin-gnd">■ Pin 4 GND</span>  → GND</pre>
-      </div>
       <h4><i class="fas fa-table"></i> Full Datasheet</h4>
       <div class="datasheet-grid">
         <div class="ds-item"><span class="dk">Supply Voltage</span><span class="dv">5V DC</span></div>
@@ -356,21 +343,6 @@
           <text x="214" y="180" text-anchor="middle" fill="#9ca3af" font-size="8" font-family="monospace">4</text>
         </svg>
       </div>
-      <div class="pin-diagram-visual">
-<pre>  DHT11 (front view — grid side facing you)
-  ┌────────────┐
-  │  ░░░░░░░  │  ← sensing mesh grid
-  │            │
-  └──┬──┬──┬──┘
-     <span class="pin-vcc">1</span>  <span class="pin-data">2</span>  <span class="pin-gnd">3</span>  <span class="pin-gnd">4</span>
-     <span class="pin-vcc">V</span>  <span class="pin-data">D</span>  <span class="pin-gnd">N</span>  <span class="pin-gnd">G</span>
-     <span class="pin-vcc">C</span>  <span class="pin-data">A</span>  <span class="pin-gnd">C</span>  <span class="pin-gnd">N</span>
-     <span class="pin-vcc">C</span>  <span class="pin-data">T</span>     <span class="pin-gnd">D</span>
-  <span class="pin-vcc">■ Pin 1 VCC</span>  → 5V
-  <span class="pin-data">■ Pin 2 DATA</span> → D2 + 10kΩ pullup to VCC
-  <span class="pin-gnd">■ Pin 3 NC</span>   → Leave floating
-  <span class="pin-gnd">■ Pin 4 GND</span>  → GND</pre>
-      </div>
       <h4><i class="fas fa-table"></i> Full Datasheet</h4>
       <div class="datasheet-grid">
         <div class="ds-item"><span class="dk">Supply Voltage</span><span class="dv">3.3V – 5.5V DC</span></div>
@@ -460,20 +432,6 @@
           <text x="205" y="180" text-anchor="middle" fill="#9ca3af" font-size="8" font-family="monospace">3</text>
         </svg>
       </div>
-      <div class="pin-diagram-visual">
-<pre>    HC-SR501 (back view — PCB side)
-  ┌──────────────────┐
-  │    [DOME LENS]   │  ← white fresnel dome
-  ├──────────────────┤
-  │ [Sensitivity] [Time] │  ← blue trimpots
-  ├──────────────────┤
-  │  <span class="pin-vcc">VCC</span>   <span class="pin-out">OUT</span>   <span class="pin-gnd">GND</span>  │
-  │   <span class="pin-vcc">1</span>     <span class="pin-out">2</span>     <span class="pin-gnd">3</span>   │
-  └──────────────────┘
-  <span class="pin-vcc">■ Pin 1 VCC</span> → 5V (or up to 20V)
-  <span class="pin-out">■ Pin 2 OUT</span> → D3 (digital input)
-  <span class="pin-gnd">■ Pin 3 GND</span> → GND</pre>
-      </div>
       <h4><i class="fas fa-table"></i> Full Datasheet</h4>
       <div class="datasheet-grid">
         <div class="ds-item"><span class="dk">Supply Voltage</span><span class="dv">4.5V – 20V DC</span></div>
@@ -559,19 +517,6 @@
           <text x="225" y="180" text-anchor="middle" fill="#9ca3af" font-size="8" font-family="monospace">→A0</text>
           <text x="160" y="175" text-anchor="middle" fill="#6b7280" font-size="8" font-family="monospace">No polarity</text>
         </svg>
-      </div>
-      <div class="pin-diagram-visual">
-<pre>  LDR has NO polarity — either leg connects either way
-
-  Voltage Divider Circuit:
-  <span class="pin-vcc">5V</span> ───┬──── <span class="pin-sig">LDR</span> ────┬──── <span class="pin-out">A0 (Arduino)</span>
-        │              │
-        │           <span class="pin-data">10 kΩ</span>
-        │              │
-       <span class="pin-gnd">GND</span> ───────────┘
-
-  As light increases → LDR resistance drops
-  → Voltage at A0 rises → analogRead increases</pre>
       </div>
       <h4><i class="fas fa-table"></i> Full Datasheet</h4>
       <div class="datasheet-grid">
@@ -666,23 +611,6 @@
           <text x="160" y="180" text-anchor="middle" fill="#9ca3af" font-size="8" font-family="monospace">3</text>
           <text x="196" y="180" text-anchor="middle" fill="#9ca3af" font-size="8" font-family="monospace">4</text>
         </svg>
-      </div>
-      <div class="pin-diagram-visual">
-<pre>     MQ-2 Module (top view)
-  ┌────────────────┐
-  │   [○ Sensor ○] │  ← metal cap with coil inside
-  │   ┌──────────┐ │
-  │   │  [COIL]  │ │  ← heating element (gets HOT)
-  │   └──────────┘ │
-  │   [Blue Pot]   │  ← D0 threshold adjustment
-  ├────────────────┤
-  │ <span class="pin-vcc">VCC</span> <span class="pin-gnd">GND</span> <span class="pin-out">A0</span>  <span class="pin-sig">D0</span> │
-  │  <span class="pin-vcc">1</span>   <span class="pin-gnd">2</span>   <span class="pin-out">3</span>   <span class="pin-sig">4</span>  │
-  └────────────────┘
-  <span class="pin-vcc">■ Pin 1 VCC</span> → 5V
-  <span class="pin-gnd">■ Pin 2 GND</span> → GND
-  <span class="pin-out">■ Pin 3 A0</span>  → A0 (analogRead for level)
-  <span class="pin-sig">■ Pin 4 D0</span>  → D7 (digitalRead for alarm)</pre>
       </div>
       <h4><i class="fas fa-table"></i> Full Datasheet</h4>
       <div class="datasheet-grid">

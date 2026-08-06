@@ -139,23 +139,6 @@
           <text x="160" y="148" text-anchor="middle" fill="#6b7280" font-size="8" font-family="monospace">Baud: 9600, 115200 | SoftwareSerial: any 2 pins</text>
         </svg>
       </div>
-      <div class="pin-diagram-visual">
-<pre>  UART Cross-Connection (TX → RX, RX ← TX)
-
-  Arduino Uno          External Module
-  ┌──────────┐         ┌──────────┐
-  │       <span class="pin-sig">TX</span> │────────→│ <span class="pin-data">RX</span>       │
-  │  D0   <span class="pin-data">RX</span> │←────────│ <span class="pin-sig">TX</span>       │
-  │      <span class="pin-gnd">GND</span> │─────────│ <span class="pin-gnd">GND</span>      │
-  │       <span class="pin-vcc">5V</span> │─────────│ <span class="pin-vcc">VCC</span>      │
-  └──────────┘         └──────────┘
-
-  Hardware UART: D0(RX), D1(TX) — shared with USB!
-  SoftwareSerial: any 2 digital pins (e.g. D10, D11)
-
-  Baud rates: 300, 1200, 2400, 4800, 9600,
-              19200, 38400, 57600, 115200, 230400</pre>
-      </div>
       <h4><i class="fas fa-plug"></i> HC-05 Bluetooth via SoftwareSerial</h4>
       <table class="pin-table">
         <thead><tr><th>Arduino Pin</th><th>HC-05 Pin</th><th>Notes</th></tr></thead>
@@ -230,23 +213,6 @@
           <text x="160" y="145" text-anchor="middle" fill="#374151" font-size="9" font-family="monospace">All devices share SDA + SCL + GND + VCC</text>
           <text x="160" y="158" text-anchor="middle" fill="#9ca3af" font-size="8" font-family="monospace">Pullup 4.7kΩ required on SDA &amp; SCL</text>
         </svg>
-      </div>
-      <div class="pin-diagram-visual">
-<pre>  I2C Bus — Multiple Devices on 2 Wires
-
-  Arduino         Device 1         Device 2
-  ┌──────┐        ┌───────┐        ┌───────┐
-  │  <span class="pin-data">SDA</span> │────────│ <span class="pin-data">SDA</span>   │────────│ <span class="pin-data">SDA</span>   │
-  │  <span class="pin-sig">SCL</span> │────────│ <span class="pin-sig">SCL</span>   │────────│ <span class="pin-sig">SCL</span>   │
-  │  <span class="pin-vcc">VCC</span> │────────│ <span class="pin-vcc">VCC</span>   │────────│ <span class="pin-vcc">VCC</span>   │
-  │  <span class="pin-gnd">GND</span> │────────│ <span class="pin-gnd">GND</span>   │────────│ <span class="pin-gnd">GND</span>   │
-  └──────┘        └───────┘        └───────┘
-         │                │
-       <span class="pin-out">4.7kΩ</span>           <span class="pin-out">4.7kΩ</span>   ← pullup resistors to VCC
-         │                │             (required!)
-        <span class="pin-vcc">VCC</span>             <span class="pin-vcc">VCC</span>
-
-  Speeds: Standard 100 kHz | Fast 400 kHz | Fast+ 1 MHz</pre>
       </div>
       <h4><i class="fas fa-plug"></i> Pin Connection Table</h4>
       <table class="pin-table">
@@ -323,21 +289,6 @@
           <text x="160" y="150" text-anchor="middle" fill="#9ca3af" font-size="8" font-family="monospace">Each slave needs own CS pin</text>
         </svg>
       </div>
-      <div class="pin-diagram-visual">
-<pre>  SPI Bus — Master-Slave Architecture
-
-       Arduino (Master)
-       ┌────────────┐
-       │ <span class="pin-sig">MOSI</span> D11   │──────────────────────────→ Device MOSI
-       │ <span class="pin-data">MISO</span> D12   │←────────────────────────── Device MISO
-       │ <span class="pin-out">SCK</span>  D13   │──────────────────────────→ Device SCK
-       │ <span class="pin-vcc">CS</span>   D10   │──────────────────────────→ Device CS (LOW=active)
-       │ <span class="pin-gnd">GND</span>        │──────────────────────────→ Device GND
-       └────────────┘
-  Each SPI device needs its own CS pin!
-  Multiple devices share MOSI, MISO, SCK but NOT CS.
-  Full-duplex: data flows in both directions simultaneously.</pre>
-      </div>
       <h4><i class="fas fa-plug"></i> Pin Connection Table</h4>
       <table class="pin-table">
         <thead><tr><th>SPI Signal</th><th>Arduino Uno</th><th>Arduino Mega</th><th>ESP32</th></tr></thead>
@@ -409,24 +360,6 @@
           <text x="206" y="162" text-anchor="middle" fill="#7c3aed" font-size="7" font-weight="bold" font-family="monospace">ST</text>
           <text x="241" y="162" text-anchor="middle" fill="#d97706" font-size="7" font-weight="bold" font-family="monospace">EN</text>
         </svg>
-      </div>
-      <div class="pin-diagram-visual">
-<pre>   HC-05 Module (6-pin version)
-  ┌──────────────────────────┐
-  │  [ANT]  Bluetooth 2.0   │  ← antenna
-  │  ┌────────────────────┐  │
-  │  │    HC-05 MODULE    │  │
-  │  └────────────────────┘  │
-  │  [STATUS LED]            │  ← blinks when unpaired
-  ├──────────────────────────┤
-  │ <span class="pin-vcc">VCC</span> <span class="pin-gnd">GND</span> <span class="pin-sig">TX</span> <span class="pin-data">RX</span> <span class="pin-out">ST</span> <span class="pin-out">EN</span>    │
-  └──────────────────────────┘
-  <span class="pin-vcc">■ VCC</span>   → 5V
-  <span class="pin-gnd">■ GND</span>   → GND
-  <span class="pin-sig">■ TX</span>    → D10 (SoftwareSerial RX) — direct 3.3V out
-  <span class="pin-data">■ RX</span>    → D11 via voltage divider  — 3.3V max!
-  <span class="pin-out">■ STATE</span> → optional D4 (HIGH=connected)
-  <span class="pin-out">■ EN/KEY</span>→ optional D5 (HIGH=AT cmd mode)</pre>
       </div>
       <h4><i class="fas fa-table"></i> Full Datasheet (HC-05)</h4>
       <div class="datasheet-grid">
@@ -531,25 +464,6 @@
           <rect x="210" y="90" width="20" height="6" fill="#60a5fa" rx="1"/>
           <text x="234" y="96" fill="#60a5fa" font-size="6" font-family="monospace">IO19(MISO)</text>
         </svg>
-      </div>
-      <div class="pin-diagram-visual">
-<pre>  ESP32 DevKit v1 (38-pin layout — top view)
-
-  ┌─────────────────────────────────┐
-  │  [USB]      ESP32 DevKit       │
-  │              ┌────────┐        │
-  │              │  WiFi  │ ←BT    │  ← RF module
-  │              │  + BT  │        │
-  │              └────────┘        │
-  │                                │
-  │  <span class="pin-vcc">3V3</span> ○                   ○ <span class="pin-vcc">VIN</span>  │  ← 5V in / 3.3V out
-  │  <span class="pin-gnd">GND</span> ○                   ○ <span class="pin-gnd">GND</span>  │
-  │  <span class="pin-sig">IO4</span> ○  DHT11 data        ○ <span class="pin-sig">IO0</span>  │
-  │ <span class="pin-data">IO21</span> ○  I2C SDA           ○ <span class="pin-sig">IO2</span>  │  ← built-in LED
-  │ <span class="pin-data">IO22</span> ○  I2C SCL           ○ <span class="pin-out">IO26</span>  │
-  │  <span class="pin-sig">IO1</span> ○  UART TX (USB)     ○ <span class="pin-out">IO34</span>  │  ← input only
-  │  <span class="pin-sig">IO3</span> ○  UART RX (USB)     ○ <span class="pin-out">IO35</span>  │  ← input only
-  └─────────────────────────────────┘</pre>
       </div>
       <h4><i class="fas fa-table"></i> Full Datasheet (ESP32 WiFi)</h4>
       <div class="datasheet-grid">
