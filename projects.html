@@ -110,10 +110,37 @@
       </div>
 
       <h3><i class="fas fa-sitemap"></i> Circuit Diagram</h3>
-      <div class="circuit-placeholder">
-        <span style="position:relative;font-size:1.5rem">💡</span>
-        <span style="position:relative">Arduino Pin 13 → 220Ω Resistor → LED Anode → LED Cathode → GND</span>
-        <span style="position:relative;font-size:0.78rem;opacity:0.7">[ Connect longer leg (+) of LED to resistor, shorter leg (-) to GND ]</span>
+      <div style="background:#0f172a;border-radius:var(--radius);padding:1rem;margin:.5rem 0;">
+        <svg viewBox="0 0 500 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-height:200px;">
+          <rect width="500" height="200" fill="#0f172a" rx="8"/>
+          <!-- Arduino board -->
+          <rect x="20" y="60" width="100" height="80" fill="#1a4a8a" rx="6"/>
+          <text x="70" y="85" text-anchor="middle" fill="white" font-size="10" font-weight="bold" font-family="monospace">ARDUINO</text>
+          <text x="70" y="100" text-anchor="middle" fill="#93c5fd" font-size="8" font-family="monospace">UNO</text>
+          <text x="70" y="115" text-anchor="middle" fill="#fbbf24" font-size="8" font-family="monospace">Pin 13</text>
+          <text x="70" y="130" text-anchor="middle" fill="#9ca3af" font-size="8" font-family="monospace">GND</text>
+          <!-- Wire from Pin13 -->
+          <line x1="120" y1="115" x2="200" y2="115" stroke="#fbbf24" stroke-width="2.5"/>
+          <!-- Resistor 220Ω -->
+          <rect x="200" y="108" width="50" height="14" fill="#1e293b" stroke="#fbbf24" stroke-width="1.5" rx="3"/>
+          <text x="225" y="119" text-anchor="middle" fill="#fbbf24" font-size="8" font-family="monospace">220Ω</text>
+          <!-- Wire to LED -->
+          <line x1="250" y1="115" x2="320" y2="115" stroke="#fbbf24" stroke-width="2.5"/>
+          <!-- LED -->
+          <polygon points="320,105 320,125 345,115" fill="#ef4444" stroke="#ef4444" stroke-width="1"/>
+          <line x1="345" y1="105" x2="345" y2="125" stroke="#ef4444" stroke-width="2.5"/>
+          <text x="332" y="140" text-anchor="middle" fill="#ef4444" font-size="9" font-weight="bold" font-family="monospace">LED</text>
+          <text x="320" y="95" text-anchor="middle" fill="#9ca3af" font-size="7" font-family="monospace">Anode(+)</text>
+          <text x="345" y="95" text-anchor="middle" fill="#9ca3af" font-size="7" font-family="monospace">Cathode(-)</text>
+          <!-- Wire down from cathode -->
+          <line x1="345" y1="125" x2="345" y2="160" stroke="#86efac" stroke-width="2.5"/>
+          <!-- GND line -->
+          <line x1="70" y1="130" x2="70" y2="160" stroke="#86efac" stroke-width="2.5"/>
+          <line x1="70" y1="160" x2="345" y2="160" stroke="#86efac" stroke-width="2.5"/>
+          <text x="207" y="175" text-anchor="middle" fill="#86efac" font-size="9" font-weight="bold" font-family="monospace">GND (Common)</text>
+          <!-- Labels -->
+          <text x="225" y="95" text-anchor="middle" fill="#fbbf24" font-size="8" font-family="monospace">220Ω Resistor</text>
+        </svg>
       </div>
 
       <h3><i class="fas fa-code"></i> Arduino Code</h3>
@@ -181,10 +208,38 @@
       </div>
 
       <h3><i class="fas fa-sitemap"></i> Circuit Diagram</h3>
-      <div class="circuit-placeholder">
-        <span style="position:relative;font-size:1.5rem">🤖</span>
-        <span style="position:relative">IR Left → D2 | IR Right → D3 | L298N IN1→D5 IN2→D6 IN3→D9 IN4→D10</span>
-        <span style="position:relative;font-size:0.78rem;opacity:0.7">[ L298N 12V from battery · 5V from Arduino · GND common ]</span>
+      <div style="background:#0f172a;border-radius:var(--radius);padding:1rem;margin:.5rem 0;">
+        <svg viewBox="0 0 500 220" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-height:220px;">
+          <rect width="500" height="220" fill="#0f172a" rx="8"/>
+          <!-- Arduino -->
+          <rect x="10" y="70" width="90" height="80" fill="#1a4a8a" rx="5"/>
+          <text x="55" y="95" text-anchor="middle" fill="white" font-size="9" font-weight="bold" font-family="monospace">ARDUINO</text>
+          <text x="55" y="108" text-anchor="middle" fill="#fbbf24" font-size="7" font-family="monospace">D5 D6 D9 D10</text>
+          <text x="55" y="120" text-anchor="middle" fill="#86efac" font-size="7" font-family="monospace">D2 (IR Left)</text>
+          <text x="55" y="132" text-anchor="middle" fill="#f87171" font-size="7" font-family="monospace">D3 (IR Right)</text>
+          <!-- L298N Motor Driver -->
+          <rect x="180" y="50" width="90" height="100" fill="#1a5a1a" rx="5"/>
+          <text x="225" y="75" text-anchor="middle" fill="white" font-size="9" font-weight="bold" font-family="monospace">L298N</text>
+          <text x="225" y="90" text-anchor="middle" fill="#86efac" font-size="7" font-family="monospace">IN1 IN2</text>
+          <text x="225" y="103" text-anchor="middle" fill="#86efac" font-size="7" font-family="monospace">IN3 IN4</text>
+          <text x="225" y="116" text-anchor="middle" fill="#fbbf24" font-size="7" font-family="monospace">Motor A</text>
+          <text x="225" y="129" text-anchor="middle" fill="#fbbf24" font-size="7" font-family="monospace">Motor B</text>
+          <!-- IR Sensors -->
+          <rect x="350" y="30" width="80" height="35" fill="#4a1a1a" rx="4"/>
+          <text x="390" y="48" text-anchor="middle" fill="#f87171" font-size="8" font-weight="bold" font-family="monospace">IR LEFT</text>
+          <rect x="350" y="75" width="80" height="35" fill="#4a1a1a" rx="4"/>
+          <text x="390" y="93" text-anchor="middle" fill="#f87171" font-size="8" font-weight="bold" font-family="monospace">IR RIGHT</text>
+          <!-- Motors -->
+          <ellipse cx="420" cy="145" rx="28" ry="18" fill="#333" stroke="#fbbf24" stroke-width="2"/>
+          <text x="420" y="149" text-anchor="middle" fill="#fbbf24" font-size="7" font-family="monospace">MOTORS</text>
+          <!-- Wires -->
+          <line x1="100" y1="108" x2="180" y2="90" stroke="#fbbf24" stroke-width="1.5" stroke-dasharray="4,2"/>
+          <line x1="100" y1="120" x2="350" y2="48" stroke="#86efac" stroke-width="1.5" stroke-dasharray="4,2"/>
+          <line x1="100" y1="132" x2="350" y2="93" stroke="#f87171" stroke-width="1.5" stroke-dasharray="4,2"/>
+          <line x1="270" y1="116" x2="390" y2="145" stroke="#fbbf24" stroke-width="1.5" stroke-dasharray="4,2"/>
+          <!-- Labels -->
+          <text x="250" y="205" text-anchor="middle" fill="#9ca3af" font-size="8" font-family="monospace">Arduino D2/D3→IR Sensors | D5,D6,D9,D10→L298N | L298N→Motors</text>
+        </svg>
       </div>
 
       <h3><i class="fas fa-code"></i> Arduino Code</h3>
@@ -264,10 +319,41 @@
       </div>
 
       <h3><i class="fas fa-sitemap"></i> Circuit Diagram</h3>
-      <div class="circuit-placeholder">
-        <span style="position:relative;font-size:1.5rem">📱</span>
-        <span style="position:relative">HC-05 TX→D10 RX→D11(via divider) VCC→5V GND→GND</span>
-        <span style="position:relative;font-size:0.78rem;opacity:0.7">[ Use voltage divider on HC-05 RX: 1kΩ + 2kΩ to convert 5V→3.3V ]</span>
+      <div style="background:#0f172a;border-radius:var(--radius);padding:1rem;margin:.5rem 0;">
+        <svg viewBox="0 0 500 210" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-height:210px;">
+          <rect width="500" height="210" fill="#0f172a" rx="8"/>
+          <!-- Arduino -->
+          <rect x="10" y="65" width="90" height="90" fill="#1a4a8a" rx="5"/>
+          <text x="55" y="88" text-anchor="middle" fill="white" font-size="9" font-weight="bold" font-family="monospace">ARDUINO</text>
+          <text x="55" y="103" text-anchor="middle" fill="#fbbf24" font-size="7" font-family="monospace">D10,D11 (SS TX)</text>
+          <text x="55" y="116" text-anchor="middle" fill="#86efac" font-size="7" font-family="monospace">D5,D6 (IN1,IN2)</text>
+          <text x="55" y="129" text-anchor="middle" fill="#f87171" font-size="7" font-family="monospace">D9,D10 (IN3,IN4)</text>
+          <text x="55" y="142" text-anchor="middle" fill="#9ca3af" font-size="7" font-family="monospace">GND / 5V</text>
+          <!-- HC-05 Bluetooth -->
+          <rect x="180" y="30" width="90" height="60" fill="#1a1a6a" rx="5"/>
+          <text x="225" y="50" text-anchor="middle" fill="white" font-size="9" font-weight="bold" font-family="monospace">HC-05</text>
+          <text x="225" y="65" text-anchor="middle" fill="#93c5fd" font-size="7" font-family="monospace">Bluetooth</text>
+          <text x="225" y="80" text-anchor="middle" fill="#9ca3af" font-size="7" font-family="monospace">TX RX VCC GND</text>
+          <!-- L298N -->
+          <rect x="180" y="110" width="90" height="70" fill="#1a5a1a" rx="5"/>
+          <text x="225" y="133" text-anchor="middle" fill="white" font-size="9" font-weight="bold" font-family="monospace">L298N</text>
+          <text x="225" y="148" text-anchor="middle" fill="#fbbf24" font-size="7" font-family="monospace">IN1-IN4</text>
+          <text x="225" y="161" text-anchor="middle" fill="#86efac" font-size="7" font-family="monospace">Motor A+B</text>
+          <!-- Motors -->
+          <ellipse cx="390" cy="145" rx="35" ry="20" fill="#333" stroke="#fbbf24" stroke-width="2"/>
+          <text x="390" y="149" text-anchor="middle" fill="#fbbf24" font-size="8" font-family="monospace">4x DC MOTORS</text>
+          <!-- Phone -->
+          <rect x="390" y="30" width="55" height="75" fill="#333" rx="8" stroke="#9ca3af" stroke-width="1.5"/>
+          <text x="417" y="60" text-anchor="middle" fill="white" font-size="8" font-weight="bold" font-family="monospace">📱</text>
+          <text x="417" y="75" text-anchor="middle" fill="#93c5fd" font-size="7" font-family="monospace">Android</text>
+          <text x="417" y="88" text-anchor="middle" fill="#9ca3af" font-size="7" font-family="monospace">BT App</text>
+          <!-- Wires -->
+          <line x1="100" y1="103" x2="180" y2="60" stroke="#93c5fd" stroke-width="1.5" stroke-dasharray="4,2"/>
+          <line x1="100" y1="116" x2="180" y2="148" stroke="#86efac" stroke-width="1.5" stroke-dasharray="4,2"/>
+          <line x1="270" y1="145" x2="353" y2="145" stroke="#fbbf24" stroke-width="1.5" stroke-dasharray="4,2"/>
+          <line x1="270" y1="60" x2="387" y2="60" stroke="#f87171" stroke-width="1.5" stroke-dasharray="3,3"/>
+          <text x="250" y="200" text-anchor="middle" fill="#9ca3af" font-size="8" font-family="monospace">HC-05 TX→D10 RX→D11 | L298N IN1-4→D5,D6,D9,D10</text>
+        </svg>
       </div>
 
       <h3><i class="fas fa-code"></i> Arduino Code</h3>
@@ -347,10 +433,44 @@
       </div>
 
       <h3><i class="fas fa-sitemap"></i> Circuit Diagram</h3>
-      <div class="circuit-placeholder">
-        <span style="position:relative;font-size:1.5rem">🏠</span>
-        <span style="position:relative">Relay IN1→GPIO26 IN2→GPIO27 IN3→GPIO14 IN4→GPIO12 | DHT11→GPIO4</span>
-        <span style="position:relative;font-size:0.78rem;opacity:0.7">[ Relay VCC→5V · GND→GND · ESP32 GPIO are 3.3V, use optocoupler relay module ]</span>
+      <div style="background:#0f172a;border-radius:var(--radius);padding:1rem;margin:.5rem 0;">
+        <svg viewBox="0 0 500 210" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-height:210px;">
+          <rect width="500" height="210" fill="#0f172a" rx="8"/>
+          <!-- ESP32 -->
+          <rect x="10" y="50" width="100" height="110" fill="#4a1a1a" rx="5"/>
+          <text x="60" y="73" text-anchor="middle" fill="white" font-size="9" font-weight="bold" font-family="monospace">ESP32</text>
+          <text x="60" y="88" text-anchor="middle" fill="#f87171" font-size="7" font-family="monospace">GPIO26 Relay1</text>
+          <text x="60" y="101" text-anchor="middle" fill="#fca5a5" font-size="7" font-family="monospace">GPIO27 Relay2</text>
+          <text x="60" y="114" text-anchor="middle" fill="#fbbf24" font-size="7" font-family="monospace">GPIO4 DHT11</text>
+          <text x="60" y="127" text-anchor="middle" fill="#86efac" font-size="7" font-family="monospace">WiFi 2.4GHz</text>
+          <text x="60" y="140" text-anchor="middle" fill="#9ca3af" font-size="7" font-family="monospace">VCC / GND</text>
+          <!-- Relay Module -->
+          <rect x="180" y="40" width="90" height="80" fill="#2a1a5a" rx="5"/>
+          <text x="225" y="63" text-anchor="middle" fill="white" font-size="9" font-weight="bold" font-family="monospace">RELAY x4</text>
+          <text x="225" y="78" text-anchor="middle" fill="#c084fc" font-size="7" font-family="monospace">IN1 IN2 IN3 IN4</text>
+          <text x="225" y="93" text-anchor="middle" fill="#fbbf24" font-size="7" font-family="monospace">NO COM NC</text>
+          <text x="225" y="108" text-anchor="middle" fill="#f87171" font-size="7" font-family="monospace">230V AC Load</text>
+          <!-- DHT11 -->
+          <rect x="180" y="140" width="70" height="50" fill="#1a5a1a" rx="5"/>
+          <text x="215" y="162" text-anchor="middle" fill="white" font-size="8" font-weight="bold" font-family="monospace">DHT11</text>
+          <text x="215" y="178" text-anchor="middle" fill="#86efac" font-size="7" font-family="monospace">Temp+Humidity</text>
+          <!-- Appliances -->
+          <rect x="350" y="40" width="70" height="35" fill="#333" rx="4" stroke="#fbbf24" stroke-width="1.5"/>
+          <text x="385" y="62" text-anchor="middle" fill="#fbbf24" font-size="8" font-family="monospace">💡 LIGHT</text>
+          <rect x="350" y="85" width="70" height="35" fill="#333" rx="4" stroke="#f87171" stroke-width="1.5"/>
+          <text x="385" y="107" text-anchor="middle" fill="#f87171" font-size="8" font-family="monospace">💨 FAN</text>
+          <!-- Phone WiFi -->
+          <rect x="360" y="140" width="55" height="60" fill="#333" rx="6" stroke="#86efac" stroke-width="1.5"/>
+          <text x="387" y="165" text-anchor="middle" fill="white" font-size="9" font-family="monospace">📱</text>
+          <text x="387" y="180" text-anchor="middle" fill="#86efac" font-size="7" font-family="monospace">Web Browser</text>
+          <text x="387" y="192" text-anchor="middle" fill="#9ca3af" font-size="6" font-family="monospace">WiFi Control</text>
+          <!-- Wires -->
+          <line x1="110" y1="88" x2="180" y2="78" stroke="#f87171" stroke-width="1.5" stroke-dasharray="4,2"/>
+          <line x1="110" y1="114" x2="180" y2="163" stroke="#fbbf24" stroke-width="1.5" stroke-dasharray="4,2"/>
+          <line x1="270" y1="78" x2="350" y2="58" stroke="#fbbf24" stroke-width="1.5" stroke-dasharray="4,2"/>
+          <line x1="270" y1="93" x2="350" y2="103" stroke="#f87171" stroke-width="1.5" stroke-dasharray="4,2"/>
+          <text x="250" y="205" text-anchor="middle" fill="#9ca3af" font-size="7" font-family="monospace">ESP32 GPIO→Relay IN pins | Relay NO/COM→AC Appliances | DHT11→GPIO4</text>
+        </svg>
       </div>
 
       <h3><i class="fas fa-code"></i> ESP32 Code (Arduino IDE)</h3>
@@ -454,9 +574,38 @@
       </div>
 
       <h3><i class="fas fa-sitemap"></i> Circuit Diagram</h3>
-      <div class="circuit-placeholder">
-        <span style="position:relative;font-size:1.5rem">🌡️</span>
-        <span style="position:relative">DHT11 DATA → D2 | LCD I2C SDA → A4 SCL → A5 | Buzzer → D8</span>
+      <div style="background:#0f172a;border-radius:var(--radius);padding:1rem;margin:.5rem 0;">
+        <svg viewBox="0 0 500 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-height:200px;">
+          <rect width="500" height="200" fill="#0f172a" rx="8"/>
+          <!-- Arduino -->
+          <rect x="10" y="60" width="90" height="90" fill="#1a4a8a" rx="5"/>
+          <text x="55" y="83" text-anchor="middle" fill="white" font-size="9" font-weight="bold" font-family="monospace">ARDUINO</text>
+          <text x="55" y="98" text-anchor="middle" fill="#fbbf24" font-size="7" font-family="monospace">D2 (DHT11)</text>
+          <text x="55" y="111" text-anchor="middle" fill="#86efac" font-size="7" font-family="monospace">A4 SDA (LCD)</text>
+          <text x="55" y="124" text-anchor="middle" fill="#93c5fd" font-size="7" font-family="monospace">A5 SCL (LCD)</text>
+          <text x="55" y="137" text-anchor="middle" fill="#f87171" font-size="7" font-family="monospace">D8 (Buzzer)</text>
+          <!-- DHT11 -->
+          <rect x="185" y="30" width="75" height="55" fill="#1a5a1a" rx="5"/>
+          <text x="222" y="52" text-anchor="middle" fill="white" font-size="9" font-weight="bold" font-family="monospace">DHT11</text>
+          <text x="222" y="67" text-anchor="middle" fill="#86efac" font-size="7" font-family="monospace">Temp+Humidity</text>
+          <text x="222" y="79" text-anchor="middle" fill="#9ca3af" font-size="7" font-family="monospace">DATA→D2</text>
+          <!-- LCD -->
+          <rect x="185" y="100" width="75" height="55" fill="#1a3a6a" rx="5"/>
+          <text x="222" y="122" text-anchor="middle" fill="white" font-size="9" font-weight="bold" font-family="monospace">LCD 16x2</text>
+          <text x="222" y="135" text-anchor="middle" fill="#93c5fd" font-size="7" font-family="monospace">I2C Module</text>
+          <text x="222" y="147" text-anchor="middle" fill="#9ca3af" font-size="7" font-family="monospace">SDA→A4 SCL→A5</text>
+          <!-- Buzzer -->
+          <circle cx="400" cy="105" r="30" fill="#333" stroke="#f87171" stroke-width="2"/>
+          <text x="400" y="101" text-anchor="middle" fill="white" font-size="8" font-weight="bold" font-family="monospace">BUZZER</text>
+          <text x="400" y="115" text-anchor="middle" fill="#f87171" font-size="7" font-family="monospace">→D8</text>
+          <!-- Wires -->
+          <line x1="100" y1="98" x2="185" y2="57" stroke="#fbbf24" stroke-width="1.5" stroke-dasharray="4,2"/>
+          <line x1="100" y1="111" x2="185" y2="135" stroke="#86efac" stroke-width="1.5" stroke-dasharray="4,2"/>
+          <line x1="100" y1="124" x2="185" y2="142" stroke="#93c5fd" stroke-width="1.5" stroke-dasharray="4,2"/>
+          <line x1="100" y1="137" x2="368" y2="105" stroke="#f87171" stroke-width="1.5" stroke-dasharray="4,2"/>
+          <text x="250" y="188" text-anchor="middle" fill="#9ca3af" font-size="8" font-family="monospace">DHT11→D2 | LCD SDA→A4, SCL→A5 | Buzzer→D8 | 10kΩ pullup on DHT11</text>
+        </svg>
+      </div>
         <span style="position:relative;font-size:0.78rem;opacity:0.7">[ DHT11: VCC→5V, GND→GND, DATA→D2 with 10kΩ pull-up ]</span>
       </div>
 
@@ -535,9 +684,44 @@
       </div>
 
       <h3><i class="fas fa-sitemap"></i> Circuit Diagram</h3>
-      <div class="circuit-placeholder">
-        <span style="position:relative;font-size:1.5rem">✨</span>
-        <span style="position:relative">74HC595: DS(14)→D2 | SH_CP(11)→D3 | ST_CP(12)→D4 | Q0–Q7→LEDs via 220Ω</span>
+      <div style="background:#0f172a;border-radius:var(--radius);padding:1rem;margin:.5rem 0;">
+        <svg viewBox="0 0 500 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-height:200px;">
+          <rect width="500" height="200" fill="#0f172a" rx="8"/>
+          <!-- Arduino -->
+          <rect x="10" y="70" width="90" height="75" fill="#1a4a8a" rx="5"/>
+          <text x="55" y="92" text-anchor="middle" fill="white" font-size="9" font-weight="bold" font-family="monospace">ARDUINO</text>
+          <text x="55" y="106" text-anchor="middle" fill="#fbbf24" font-size="7" font-family="monospace">D2 (DATA)</text>
+          <text x="55" y="119" text-anchor="middle" fill="#86efac" font-size="7" font-family="monospace">D3 (CLK)</text>
+          <text x="55" y="132" text-anchor="middle" fill="#f87171" font-size="7" font-family="monospace">D4 (LATCH)</text>
+          <!-- 74HC595 -->
+          <rect x="185" y="55" width="90" height="95" fill="#2a1a5a" rx="5"/>
+          <text x="230" y="78" text-anchor="middle" fill="white" font-size="9" font-weight="bold" font-family="monospace">74HC595</text>
+          <text x="230" y="93" text-anchor="middle" fill="#c084fc" font-size="7" font-family="monospace">Shift Register</text>
+          <text x="230" y="108" text-anchor="middle" fill="#fbbf24" font-size="7" font-family="monospace">DS  SH_CP  ST_CP</text>
+          <text x="230" y="122" text-anchor="middle" fill="#86efac" font-size="7" font-family="monospace">Q0 Q1 Q2 Q3</text>
+          <text x="230" y="136" text-anchor="middle" fill="#86efac" font-size="7" font-family="monospace">Q4 Q5 Q6 Q7</text>
+          <!-- 8 LEDs -->
+          <rect x="360" y="40" width="120" height="125" fill="#1a1a1a" rx="5" stroke="#fbbf24" stroke-width="1"/>
+          <text x="420" y="60" text-anchor="middle" fill="#fbbf24" font-size="8" font-weight="bold" font-family="monospace">8x LEDs</text>
+          <text x="420" y="74" text-anchor="middle" fill="#9ca3af" font-size="7" font-family="monospace">via 220Ω each</text>
+          <!-- LED indicators -->
+          <circle cx="378" cy="90" r="6" fill="#ef4444"/>
+          <circle cx="398" cy="90" r="6" fill="#f97316"/>
+          <circle cx="418" cy="90" r="6" fill="#eab308"/>
+          <circle cx="438" cy="90" r="6" fill="#22c55e"/>
+          <circle cx="378" cy="110" r="6" fill="#06b6d4"/>
+          <circle cx="398" cy="110" r="6" fill="#3b82f6"/>
+          <circle cx="418" cy="110" r="6" fill="#8b5cf6"/>
+          <circle cx="438" cy="110" r="6" fill="#ec4899"/>
+          <text x="420" y="140" text-anchor="middle" fill="#9ca3af" font-size="7" font-family="monospace">Chaser Pattern ✨</text>
+          <!-- Wires -->
+          <line x1="100" y1="106" x2="185" y2="108" stroke="#fbbf24" stroke-width="1.5" stroke-dasharray="4,2"/>
+          <line x1="100" y1="119" x2="185" y2="122" stroke="#86efac" stroke-width="1.5" stroke-dasharray="4,2"/>
+          <line x1="100" y1="132" x2="185" y2="136" stroke="#f87171" stroke-width="1.5" stroke-dasharray="4,2"/>
+          <line x1="275" y1="122" x2="360" y2="90" stroke="#86efac" stroke-width="1.5" stroke-dasharray="4,2"/>
+          <text x="250" y="188" text-anchor="middle" fill="#9ca3af" font-size="8" font-family="monospace">DS→D2 | SH_CP→D3 | ST_CP→D4 | Q0-Q7→LEDs (220Ω each)→GND</text>
+        </svg>
+      </div>
         <span style="position:relative;font-size:0.78rem;opacity:0.7">[ VCC→5V, GND→GND, OE(13)→GND, MR(10)→5V ]</span>
       </div>
 
@@ -611,9 +795,39 @@
       </div>
 
       <h3><i class="fas fa-sitemap"></i> Circuit Diagram</h3>
-      <div class="circuit-placeholder">
-        <span style="position:relative;font-size:1.5rem">📏</span>
-        <span style="position:relative">TRIG→D9 | ECHO→D10 | BUZZ→D6 | OLED SDA→A4 SCL→A5</span>
+      <div style="background:#0f172a;border-radius:var(--radius);padding:1rem;margin:.5rem 0;">
+        <svg viewBox="0 0 500 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-height:200px;">
+          <rect width="500" height="200" fill="#0f172a" rx="8"/>
+          <!-- Arduino -->
+          <rect x="10" y="60" width="90" height="90" fill="#1a4a8a" rx="5"/>
+          <text x="55" y="82" text-anchor="middle" fill="white" font-size="9" font-weight="bold" font-family="monospace">ARDUINO</text>
+          <text x="55" y="97" text-anchor="middle" fill="#fbbf24" font-size="7" font-family="monospace">D9 (TRIG)</text>
+          <text x="55" y="110" text-anchor="middle" fill="#86efac" font-size="7" font-family="monospace">D10 (ECHO)</text>
+          <text x="55" y="123" text-anchor="middle" fill="#f87171" font-size="7" font-family="monospace">D6 (BUZZ)</text>
+          <text x="55" y="136" text-anchor="middle" fill="#93c5fd" font-size="7" font-family="monospace">A4/A5 (OLED)</text>
+          <!-- HC-SR04 -->
+          <rect x="185" y="30" width="90" height="60" fill="#1a3a6a" rx="5"/>
+          <text x="230" y="52" text-anchor="middle" fill="white" font-size="9" font-weight="bold" font-family="monospace">HC-SR04</text>
+          <circle cx="210" cy="68" r="12" fill="#333" stroke="#555" stroke-width="2"/>
+          <circle cx="250" cy="68" r="12" fill="#333" stroke="#555" stroke-width="2"/>
+          <text x="210" y="72" text-anchor="middle" fill="#fbbf24" font-size="6" font-family="monospace">TX</text>
+          <text x="250" y="72" text-anchor="middle" fill="#86efac" font-size="6" font-family="monospace">RX</text>
+          <!-- OLED -->
+          <rect x="185" y="110" width="90" height="50" fill="#0a0a2a" rx="5" stroke="#334155" stroke-width="1.5"/>
+          <text x="230" y="132" text-anchor="middle" fill="white" font-size="9" font-weight="bold" font-family="monospace">OLED 0.96"</text>
+          <text x="230" y="147" text-anchor="middle" fill="#93c5fd" font-size="7" font-family="monospace">128×64 I2C</text>
+          <!-- Buzzer -->
+          <circle cx="395" cy="105" r="30" fill="#333" stroke="#f87171" stroke-width="2"/>
+          <text x="395" y="101" text-anchor="middle" fill="white" font-size="8" font-weight="bold" font-family="monospace">BUZZER</text>
+          <text x="395" y="115" text-anchor="middle" fill="#f87171" font-size="7" font-family="monospace">Proximity Alert</text>
+          <!-- Wires -->
+          <line x1="100" y1="97" x2="185" y2="52" stroke="#fbbf24" stroke-width="1.5" stroke-dasharray="4,2"/>
+          <line x1="100" y1="110" x2="185" y2="60" stroke="#86efac" stroke-width="1.5" stroke-dasharray="4,2"/>
+          <line x1="100" y1="123" x2="363" y2="105" stroke="#f87171" stroke-width="1.5" stroke-dasharray="4,2"/>
+          <line x1="100" y1="136" x2="185" y2="135" stroke="#93c5fd" stroke-width="1.5" stroke-dasharray="4,2"/>
+          <text x="250" y="188" text-anchor="middle" fill="#9ca3af" font-size="8" font-family="monospace">TRIG→D9 | ECHO→D10 | OLED SDA→A4 SCL→A5 | Buzzer→D6</text>
+        </svg>
+      </div>
         <span style="position:relative;font-size:0.78rem;opacity:0.7">[ HC-SR04 VCC→5V, GND→GND | OLED VCC→3.3V or 5V ]</span>
       </div>
 
@@ -688,9 +902,50 @@
       </div>
 
       <h3><i class="fas fa-sitemap"></i> Circuit Diagram</h3>
-      <div class="circuit-placeholder">
-        <span style="position:relative;font-size:1.5rem">🔐</span>
-        <span style="position:relative">Keypad rows→D9,D8,D7,D6 cols→D5,D4,D3,D2 | Servo→D10 | Buzzer→A0 | LCD I2C→A4/A5</span>
+      <div style="background:#0f172a;border-radius:var(--radius);padding:1rem;margin:.5rem 0;">
+        <svg viewBox="0 0 500 210" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-height:210px;">
+          <rect width="500" height="210" fill="#0f172a" rx="8"/>
+          <!-- Arduino -->
+          <rect x="10" y="55" width="90" height="100" fill="#1a4a8a" rx="5"/>
+          <text x="55" y="77" text-anchor="middle" fill="white" font-size="9" font-weight="bold" font-family="monospace">ARDUINO</text>
+          <text x="55" y="92" text-anchor="middle" fill="#fbbf24" font-size="7" font-family="monospace">D9-D6 (Rows)</text>
+          <text x="55" y="105" text-anchor="middle" fill="#86efac" font-size="7" font-family="monospace">D5-D2 (Cols)</text>
+          <text x="55" y="118" text-anchor="middle" fill="#f87171" font-size="7" font-family="monospace">D10 (Servo)</text>
+          <text x="55" y="131" text-anchor="middle" fill="#93c5fd" font-size="7" font-family="monospace">A4/A5 (LCD)</text>
+          <text x="55" y="144" text-anchor="middle" fill="#c084fc" font-size="7" font-family="monospace">A0 (Buzzer)</text>
+          <!-- Keypad 4x4 -->
+          <rect x="180" y="25" width="90" height="90" fill="#2a2a1a" rx="5"/>
+          <text x="225" y="47" text-anchor="middle" fill="white" font-size="9" font-weight="bold" font-family="monospace">4x4 KEYPAD</text>
+          <rect x="188" y="55" width="12" height="10" fill="#555" rx="2"/>
+          <rect x="203" y="55" width="12" height="10" fill="#555" rx="2"/>
+          <rect x="218" y="55" width="12" height="10" fill="#555" rx="2"/>
+          <rect x="233" y="55" width="12" height="10" fill="#555" rx="2"/>
+          <rect x="188" y="70" width="12" height="10" fill="#555" rx="2"/>
+          <rect x="203" y="70" width="12" height="10" fill="#555" rx="2"/>
+          <rect x="218" y="70" width="12" height="10" fill="#555" rx="2"/>
+          <rect x="233" y="70" width="12" height="10" fill="#555" rx="2"/>
+          <text x="225" y="100" text-anchor="middle" fill="#fbbf24" font-size="7" font-family="monospace">8 pins total</text>
+          <!-- LCD -->
+          <rect x="180" y="130" width="90" height="45" fill="#1a3a6a" rx="5"/>
+          <text x="225" y="152" text-anchor="middle" fill="white" font-size="9" font-weight="bold" font-family="monospace">LCD I2C</text>
+          <text x="225" y="167" text-anchor="middle" fill="#93c5fd" font-size="7" font-family="monospace">SDA→A4 SCL→A5</text>
+          <!-- Servo -->
+          <rect x="360" y="30" width="80" height="55" fill="#1a4a8a" rx="5"/>
+          <circle cx="400" cy="57" r="18" fill="#3b82f6" stroke="#1d4ed8" stroke-width="2"/>
+          <text x="400" y="53" text-anchor="middle" fill="white" font-size="7" font-family="monospace">SERVO</text>
+          <text x="400" y="65" text-anchor="middle" fill="#93c5fd" font-size="7" font-family="monospace">→D10</text>
+          <!-- Buzzer -->
+          <circle cx="400" cy="155" r="25" fill="#333" stroke="#c084fc" stroke-width="2"/>
+          <text x="400" y="151" text-anchor="middle" fill="white" font-size="8" font-weight="bold" font-family="monospace">BUZZER</text>
+          <text x="400" y="165" text-anchor="middle" fill="#c084fc" font-size="7" font-family="monospace">→A0</text>
+          <!-- Wires -->
+          <line x1="100" y1="92" x2="180" y2="65" stroke="#fbbf24" stroke-width="1.5" stroke-dasharray="4,2"/>
+          <line x1="100" y1="118" x2="360" y2="57" stroke="#f87171" stroke-width="1.5" stroke-dasharray="4,2"/>
+          <line x1="100" y1="131" x2="180" y2="152" stroke="#93c5fd" stroke-width="1.5" stroke-dasharray="4,2"/>
+          <line x1="100" y1="144" x2="373" y2="155" stroke="#c084fc" stroke-width="1.5" stroke-dasharray="4,2"/>
+          <text x="250" y="200" text-anchor="middle" fill="#9ca3af" font-size="8" font-family="monospace">Keypad→D2-D9 | Servo→D10 | LCD SDA/SCL→A4/A5 | Buzzer→A0</text>
+        </svg>
+      </div>
         <span style="position:relative;font-size:0.78rem;opacity:0.7">[ Servo VCC→5V | LCD VCC→5V | All GND→GND ]</span>
       </div>
 
