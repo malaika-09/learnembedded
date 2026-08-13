@@ -77,6 +77,8 @@
     }
     .video-label { padding: 0.6rem 0.85rem; background: var(--bg-card); border-top: 1px solid var(--border); font-size: 0.8rem; font-weight: 600; color: var(--text-secondary); display: flex; align-items: center; gap: 0.4rem; }
     .video-label i { color: #ef4444; }
+    .video-player { display:none; width:100%; aspect-ratio:16/9; }
+    .video-player iframe { width:100%; height:100%; border:none; display:block; }
     @media(max-width:900px) { .tut-layout { grid-template-columns: 1fr; } .tut-sidebar { position: static; } .video-grid { grid-template-columns: 1fr; } }
   </style>
   <!-- Google tag (gtag.js) -->
@@ -252,22 +254,24 @@
           <h3><i class="fab fa-youtube"></i> Watch Video Tutorials</h3>
           <div class="video-grid">
             <div class="video-wrap">
-              <a href="https://www.youtube.com/watch?v=fJWR7dBuc18" target="_blank" rel="noopener" class="video-thumb">
-                <img src="https://img.youtube.com/vi/fJWR7dBuc18/mqdefault.jpg" alt="Arduino Tutorial" onerror="this.style.display='none'" />
+              <div class="video-thumb" data-vid="fJWR7dBuc18" onclick="playVideo(this)">
+                <img src="https://img.youtube.com/vi/fJWR7dBuc18/mqdefault.jpg" alt="Arduino Tutorial" />
                 <div class="vid-overlay"></div>
-                <div class="play-btn"><i class="fab fa-youtube"></i></div>
+                <div class="play-btn"><i class="fas fa-play"></i></div>
                 <div class="vid-title">Arduino Uno – Complete Beginner Guide</div>
-              </a>
-              <div class="video-label"><i class="fab fa-youtube"></i> Arduino Uno – Complete Beginner Guide · Click to Watch</div>
+              </div>
+              <div class="video-player"></div>
+              <div class="video-label"><i class="fab fa-youtube"></i> Arduino Uno – Complete Beginner Guide</div>
             </div>
             <div class="video-wrap">
-              <a href="https://www.youtube.com/watch?v=BtLwoNJ6klE" target="_blank" rel="noopener" class="video-thumb">
-                <img src="https://img.youtube.com/vi/BtLwoNJ6klE/mqdefault.jpg" alt="Arduino IDE Setup" onerror="this.style.display='none'" />
+              <div class="video-thumb" data-vid="BtLwoNJ6klE" onclick="playVideo(this)">
+                <img src="https://img.youtube.com/vi/BtLwoNJ6klE/mqdefault.jpg" alt="Arduino IDE" />
                 <div class="vid-overlay"></div>
-                <div class="play-btn"><i class="fab fa-youtube"></i></div>
-                <div class="vid-title">Arduino Tutorial – First Sketch & IDE Setup</div>
-              </a>
-              <div class="video-label"><i class="fab fa-youtube"></i> Arduino Tutorial – First Sketch & IDE · Click to Watch</div>
+                <div class="play-btn"><i class="fas fa-play"></i></div>
+                <div class="vid-title">Arduino Tutorial – First Sketch & IDE</div>
+              </div>
+              <div class="video-player"></div>
+              <div class="video-label"><i class="fab fa-youtube"></i> Arduino Tutorial – First Sketch & IDE</div>
             </div>
           </div>
         </div>
@@ -333,22 +337,24 @@
           <h3><i class="fab fa-youtube"></i> Watch Video Tutorials</h3>
           <div class="video-grid">
             <div class="video-wrap">
-              <a href="https://www.youtube.com/watch?v=nL34zDTPkcs" target="_blank" rel="noopener" class="video-thumb">
-                <img src="https://img.youtube.com/vi/nL34zDTPkcs/mqdefault.jpg" alt="Arduino Digital IO PWM" onerror="this.style.display='none'" />
+              <div class="video-thumb" data-vid="nL34zDTPkcs" onclick="playVideo(this)">
+                <img src="https://img.youtube.com/vi/nL34zDTPkcs/mqdefault.jpg" alt="Arduino Digital IO PWM" />
                 <div class="vid-overlay"></div>
-                <div class="play-btn"><i class="fab fa-youtube"></i></div>
+                <div class="play-btn"><i class="fas fa-play"></i></div>
                 <div class="vid-title">Arduino Digital I/O & PWM Explained</div>
-              </a>
-              <div class="video-label"><i class="fab fa-youtube"></i> Arduino Digital I/O & PWM · Click to Watch</div>
+              </div>
+              <div class="video-player"></div>
+              <div class="video-label"><i class="fab fa-youtube"></i> Arduino Digital I/O & PWM Explained</div>
             </div>
             <div class="video-wrap">
-              <a href="https://www.youtube.com/watch?v=GZzV_JWgg6I" target="_blank" rel="noopener" class="video-thumb">
-                <img src="https://img.youtube.com/vi/GZzV_JWgg6I/mqdefault.jpg" alt="Arduino analogRead" onerror="this.style.display='none'" />
+              <div class="video-thumb" data-vid="GZzV_JWgg6I" onclick="playVideo(this)">
+                <img src="https://img.youtube.com/vi/GZzV_JWgg6I/mqdefault.jpg" alt="Arduino analogRead" />
                 <div class="vid-overlay"></div>
-                <div class="play-btn"><i class="fab fa-youtube"></i></div>
+                <div class="play-btn"><i class="fas fa-play"></i></div>
                 <div class="vid-title">Arduino analogRead & Serial Monitor</div>
-              </a>
-              <div class="video-label"><i class="fab fa-youtube"></i> Arduino analogRead & Serial Monitor · Click to Watch</div>
+              </div>
+              <div class="video-player"></div>
+              <div class="video-label"><i class="fab fa-youtube"></i> Arduino analogRead & Serial Monitor</div>
             </div>
           </div>
         </div>
@@ -497,22 +503,24 @@
           <h3><i class="fab fa-youtube"></i> Watch Video Tutorials</h3>
           <div class="video-grid">
             <div class="video-wrap">
-              <a href="https://www.youtube.com/watch?v=TNSBVb0xNYY" target="_blank" rel="noopener" class="video-thumb">
-                <img src="https://img.youtube.com/vi/TNSBVb0xNYY/mqdefault.jpg" alt="ESP32 WiFi Tutorial" onerror="this.style.display='none'" />
+              <div class="video-thumb" data-vid="TNSBVb0xNYY" onclick="playVideo(this)">
+                <img src="https://img.youtube.com/vi/TNSBVb0xNYY/mqdefault.jpg" alt="ESP32 WiFi Tutorial" />
                 <div class="vid-overlay"></div>
-                <div class="play-btn"><i class="fab fa-youtube"></i></div>
+                <div class="play-btn"><i class="fas fa-play"></i></div>
                 <div class="vid-title">ESP32 WiFi – Connect & Web Server</div>
-              </a>
-              <div class="video-label"><i class="fab fa-youtube"></i> ESP32 WiFi – Connect & Web Server · Click to Watch</div>
+              </div>
+              <div class="video-player"></div>
+              <div class="video-label"><i class="fab fa-youtube"></i> ESP32 WiFi – Connect & Web Server</div>
             </div>
             <div class="video-wrap">
-              <a href="https://www.youtube.com/watch?v=xPlN_Tk3VLQ" target="_blank" rel="noopener" class="video-thumb">
-                <img src="https://img.youtube.com/vi/xPlN_Tk3VLQ/mqdefault.jpg" alt="ESP32 Getting Started" onerror="this.style.display='none'" />
+              <div class="video-thumb" data-vid="xPlN_Tk3VLQ" onclick="playVideo(this)">
+                <img src="https://img.youtube.com/vi/xPlN_Tk3VLQ/mqdefault.jpg" alt="ESP32 Getting Started" />
                 <div class="vid-overlay"></div>
-                <div class="play-btn"><i class="fab fa-youtube"></i></div>
+                <div class="play-btn"><i class="fas fa-play"></i></div>
                 <div class="vid-title">ESP32 Complete Beginner Guide</div>
-              </a>
-              <div class="video-label"><i class="fab fa-youtube"></i> ESP32 Complete Beginner Guide · Click to Watch</div>
+              </div>
+              <div class="video-player"></div>
+              <div class="video-label"><i class="fab fa-youtube"></i> ESP32 Complete Beginner Guide</div>
             </div>
           </div>
         </div>
@@ -600,22 +608,24 @@
           <h3><i class="fab fa-youtube"></i> Watch Video Tutorials</h3>
           <div class="video-grid">
             <div class="video-wrap">
-              <a href="https://www.youtube.com/watch?v=D4NeBxaWpRo" target="_blank" rel="noopener" class="video-thumb">
-                <img src="https://img.youtube.com/vi/D4NeBxaWpRo/mqdefault.jpg" alt="PIC Tutorial" onerror="this.style.display='none'" />
+              <div class="video-thumb" data-vid="D4NeBxaWpRo" onclick="playVideo(this)">
+                <img src="https://img.youtube.com/vi/D4NeBxaWpRo/mqdefault.jpg" alt="PIC Tutorial" />
                 <div class="vid-overlay"></div>
-                <div class="play-btn"><i class="fab fa-youtube"></i></div>
+                <div class="play-btn"><i class="fas fa-play"></i></div>
                 <div class="vid-title">PIC16F877A – MPLAB Setup & First Program</div>
-              </a>
-              <div class="video-label"><i class="fab fa-youtube"></i> PIC16F877A – MPLAB Setup · Click to Watch</div>
+              </div>
+              <div class="video-player"></div>
+              <div class="video-label"><i class="fab fa-youtube"></i> PIC16F877A – MPLAB Setup & First Program</div>
             </div>
             <div class="video-wrap">
-              <a href="https://www.youtube.com/watch?v=WNHSRSEv1dQ" target="_blank" rel="noopener" class="video-thumb">
-                <img src="https://img.youtube.com/vi/WNHSRSEv1dQ/mqdefault.jpg" alt="PIC Programming" onerror="this.style.display='none'" />
+              <div class="video-thumb" data-vid="WNHSRSEv1dQ" onclick="playVideo(this)">
+                <img src="https://img.youtube.com/vi/WNHSRSEv1dQ/mqdefault.jpg" alt="PIC Programming" />
                 <div class="vid-overlay"></div>
-                <div class="play-btn"><i class="fab fa-youtube"></i></div>
+                <div class="play-btn"><i class="fas fa-play"></i></div>
                 <div class="vid-title">PIC Microcontroller Programming in C</div>
-              </a>
-              <div class="video-label"><i class="fab fa-youtube"></i> PIC Programming in C · Click to Watch</div>
+              </div>
+              <div class="video-player"></div>
+              <div class="video-label"><i class="fab fa-youtube"></i> PIC Microcontroller Programming in C</div>
             </div>
           </div>
         </div>
@@ -662,5 +672,16 @@
 <button class="scroll-top"><i class="fas fa-arrow-up"></i></button>
 <script src="js/main.js"></script>
 <script src="js/search.js"></script>
+<script>
+// Click-to-play video function
+function playVideo(thumb) {
+  const vid = thumb.getAttribute('data-vid');
+  const player = thumb.nextElementSibling; // .video-player div
+  // Hide thumbnail, show iframe
+  thumb.style.display = 'none';
+  player.style.display = 'block';
+  player.innerHTML = '<iframe src="https://www.youtube.com/embed/' + vid + '?autoplay=1&rel=0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>';
+}
+</script>
 </body>
 </html>
