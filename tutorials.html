@@ -41,12 +41,40 @@
     [data-theme="dark"] .info-box.tip  { background: #052e16; color: #6ee7b7; }
     [data-theme="dark"] .info-box.warn { background: #451a03; color: #fcd34d; }
     [data-theme="dark"] .info-box.note { background: #1e3a5f; color: #93c5fd; }
-    /* YouTube video embed */
+    /* Video section */
     .video-section { margin: 1.5rem 0; }
     .video-section h3 { font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; color: #ef4444; margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.4rem; }
     .video-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 1rem; }
     .video-wrap { position: relative; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); background: #000; }
-    .video-wrap iframe { width: 100%; height: 250px; border: none; display: block; }
+    .video-thumb {
+      width: 100%; aspect-ratio: 16/9;
+      background: #0f172a;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 0.75rem; cursor: pointer;
+      position: relative; overflow: hidden;
+      text-decoration: none;
+    }
+    .video-thumb img { width: 100%; height: 100%; object-fit: cover; position: absolute; top:0; left:0; }
+    .video-thumb .play-btn {
+      position: relative; z-index: 2;
+      width: 64px; height: 64px; border-radius: 50%;
+      background: #ef4444; display: flex;
+      align-items: center; justify-content: center;
+      font-size: 1.5rem; color: white;
+      box-shadow: 0 4px 20px rgba(239,68,68,0.5);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .video-thumb:hover .play-btn { transform: scale(1.12); box-shadow: 0 6px 28px rgba(239,68,68,0.7); }
+    .video-thumb .vid-overlay {
+      position: absolute; inset: 0; z-index: 1;
+      background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 50%);
+    }
+    .video-thumb .vid-title {
+      position: absolute; bottom: 0.75rem; left: 0.75rem; right: 0.75rem;
+      z-index: 2; font-size: 0.78rem; font-weight: 600;
+      color: white; line-height: 1.4;
+    }
     .video-label { padding: 0.6rem 0.85rem; background: var(--bg-card); border-top: 1px solid var(--border); font-size: 0.8rem; font-weight: 600; color: var(--text-secondary); display: flex; align-items: center; gap: 0.4rem; }
     .video-label i { color: #ef4444; }
     @media(max-width:900px) { .tut-layout { grid-template-columns: 1fr; } .tut-sidebar { position: static; } .video-grid { grid-template-columns: 1fr; } }
@@ -224,12 +252,22 @@
           <h3><i class="fab fa-youtube"></i> Watch Video Tutorials</h3>
           <div class="video-grid">
             <div class="video-wrap">
-              <iframe src="https://www.youtube.com/embed/niq9wW4HpAY" title="Arduino Getting Started" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-              <div class="video-label"><i class="fab fa-youtube"></i> Arduino Uno – Complete Beginner Guide</div>
+              <a href="https://www.youtube.com/watch?v=fJWR7dBuc18" target="_blank" rel="noopener" class="video-thumb">
+                <img src="https://img.youtube.com/vi/fJWR7dBuc18/mqdefault.jpg" alt="Arduino Tutorial" onerror="this.style.display='none'" />
+                <div class="vid-overlay"></div>
+                <div class="play-btn"><i class="fab fa-youtube"></i></div>
+                <div class="vid-title">Arduino Uno – Complete Beginner Guide</div>
+              </a>
+              <div class="video-label"><i class="fab fa-youtube"></i> Arduino Uno – Complete Beginner Guide · Click to Watch</div>
             </div>
             <div class="video-wrap">
-              <iframe src="https://www.youtube.com/embed/09zfRaLEasY" title="Arduino IDE Setup" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-              <div class="video-label"><i class="fab fa-youtube"></i> Arduino Tutorial – First Sketch & IDE</div>
+              <a href="https://www.youtube.com/watch?v=BtLwoNJ6klE" target="_blank" rel="noopener" class="video-thumb">
+                <img src="https://img.youtube.com/vi/BtLwoNJ6klE/mqdefault.jpg" alt="Arduino IDE Setup" onerror="this.style.display='none'" />
+                <div class="vid-overlay"></div>
+                <div class="play-btn"><i class="fab fa-youtube"></i></div>
+                <div class="vid-title">Arduino Tutorial – First Sketch & IDE Setup</div>
+              </a>
+              <div class="video-label"><i class="fab fa-youtube"></i> Arduino Tutorial – First Sketch & IDE · Click to Watch</div>
             </div>
           </div>
         </div>
@@ -295,12 +333,22 @@
           <h3><i class="fab fa-youtube"></i> Watch Video Tutorials</h3>
           <div class="video-grid">
             <div class="video-wrap">
-              <iframe src="https://www.youtube.com/embed/7aP5KL5clWA" title="Arduino Digital IO PWM" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-              <div class="video-label"><i class="fab fa-youtube"></i> Arduino Digital I/O & PWM Explained</div>
+              <a href="https://www.youtube.com/watch?v=nL34zDTPkcs" target="_blank" rel="noopener" class="video-thumb">
+                <img src="https://img.youtube.com/vi/nL34zDTPkcs/mqdefault.jpg" alt="Arduino Digital IO PWM" onerror="this.style.display='none'" />
+                <div class="vid-overlay"></div>
+                <div class="play-btn"><i class="fab fa-youtube"></i></div>
+                <div class="vid-title">Arduino Digital I/O & PWM Explained</div>
+              </a>
+              <div class="video-label"><i class="fab fa-youtube"></i> Arduino Digital I/O & PWM · Click to Watch</div>
             </div>
             <div class="video-wrap">
-              <iframe src="https://www.youtube.com/embed/GZzV_JWgg6I" title="Arduino Analog Read" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-              <div class="video-label"><i class="fab fa-youtube"></i> Arduino analogRead & Serial Monitor</div>
+              <a href="https://www.youtube.com/watch?v=GZzV_JWgg6I" target="_blank" rel="noopener" class="video-thumb">
+                <img src="https://img.youtube.com/vi/GZzV_JWgg6I/mqdefault.jpg" alt="Arduino analogRead" onerror="this.style.display='none'" />
+                <div class="vid-overlay"></div>
+                <div class="play-btn"><i class="fab fa-youtube"></i></div>
+                <div class="vid-title">Arduino analogRead & Serial Monitor</div>
+              </a>
+              <div class="video-label"><i class="fab fa-youtube"></i> Arduino analogRead & Serial Monitor · Click to Watch</div>
             </div>
           </div>
         </div>
@@ -449,12 +497,22 @@
           <h3><i class="fab fa-youtube"></i> Watch Video Tutorials</h3>
           <div class="video-grid">
             <div class="video-wrap">
-              <iframe src="https://www.youtube.com/embed/TNSBVb0xNYY" title="ESP32 WiFi Tutorial" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-              <div class="video-label"><i class="fab fa-youtube"></i> ESP32 WiFi – Connect & Web Server</div>
+              <a href="https://www.youtube.com/watch?v=TNSBVb0xNYY" target="_blank" rel="noopener" class="video-thumb">
+                <img src="https://img.youtube.com/vi/TNSBVb0xNYY/mqdefault.jpg" alt="ESP32 WiFi Tutorial" onerror="this.style.display='none'" />
+                <div class="vid-overlay"></div>
+                <div class="play-btn"><i class="fab fa-youtube"></i></div>
+                <div class="vid-title">ESP32 WiFi – Connect & Web Server</div>
+              </a>
+              <div class="video-label"><i class="fab fa-youtube"></i> ESP32 WiFi – Connect & Web Server · Click to Watch</div>
             </div>
             <div class="video-wrap">
-              <iframe src="https://www.youtube.com/embed/c9pLs_v1DXY" title="ESP32 Getting Started" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-              <div class="video-label"><i class="fab fa-youtube"></i> ESP32 Complete Beginner Guide</div>
+              <a href="https://www.youtube.com/watch?v=xPlN_Tk3VLQ" target="_blank" rel="noopener" class="video-thumb">
+                <img src="https://img.youtube.com/vi/xPlN_Tk3VLQ/mqdefault.jpg" alt="ESP32 Getting Started" onerror="this.style.display='none'" />
+                <div class="vid-overlay"></div>
+                <div class="play-btn"><i class="fab fa-youtube"></i></div>
+                <div class="vid-title">ESP32 Complete Beginner Guide</div>
+              </a>
+              <div class="video-label"><i class="fab fa-youtube"></i> ESP32 Complete Beginner Guide · Click to Watch</div>
             </div>
           </div>
         </div>
@@ -542,12 +600,22 @@
           <h3><i class="fab fa-youtube"></i> Watch Video Tutorials</h3>
           <div class="video-grid">
             <div class="video-wrap">
-              <iframe src="https://www.youtube.com/embed/D4NeBxaWpRo" title="PIC Microcontroller Tutorial" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-              <div class="video-label"><i class="fab fa-youtube"></i> PIC16F877A – MPLAB Setup & First Program</div>
+              <a href="https://www.youtube.com/watch?v=D4NeBxaWpRo" target="_blank" rel="noopener" class="video-thumb">
+                <img src="https://img.youtube.com/vi/D4NeBxaWpRo/mqdefault.jpg" alt="PIC Tutorial" onerror="this.style.display='none'" />
+                <div class="vid-overlay"></div>
+                <div class="play-btn"><i class="fab fa-youtube"></i></div>
+                <div class="vid-title">PIC16F877A – MPLAB Setup & First Program</div>
+              </a>
+              <div class="video-label"><i class="fab fa-youtube"></i> PIC16F877A – MPLAB Setup · Click to Watch</div>
             </div>
             <div class="video-wrap">
-              <iframe src="https://www.youtube.com/embed/WNHSRSEv1dQ" title="PIC Programming Basics" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-              <div class="video-label"><i class="fab fa-youtube"></i> PIC Microcontroller Programming in C</div>
+              <a href="https://www.youtube.com/watch?v=WNHSRSEv1dQ" target="_blank" rel="noopener" class="video-thumb">
+                <img src="https://img.youtube.com/vi/WNHSRSEv1dQ/mqdefault.jpg" alt="PIC Programming" onerror="this.style.display='none'" />
+                <div class="vid-overlay"></div>
+                <div class="play-btn"><i class="fab fa-youtube"></i></div>
+                <div class="vid-title">PIC Microcontroller Programming in C</div>
+              </a>
+              <div class="video-label"><i class="fab fa-youtube"></i> PIC Programming in C · Click to Watch</div>
             </div>
           </div>
         </div>
