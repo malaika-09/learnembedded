@@ -673,14 +673,10 @@
 <script src="js/main.js"></script>
 <script src="js/search.js"></script>
 <script>
-// Click-to-play video function
 function playVideo(thumb) {
-  const vid = thumb.getAttribute('data-vid');
-  const player = thumb.nextElementSibling; // .video-player div
-  // Hide thumbnail, show iframe
-  thumb.style.display = 'none';
-  player.style.display = 'block';
-  player.innerHTML = '<iframe src="https://www.youtube.com/embed/' + vid + '?autoplay=1&rel=0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>';
+  var vid = thumb.getAttribute('data-vid');
+  var wrap = thumb.parentElement;
+  wrap.innerHTML = '<iframe style="width:100%;height:220px;border:none;display:block;" src="https://www.youtube.com/embed/' + vid + '?autoplay=1&rel=0&modestbranding=1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>';
 }
 </script>
 </body>
