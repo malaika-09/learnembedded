@@ -10,7 +10,7 @@ const themeToggle = document.querySelector('.theme-toggle');
 const html = document.documentElement;
 
 // Load saved theme
-const savedTheme = localStorage.getItem('mc-hub-theme') || 'light';
+const savedTheme = localStorage.getItem('mc-hub-theme') || 'dark';
 html.setAttribute('data-theme', savedTheme);
 updateThemeIcon(savedTheme);
 
