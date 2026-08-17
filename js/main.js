@@ -226,30 +226,49 @@ if ('IntersectionObserver' in window) {
 }
 
 /* ============================================================
-   11. CONTACT FORM
+   11. CONTACT FORM — Formspree
    ============================================================ */
 const contactForm = document.querySelector('#contact-form');
 if (contactForm) {
-  contactForm.addEventListener('submit', (e) => {
+  contactForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     const btn = contactForm.querySelector('button[type="submit"]');
-    const originalText = btn.innerHTML;
+    const originalHTML = btn.innerHTML;
     btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
     btn.disabled = true;
 
-    // Simulate form submission
-    setTimeout(() => {
-      btn.innerHTML = '<i class="fas fa-check"></i> Message Sent!';
-      btn.style.background = '#10b981';
-      showToast('Message sent successfully! We will get back to you soon.', 'success');
-      contactForm.reset();
+    const data = new FormData(contactForm);
 
+    try {
+      const res = await fetch(contactForm.action, {
+        method: 'POST',
+        body: data,
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (res.ok) {
+        btn.innerHTML = '<i class="fas fa-check"></i> Message Sent!';
+        btn.style.background = '#10b981';
+        showToast('Message sent! We will reply to your email soon.', 'success');
+        contactForm.reset();
+        setTimeout(() => {
+          btn.innerHTML = originalHTML;
+          btn.style.background = '';
+          btn.disabled = false;
+        }, 3000);
+      } else {
+        throw new Error('Server error');
+      }
+    } catch (err) {
+      btn.innerHTML = '<i class="fas fa-exclamation-circle"></i> Failed – try again';
+      btn.style.background = '#ef4444';
+      showToast('Something went wrong. Please try again.', 'error');
       setTimeout(() => {
-        btn.innerHTML = originalText;
+        btn.innerHTML = originalHTML;
         btn.style.background = '';
         btn.disabled = false;
       }, 3000);
-    }, 1500);
+    }
   });
 }
 
