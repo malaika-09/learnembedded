@@ -182,6 +182,7 @@
       <div class="nav-section">More</div>
       <button class="nav-item" onclick="showTab('announcement',this)"><i class="fas fa-bullhorn"></i> Announcement</button>
       <button class="nav-item" onclick="showTab('links',this)"><i class="fas fa-link"></i> Social Links</button>
+      <button class="nav-item" onclick="showTab('password',this)"><i class="fas fa-lock"></i> Change Password</button>
     </nav>
     <div class="sidebar-footer">
       <button class="btn btn-outline btn-sm" style="width:100%" onclick="doLogout()"><i class="fas fa-sign-out-alt"></i> Logout</button>
@@ -445,6 +446,32 @@
         </div>
       </div>
 
+      <!-- PASSWORD CHANGE -->
+      <div class="section-tab" id="tab-password">
+        <div class="card" style="max-width:480px">
+          <div class="card-header"><h3><i class="fas fa-lock"></i> Change Admin Password</h3></div>
+          <div class="card-body">
+            <p style="font-size:0.85rem;color:var(--muted);margin-bottom:1.25rem">Password change karo — sirf tumhare device par save hoga.</p>
+            <div class="field-group">
+              <label>Current Password</label>
+              <input type="password" id="cp-current" class="field-control" placeholder="Current password…" />
+            </div>
+            <div class="field-group">
+              <label>New Password</label>
+              <input type="password" id="cp-new" class="field-control" placeholder="New password (min 6 chars)…" />
+            </div>
+            <div class="field-group">
+              <label>Confirm New Password</label>
+              <input type="password" id="cp-confirm" class="field-control" placeholder="Repeat new password…" />
+            </div>
+            <button class="btn btn-primary btn-sm" onclick="changePassword()"><i class="fas fa-key"></i> Change Password</button>
+            <div style="margin-top:1.25rem;padding:0.85rem;background:rgba(245,158,11,0.1);border-radius:8px;border:1px solid rgba(245,158,11,0.3)">
+              <p style="font-size:0.8rem;color:#fbbf24"><i class="fas fa-exclamation-triangle"></i> <strong>Note:</strong> Password browser mein save hota hai. Naya browser ya device par default password use hoga: <code style="background:var(--bg);padding:2px 6px;border-radius:4px">Malaika@2026</code></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div><!-- /content-area -->
   </div><!-- /main-content -->
 </div><!-- /admin-layout -->
@@ -454,16 +481,23 @@
 
 <script>
 // ── PASSWORD ──────────────────────────────────────────────
-const ADMIN_PASS = 'Malaika@2026';
+// Password localStorage mein save hota hai — khud change kar sako
+const DEFAULT_PASS = 'Malaika@2026';
+
+function getPass() {
+  return localStorage.getItem('le_admin_pass') || DEFAULT_PASS;
+}
 
 function doLogin() {
   const pw = document.getElementById('adminPassword').value;
-  if (pw === ADMIN_PASS) {
+  if (pw === getPass()) {
     document.getElementById('loginScreen').style.display = 'none';
     document.getElementById('adminPanel').style.display = 'flex';
     localStorage.setItem('admin_auth', 'true');
+    document.getElementById('loginError').style.display = 'none';
   } else {
     document.getElementById('loginError').style.display = 'block';
+    document.getElementById('loginError').textContent = 'Wrong password. Try again.';
   }
 }
 
@@ -471,6 +505,28 @@ function doLogout() {
   localStorage.removeItem('admin_auth');
   document.getElementById('loginScreen').style.display = 'flex';
   document.getElementById('adminPanel').style.display = 'none';
+}
+
+// Change password function
+function changePassword() {
+  const current = document.getElementById('cp-current').value;
+  const newp    = document.getElementById('cp-new').value;
+  const confirm = document.getElementById('cp-confirm').value;
+
+  if (current !== getPass()) {
+    showToast('Current password is wrong!', 'error'); return;
+  }
+  if (newp.length < 6) {
+    showToast('New password must be at least 6 characters!', 'error'); return;
+  }
+  if (newp !== confirm) {
+    showToast('New passwords do not match!', 'error'); return;
+  }
+  localStorage.setItem('le_admin_pass', newp);
+  document.getElementById('cp-current').value = '';
+  document.getElementById('cp-new').value = '';
+  document.getElementById('cp-confirm').value = '';
+  showToast('✅ Password changed successfully!', 'success');
 }
 
 // Auto-login if already authenticated
