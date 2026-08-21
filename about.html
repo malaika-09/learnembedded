@@ -806,7 +806,7 @@
 
   <!-- ══ NAVBAR ══ -->
   <nav class="navbar">
-    <a href="index.html" class="nav-brand">
+    <a href="index.html" class="nav-brand" id="siteLogo" ondblclick="window.location.href='admin.html'" title="">
       <i class="fas fa-microchip"></i> Learn<span>Embedded</span>
     </a>
     <button class="hamburger" id="hamburger" aria-label="Toggle menu">
@@ -1216,6 +1216,23 @@
     const statsSection = document.getElementById('stats-section');
     if (statsSection) statsObserver.observe(statsSection);
   </script>
+
+
+<script>
+// Secret: Double-tap logo on mobile OR click logo 3 times fast
+var _lc=0,_lt=0;
+document.addEventListener('DOMContentLoaded',function(){
+  var logo=document.getElementById('siteLogo');
+  if(logo){
+    logo.addEventListener('click',function(e){
+      var now=Date.now();
+      if(now-_lt<600){_lc++;}else{_lc=1;}
+      _lt=now;
+      if(_lc>=3){window.location.href='admin.html';_lc=0;}
+    });
+  }
+});
+</script>
 
 </body>
 </html>

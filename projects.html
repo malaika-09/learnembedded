@@ -40,7 +40,7 @@
 
 <!-- NAVBAR -->
 <nav class="navbar"><div class="nav-container">
-  <a href="index.html" class="nav-brand"><div class="brand-icon"><i class="fas fa-microchip"></i></div>LearnEmbedded</a>
+  <a href="index.html" class="nav-brand" id="siteLogo" ondblclick="window.location.href='admin.html'" title=""><div class="brand-icon"><i class="fas fa-microchip"></i></div>LearnEmbedded</a>
   <ul class="nav-links">
     <li><a href="index.html">Home</a></li>
     <li><a href="microcontrollers.html">Microcontrollers</a></li>
@@ -1042,5 +1042,22 @@
 <button class="scroll-top"><i class="fas fa-arrow-up"></i></button>
 <script src="js/main.js"></script>
 <script src="js/search.js"></script>
+
+<script>
+// Secret: Double-tap logo on mobile OR click logo 3 times fast
+var _lc=0,_lt=0;
+document.addEventListener('DOMContentLoaded',function(){
+  var logo=document.getElementById('siteLogo');
+  if(logo){
+    logo.addEventListener('click',function(e){
+      var now=Date.now();
+      if(now-_lt<600){_lc++;}else{_lc=1;}
+      _lt=now;
+      if(_lc>=3){window.location.href='admin.html';_lc=0;}
+    });
+  }
+});
+</script>
+
 </body>
 </html>
