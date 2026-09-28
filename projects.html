@@ -1043,21 +1043,134 @@
 <script src="js/main.js"></script>
 <script src="js/search.js"></script>
 
+<!-- ADMIN PANEL MODAL - Embedded inside website, Logo 3x click to open -->
+<div id="adminModal" style="display:none;position:fixed;inset:0;z-index:99999;background:rgba(0,0,0,.96);overflow-y:auto;">
+  <div id="adminLoginBox" style="max-width:360px;margin:80px auto;background:#1e293b;border:1px solid #334155;border-radius:16px;padding:2rem;">
+    <div style="text-align:center;margin-bottom:1.5rem">
+      <div style="width:56px;height:56px;background:linear-gradient(135deg,#2563eb,#06b6d4);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin:0 auto .75rem">👑</div>
+      <h2 style="color:white;font-size:1.2rem;font-weight:800">Admin Panel</h2>
+      <p style="color:#64748b;font-size:.8rem;margin-top:.25rem">LearnEmbedded · Malaika Tauqeer</p>
+    </div>
+    <div id="adminErr" style="display:none;background:rgba(239,68,68,.15);border:1px solid #ef4444;color:#fca5a5;padding:.6rem .9rem;border-radius:8px;font-size:.82rem;margin-bottom:.85rem">Wrong password!</div>
+    <input type="password" id="adminPwIn" placeholder="Enter password…" onkeydown="if(event.key==='Enter')adminLogin()" style="width:100%;padding:.7rem 1rem;background:#0f172a;border:1.5px solid #334155;border-radius:8px;color:white;font-size:.9rem;outline:none;margin-bottom:.85rem;font-family:inherit;box-sizing:border-box" />
+    <button onclick="adminLogin()" style="width:100%;padding:.75rem;background:#2563eb;color:white;border:none;border-radius:8px;font-size:.9rem;font-weight:700;cursor:pointer;font-family:inherit">Login →</button>
+    <button onclick="closeAdmin()" style="width:100%;padding:.5rem;background:transparent;color:#64748b;border:none;font-size:.82rem;cursor:pointer;margin-top:.4rem;font-family:inherit">Cancel</button>
+  </div>
+  <div id="adminDash" style="display:none;max-width:860px;margin:0 auto;padding:1.25rem">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1.25rem">
+      <div style="display:flex;align-items:center;gap:.7rem">
+        <div style="width:40px;height:40px;background:linear-gradient(135deg,#2563eb,#06b6d4);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.1rem">🔧</div>
+        <div><h2 style="color:white;font-size:1rem;font-weight:800;margin:0">Admin Dashboard</h2><p style="color:#64748b;font-size:.72rem;margin:0">LearnEmbedded</p></div>
+      </div>
+      <div style="display:flex;gap:.4rem">
+        <a href="index.html" target="_blank" style="padding:.4rem .9rem;background:transparent;color:#94a3b8;border:1px solid #334155;border-radius:8px;font-size:.78rem;text-decoration:none">View Site ↗</a>
+        <button onclick="closeAdmin()" style="padding:.4rem .9rem;background:#ef4444;color:white;border:none;border-radius:8px;font-size:.78rem;cursor:pointer;font-family:inherit">✕ Close</button>
+      </div>
+    </div>
+    <!-- TABS - all visible at once -->
+    <div style="display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:1.1rem">
+      <button onclick="showATab('site',this)" class="atab-btn" style="padding:.45rem .9rem;border-radius:8px;font-size:.8rem;font-weight:600;cursor:pointer;font-family:inherit;border:none;background:#2563eb;color:white">🌐 Site</button>
+      <button onclick="showATab('ann',this)" class="atab-btn" style="padding:.45rem .9rem;border-radius:8px;font-size:.8rem;font-weight:600;cursor:pointer;font-family:inherit;border:1px solid #334155;background:transparent;color:#94a3b8">📢 Announce</button>
+      <button onclick="showATab('links',this)" class="atab-btn" style="padding:.45rem .9rem;border-radius:8px;font-size:.8rem;font-weight:600;cursor:pointer;font-family:inherit;border:1px solid #334155;background:transparent;color:#94a3b8">🔗 Links</button>
+      <button onclick="showATab('team',this)" class="atab-btn" style="padding:.45rem .9rem;border-radius:8px;font-size:.8rem;font-weight:600;cursor:pointer;font-family:inherit;border:1px solid #334155;background:transparent;color:#94a3b8">👥 Team</button>
+      <button onclick="showATab('pass',this)" class="atab-btn" style="padding:.45rem .9rem;border-radius:8px;font-size:.8rem;font-weight:600;cursor:pointer;font-family:inherit;border:1px solid #334155;background:transparent;color:#94a3b8">🔐 Password</button>
+    </div>
+    <!-- SITE TAB -->
+    <div id="ap-site" class="ap-tab" style="background:#1e293b;border:1px solid #334155;border-radius:12px;padding:1.25rem">
+      <h3 style="color:white;font-size:.9rem;font-weight:700;margin:0 0 1rem">🌐 Site Info</h3>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:.85rem">
+        <div><label style="display:block;font-size:.72rem;color:#64748b;text-transform:uppercase;letter-spacing:.06em;margin-bottom:.3rem">Site Name</label><input id="as-name" style="width:100%;padding:.55rem .8rem;background:#0f172a;border:1px solid #334155;border-radius:7px;color:white;font-size:.85rem;outline:none;font-family:inherit;box-sizing:border-box" /></div>
+        <div><label style="display:block;font-size:.72rem;color:#64748b;text-transform:uppercase;letter-spacing:.06em;margin-bottom:.3rem">Tagline</label><input id="as-tag" style="width:100%;padding:.55rem .8rem;background:#0f172a;border:1px solid #334155;border-radius:7px;color:white;font-size:.85rem;outline:none;font-family:inherit;box-sizing:border-box" /></div>
+        <div style="grid-column:1/-1"><label style="display:block;font-size:.72rem;color:#64748b;text-transform:uppercase;letter-spacing:.06em;margin-bottom:.3rem">Hero Description</label><textarea id="as-desc" rows="2" style="width:100%;padding:.55rem .8rem;background:#0f172a;border:1px solid #334155;border-radius:7px;color:white;font-size:.85rem;outline:none;resize:vertical;font-family:inherit;box-sizing:border-box"></textarea></div>
+      </div>
+      <button onclick="saveSite()" style="margin-top:.85rem;padding:.55rem 1.25rem;background:#10b981;color:white;border:none;border-radius:8px;font-size:.82rem;font-weight:700;cursor:pointer;font-family:inherit">💾 Save</button>
+    </div>
+    <!-- ANNOUNCE TAB -->
+    <div id="ap-ann" class="ap-tab" style="display:none;background:#1e293b;border:1px solid #334155;border-radius:12px;padding:1.25rem">
+      <h3 style="color:white;font-size:.9rem;font-weight:700;margin:0 0 1rem">📢 Announcement Banner</h3>
+      <div style="margin-bottom:.85rem"><label style="display:block;font-size:.72rem;color:#64748b;text-transform:uppercase;letter-spacing:.06em;margin-bottom:.3rem">Message</label><input id="aa-txt" placeholder="e.g. 🎉 New ESP32 project added!" style="width:100%;padding:.55rem .8rem;background:#0f172a;border:1px solid #334155;border-radius:7px;color:white;font-size:.85rem;outline:none;font-family:inherit;box-sizing:border-box" /></div>
+      <label style="display:flex;align-items:center;gap:.6rem;cursor:pointer;margin-bottom:.85rem"><input type="checkbox" id="aa-on" style="width:16px;height:16px;accent-color:#2563eb" /><span style="color:#94a3b8;font-size:.85rem">Show on website</span></label>
+      <button onclick="saveAnn()" style="padding:.55rem 1.25rem;background:#10b981;color:white;border:none;border-radius:8px;font-size:.82rem;font-weight:700;cursor:pointer;font-family:inherit">💾 Save</button>
+    </div>
+    <!-- LINKS TAB -->
+    <div id="ap-links" class="ap-tab" style="display:none;background:#1e293b;border:1px solid #334155;border-radius:12px;padding:1.25rem">
+      <h3 style="color:white;font-size:.9rem;font-weight:700;margin:0 0 1rem">🔗 Social Links</h3>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:.85rem">
+        <div><label style="display:block;font-size:.72rem;color:#64748b;text-transform:uppercase;letter-spacing:.06em;margin-bottom:.3rem">Email</label><input id="al-em" style="width:100%;padding:.55rem .8rem;background:#0f172a;border:1px solid #334155;border-radius:7px;color:white;font-size:.85rem;outline:none;font-family:inherit;box-sizing:border-box" /></div>
+        <div><label style="display:block;font-size:.72rem;color:#64748b;text-transform:uppercase;letter-spacing:.06em;margin-bottom:.3rem">LinkedIn</label><input id="al-li" style="width:100%;padding:.55rem .8rem;background:#0f172a;border:1px solid #334155;border-radius:7px;color:white;font-size:.85rem;outline:none;font-family:inherit;box-sizing:border-box" /></div>
+        <div><label style="display:block;font-size:.72rem;color:#64748b;text-transform:uppercase;letter-spacing:.06em;margin-bottom:.3rem">GitHub</label><input id="al-gh" style="width:100%;padding:.55rem .8rem;background:#0f172a;border:1px solid #334155;border-radius:7px;color:white;font-size:.85rem;outline:none;font-family:inherit;box-sizing:border-box" /></div>
+        <div><label style="display:block;font-size:.72rem;color:#64748b;text-transform:uppercase;letter-spacing:.06em;margin-bottom:.3rem">Location</label><input id="al-loc" style="width:100%;padding:.55rem .8rem;background:#0f172a;border:1px solid #334155;border-radius:7px;color:white;font-size:.85rem;outline:none;font-family:inherit;box-sizing:border-box" /></div>
+      </div>
+      <button onclick="saveLinks()" style="margin-top:.85rem;padding:.55rem 1.25rem;background:#10b981;color:white;border:none;border-radius:8px;font-size:.82rem;font-weight:700;cursor:pointer;font-family:inherit">💾 Save</button>
+    </div>
+    <!-- TEAM TAB -->
+    <div id="ap-team" class="ap-tab" style="display:none;background:#1e293b;border:1px solid #334155;border-radius:12px;padding:1.25rem">
+      <h3 style="color:white;font-size:.9rem;font-weight:700;margin:0 0 1rem">👥 Team Members</h3>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:.85rem">
+        <div style="background:#0f172a;border-radius:10px;padding:1rem;border:1px solid #334155">
+          <p style="color:#06b6d4;font-size:.8rem;font-weight:700;margin:0 0 .75rem">👑 Malaika Tauqeer</p>
+          <div style="margin-bottom:.65rem"><label style="display:block;font-size:.7rem;color:#64748b;margin-bottom:.25rem">Role</label><input id="at-r1" style="width:100%;padding:.5rem .7rem;background:#1e293b;border:1px solid #334155;border-radius:6px;color:white;font-size:.82rem;outline:none;font-family:inherit;box-sizing:border-box" /></div>
+          <div><label style="display:block;font-size:.7rem;color:#64748b;margin-bottom:.25rem">Bio</label><textarea id="at-b1" rows="2" style="width:100%;padding:.5rem .7rem;background:#1e293b;border:1px solid #334155;border-radius:6px;color:white;font-size:.82rem;outline:none;resize:vertical;font-family:inherit;box-sizing:border-box"></textarea></div>
+        </div>
+        <div style="background:#0f172a;border-radius:10px;padding:1rem;border:1px solid #334155">
+          <p style="color:#06b6d4;font-size:.8rem;font-weight:700;margin:0 0 .75rem">💻 Muhammad Bin Javaid</p>
+          <div style="margin-bottom:.65rem"><label style="display:block;font-size:.7rem;color:#64748b;margin-bottom:.25rem">Role</label><input id="at-r2" style="width:100%;padding:.5rem .7rem;background:#1e293b;border:1px solid #334155;border-radius:6px;color:white;font-size:.82rem;outline:none;font-family:inherit;box-sizing:border-box" /></div>
+          <div><label style="display:block;font-size:.7rem;color:#64748b;margin-bottom:.25rem">Bio</label><textarea id="at-b2" rows="2" style="width:100%;padding:.5rem .7rem;background:#1e293b;border:1px solid #334155;border-radius:6px;color:white;font-size:.82rem;outline:none;resize:vertical;font-family:inherit;box-sizing:border-box"></textarea></div>
+        </div>
+      </div>
+      <button onclick="saveTeam()" style="margin-top:.85rem;padding:.55rem 1.25rem;background:#10b981;color:white;border:none;border-radius:8px;font-size:.82rem;font-weight:700;cursor:pointer;font-family:inherit">💾 Save</button>
+    </div>
+    <!-- PASSWORD TAB -->
+    <div id="ap-pass" class="ap-tab" style="display:none;background:#1e293b;border:1px solid #334155;border-radius:12px;padding:1.25rem;max-width:380px">
+      <h3 style="color:white;font-size:.9rem;font-weight:700;margin:0 0 1rem">🔐 Change Password</h3>
+      <div style="margin-bottom:.75rem"><label style="display:block;font-size:.72rem;color:#64748b;text-transform:uppercase;letter-spacing:.06em;margin-bottom:.3rem">Current Password</label><input type="password" id="ap-cur" style="width:100%;padding:.55rem .8rem;background:#0f172a;border:1px solid #334155;border-radius:7px;color:white;font-size:.85rem;outline:none;font-family:inherit;box-sizing:border-box" /></div>
+      <div style="margin-bottom:.75rem"><label style="display:block;font-size:.72rem;color:#64748b;text-transform:uppercase;letter-spacing:.06em;margin-bottom:.3rem">New Password</label><input type="password" id="ap-new" style="width:100%;padding:.55rem .8rem;background:#0f172a;border:1px solid #334155;border-radius:7px;color:white;font-size:.85rem;outline:none;font-family:inherit;box-sizing:border-box" /></div>
+      <div style="margin-bottom:.85rem"><label style="display:block;font-size:.72rem;color:#64748b;text-transform:uppercase;letter-spacing:.06em;margin-bottom:.3rem">Confirm New</label><input type="password" id="ap-con" style="width:100%;padding:.55rem .8rem;background:#0f172a;border:1px solid #334155;border-radius:7px;color:white;font-size:.85rem;outline:none;font-family:inherit;box-sizing:border-box" /></div>
+      <button onclick="doChangePass()" style="padding:.55rem 1.25rem;background:#2563eb;color:white;border:none;border-radius:8px;font-size:.82rem;font-weight:700;cursor:pointer;font-family:inherit">🔑 Change Password</button>
+    </div>
+    <div id="adminToast" style="position:fixed;bottom:1.5rem;right:1.5rem;background:#1e293b;color:white;padding:.7rem 1.1rem;border-radius:10px;border-left:4px solid #10b981;font-size:.82rem;transform:translateX(130%);transition:transform .35s cubic-bezier(.34,1.56,.64,1);z-index:999999">✅</div>
+  </div>
+</div>
 <script>
-// Secret: Double-tap logo on mobile OR click logo 3 times fast
-var _lc=0,_lt=0;
+var _ac=0,_at=0;
+var DEF_PASS='Malaika@2026';
+function gp(){return localStorage.getItem('le_pass')||DEF_PASS;}
 document.addEventListener('DOMContentLoaded',function(){
-  var logo=document.getElementById('siteLogo');
-  if(logo){
-    logo.addEventListener('click',function(e){
-      var now=Date.now();
-      if(now-_lt<600){_lc++;}else{_lc=1;}
-      _lt=now;
-      if(_lc>=3){window.location.href='admin.html';_lc=0;}
-    });
-  }
+  applySiteSettings();applyBanner();
+  var l=document.getElementById('siteLogo');
+  if(l){l.addEventListener('click',function(){var n=Date.now();if(n-_at<600)_ac++;else _ac=1;_at=n;if(_ac>=3){openAdmin();_ac=0;}});}
 });
+function openAdmin(){document.getElementById('adminModal').style.display='block';document.body.style.overflow='hidden';}
+function closeAdmin(){document.getElementById('adminModal').style.display='none';document.getElementById('adminLoginBox').style.display='block';document.getElementById('adminDash').style.display='none';document.getElementById('adminPwIn').value='';document.getElementById('adminErr').style.display='none';document.body.style.overflow='';}
+function adminLogin(){if(document.getElementById('adminPwIn').value===gp()){document.getElementById('adminLoginBox').style.display='none';document.getElementById('adminDash').style.display='block';loadData();}else{document.getElementById('adminErr').style.display='block';}}
+function showATab(n,b){document.querySelectorAll('.ap-tab').forEach(p=>p.style.display='none');document.querySelectorAll('.atab-btn').forEach(x=>{x.style.background='transparent';x.style.color='#94a3b8';x.style.border='1px solid #334155';});document.getElementById('ap-'+n).style.display='block';b.style.background='#2563eb';b.style.color='white';b.style.border='none';}
+function toast(m,ok){var t=document.getElementById('adminToast');t.innerHTML=(ok?'✅ ':'❌ ')+m;t.style.borderLeftColor=ok?'#10b981':'#ef4444';t.style.transform='translateX(0)';setTimeout(()=>t.style.transform='translateX(130%)',3000);}
+function loadData(){
+  var s=JSON.parse(localStorage.getItem('le_site')||'{}');
+  document.getElementById('as-name').value=s.name||'LearnEmbedded';
+  document.getElementById('as-tag').value=s.tagline||'Learn, Build, Innovate';
+  document.getElementById('as-desc').value=s.desc||'';
+  var l=JSON.parse(localStorage.getItem('le_links')||'{}');
+  document.getElementById('al-em').value=l.email||'learnembedded.98@gmail.com';
+  document.getElementById('al-li').value=l.linkedin||'https://www.linkedin.com/in/malaika-tauqeer-a364b62b9';
+  document.getElementById('al-gh').value=l.github||'https://github.com/malaika-09';
+  document.getElementById('al-loc').value=l.location||'Lahore, Pakistan';
+  var a=JSON.parse(localStorage.getItem('le_ann')||'{}');
+  document.getElementById('aa-txt').value=a.text||'';
+  document.getElementById('aa-on').checked=a.enabled||false;
+  var tm=JSON.parse(localStorage.getItem('le_team')||'{}');
+  document.getElementById('at-r1').value=tm.r1||'CEO & Founder';
+  document.getElementById('at-b1').value=tm.b1||'Electrical Engineering student and founder of LearnEmbedded.';
+  document.getElementById('at-r2').value=tm.r2||'Embedded Systems & Robotics Engineer';
+  document.getElementById('at-b2').value=tm.b2||'Robotics student specializing in Embedded Systems, IoT, and PCB Design.';
+}
+function saveSite(){localStorage.setItem('le_site',JSON.stringify({name:document.getElementById('as-name').value,tagline:document.getElementById('as-tag').value,desc:document.getElementById('as-desc').value}));applySiteSettings();toast('Site saved!',true);}
+function saveAnn(){localStorage.setItem('le_ann',JSON.stringify({text:document.getElementById('aa-txt').value,enabled:document.getElementById('aa-on').checked}));applyBanner();toast('Announcement updated!',true);}
+function saveLinks(){localStorage.setItem('le_links',JSON.stringify({email:document.getElementById('al-em').value,linkedin:document.getElementById('al-li').value,github:document.getElementById('al-gh').value,location:document.getElementById('al-loc').value}));toast('Links saved!',true);}
+function saveTeam(){localStorage.setItem('le_team',JSON.stringify({r1:document.getElementById('at-r1').value,b1:document.getElementById('at-b1').value,r2:document.getElementById('at-r2').value,b2:document.getElementById('at-b2').value}));toast('Team saved!',true);}
+function doChangePass(){var c=document.getElementById('ap-cur').value,n=document.getElementById('ap-new').value,cf=document.getElementById('ap-con').value;if(c!==gp()){toast('Wrong current password!',false);return;}if(n.length<6){toast('Min 6 chars!',false);return;}if(n!==cf){toast('Passwords do not match!',false);return;}localStorage.setItem('le_pass',n);document.getElementById('ap-cur').value='';document.getElementById('ap-new').value='';document.getElementById('ap-con').value='';toast('Password changed!',true);}
+function applySiteSettings(){var s=JSON.parse(localStorage.getItem('le_site')||'{}');if(s.name){document.querySelectorAll('.nav-brand').forEach(el=>{var ic=el.querySelector('.brand-icon');if(ic){el.textContent='';el.appendChild(ic);el.appendChild(document.createTextNode(' '+s.name));}});}}
+function applyBanner(){var a=JSON.parse(localStorage.getItem('le_ann')||'{}');var ex=document.getElementById('le-banner');if(ex)ex.remove();if(a.enabled&&a.text){var b=document.createElement('div');b.id='le-banner';b.style.cssText='position:fixed;top:68px;left:0;right:0;z-index:998;background:linear-gradient(90deg,#2563eb,#06b6d4);color:white;text-align:center;padding:.55rem 1rem;font-size:.82rem;font-weight:600;';b.innerHTML=a.text+' <span onclick="this.parentElement.remove()" style="margin-left:.75rem;cursor:pointer;opacity:.7;font-size:.9rem">✕</span>';document.body.appendChild(b);}}
 </script>
-
 </body>
 </html>

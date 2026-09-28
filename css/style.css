@@ -386,8 +386,8 @@ ul { list-style: none; }
   box-shadow: var(--shadow-lg);
 }
 
-.board-card:nth-child(2) { margin-top: 1.5rem; }
-.board-card:nth-child(4) { margin-top: -1.5rem; }
+.board-card:nth-child(2) { margin-top: 0; }
+.board-card:nth-child(4) { margin-top: 0; }
 
 .board-icon {
   width: 64px; height: 64px;
