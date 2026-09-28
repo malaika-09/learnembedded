@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
@@ -769,19 +769,59 @@ function playVideo(thumb) {
   </div>
 </div>
 <script>
-var _ac=0,_at=0;
-var DEF_PASS='Malaika@2026';
-function gp(){return localStorage.getItem('le_pass')||DEF_PASS;}
+var _ac=0,_at=0,_adminOpen=false;
+var DP='Malaika@2026';
+function gp(){return localStorage.getItem('le_pass')||DP;}
 document.addEventListener('DOMContentLoaded',function(){
-  applySiteSettings();applyBanner();
+  applySS();applyBanner();
   var l=document.getElementById('siteLogo');
-  if(l){l.addEventListener('click',function(){var n=Date.now();if(n-_at<600)_ac++;else _ac=1;_at=n;if(_ac>=3){openAdmin();_ac=0;}});}
+  if(l){
+    l.addEventListener('click',function(e){
+      if(_adminOpen) return;
+      var n=Date.now();
+      if(n-_at<600) _ac++; else _ac=1;
+      _at=n;
+      if(_ac>=3){e.preventDefault();openAdmin();_ac=0;}
+    });
+  }
 });
-function openAdmin(){document.getElementById('adminModal').style.display='block';document.body.style.overflow='hidden';}
-function closeAdmin(){document.getElementById('adminModal').style.display='none';document.getElementById('adminLoginBox').style.display='block';document.getElementById('adminDash').style.display='none';document.getElementById('adminPwIn').value='';document.getElementById('adminErr').style.display='none';document.body.style.overflow='';}
-function adminLogin(){if(document.getElementById('adminPwIn').value===gp()){document.getElementById('adminLoginBox').style.display='none';document.getElementById('adminDash').style.display='block';loadData();}else{document.getElementById('adminErr').style.display='block';}}
-function showATab(n,b){document.querySelectorAll('.ap-tab').forEach(p=>p.style.display='none');document.querySelectorAll('.atab-btn').forEach(x=>{x.style.background='transparent';x.style.color='#94a3b8';x.style.border='1px solid #334155';});document.getElementById('ap-'+n).style.display='block';b.style.background='#2563eb';b.style.color='white';b.style.border='none';}
-function toast(m,ok){var t=document.getElementById('adminToast');t.innerHTML=(ok?'✅ ':'❌ ')+m;t.style.borderLeftColor=ok?'#10b981':'#ef4444';t.style.transform='translateX(0)';setTimeout(()=>t.style.transform='translateX(130%)',3000);}
+function openAdmin(){
+  if(_adminOpen) return;
+  _adminOpen=true;
+  document.getElementById('adminModal').style.display='block';
+  document.body.style.overflow='hidden';
+}
+function closeAdmin(){
+  _adminOpen=false;
+  document.getElementById('adminModal').style.display='none';
+  document.getElementById('adminLoginBox').style.display='block';
+  document.getElementById('adminDash').style.display='none';
+  document.getElementById('adminPwIn').value='';
+  document.getElementById('adminErr').style.display='none';
+  document.body.style.overflow='';
+}
+function adminLogin(){
+  if(document.getElementById('adminPwIn').value===gp()){
+    document.getElementById('adminLoginBox').style.display='none';
+    document.getElementById('adminDash').style.display='block';
+    loadData();
+  }else{
+    document.getElementById('adminErr').style.display='block';
+  }
+}
+function showATab(n,b){
+  document.querySelectorAll('.ap-tab').forEach(function(p){p.style.display='none';});
+  document.querySelectorAll('.atab-btn').forEach(function(x){x.style.background='transparent';x.style.color='#94a3b8';x.style.border='1px solid #334155';});
+  document.getElementById('ap-'+n).style.display='block';
+  b.style.background='#2563eb';b.style.color='white';b.style.border='none';
+}
+function toast(m,ok){
+  var t=document.getElementById('adminToast');
+  t.innerHTML=(ok?'✅ ':'❌ ')+m;
+  t.style.borderLeftColor=ok?'#10b981':'#ef4444';
+  t.style.transform='translateX(0)';
+  setTimeout(function(){t.style.transform='translateX(130%)';},3000);
+}
 function loadData(){
   var s=JSON.parse(localStorage.getItem('le_site')||'{}');
   document.getElementById('as-name').value=s.name||'LearnEmbedded';
@@ -797,17 +837,45 @@ function loadData(){
   document.getElementById('aa-on').checked=a.enabled||false;
   var tm=JSON.parse(localStorage.getItem('le_team')||'{}');
   document.getElementById('at-r1').value=tm.r1||'CEO & Founder';
-  document.getElementById('at-b1').value=tm.b1||'Electrical Engineering student and founder of LearnEmbedded.';
-  document.getElementById('at-r2').value=tm.r2||'Embedded Systems & Robotics Engineer';
-  document.getElementById('at-b2').value=tm.b2||'Robotics student specializing in Embedded Systems, IoT, and PCB Design.';
+  document.getElementById('at-b1').value=tm.b1||'Electrical Engineering student.';
+  document.getElementById('at-r2').value=tm.r2||'Embedded Systems Engineer';
+  document.getElementById('at-b2').value=tm.b2||'Robotics student specializing in IoT.';
 }
-function saveSite(){localStorage.setItem('le_site',JSON.stringify({name:document.getElementById('as-name').value,tagline:document.getElementById('as-tag').value,desc:document.getElementById('as-desc').value}));applySiteSettings();toast('Site saved!',true);}
+function saveSite(){localStorage.setItem('le_site',JSON.stringify({name:document.getElementById('as-name').value,tagline:document.getElementById('as-tag').value,desc:document.getElementById('as-desc').value}));applySS();toast('Site saved!',true);}
 function saveAnn(){localStorage.setItem('le_ann',JSON.stringify({text:document.getElementById('aa-txt').value,enabled:document.getElementById('aa-on').checked}));applyBanner();toast('Announcement updated!',true);}
 function saveLinks(){localStorage.setItem('le_links',JSON.stringify({email:document.getElementById('al-em').value,linkedin:document.getElementById('al-li').value,github:document.getElementById('al-gh').value,location:document.getElementById('al-loc').value}));toast('Links saved!',true);}
 function saveTeam(){localStorage.setItem('le_team',JSON.stringify({r1:document.getElementById('at-r1').value,b1:document.getElementById('at-b1').value,r2:document.getElementById('at-r2').value,b2:document.getElementById('at-b2').value}));toast('Team saved!',true);}
-function doChangePass(){var c=document.getElementById('ap-cur').value,n=document.getElementById('ap-new').value,cf=document.getElementById('ap-con').value;if(c!==gp()){toast('Wrong current password!',false);return;}if(n.length<6){toast('Min 6 chars!',false);return;}if(n!==cf){toast('Passwords do not match!',false);return;}localStorage.setItem('le_pass',n);document.getElementById('ap-cur').value='';document.getElementById('ap-new').value='';document.getElementById('ap-con').value='';toast('Password changed!',true);}
-function applySiteSettings(){var s=JSON.parse(localStorage.getItem('le_site')||'{}');if(s.name){document.querySelectorAll('.nav-brand').forEach(el=>{var ic=el.querySelector('.brand-icon');if(ic){el.textContent='';el.appendChild(ic);el.appendChild(document.createTextNode(' '+s.name));}});}}
-function applyBanner(){var a=JSON.parse(localStorage.getItem('le_ann')||'{}');var ex=document.getElementById('le-banner');if(ex)ex.remove();if(a.enabled&&a.text){var b=document.createElement('div');b.id='le-banner';b.style.cssText='position:fixed;top:68px;left:0;right:0;z-index:998;background:linear-gradient(90deg,#2563eb,#06b6d4);color:white;text-align:center;padding:.55rem 1rem;font-size:.82rem;font-weight:600;';b.innerHTML=a.text+' <span onclick="this.parentElement.remove()" style="margin-left:.75rem;cursor:pointer;opacity:.7;font-size:.9rem">✕</span>';document.body.appendChild(b);}}
-</script>
-</body>
+function doChangePass(){
+  var c=document.getElementById('ap-cur').value,n=document.getElementById('ap-new').value,cf=document.getElementById('ap-con').value;
+  if(c!==gp()){toast('Wrong password!',false);return;}
+  if(n.length<6){toast('Min 6 chars!',false);return;}
+  if(n!==cf){toast('No match!',false);return;}
+  localStorage.setItem('le_pass',n);
+  document.getElementById('ap-cur').value='';
+  document.getElementById('ap-new').value='';
+  document.getElementById('ap-con').value='';
+  toast('Password changed!',true);
+}
+function applySS(){
+  var s=JSON.parse(localStorage.getItem('le_site')||'{}');
+  if(s.name){
+    document.querySelectorAll('.nav-brand').forEach(function(el){
+      var ic=el.querySelector('.brand-icon');
+      if(ic){el.textContent='';el.appendChild(ic);el.appendChild(document.createTextNode(' '+s.name));}
+    });
+  }
+}
+function applyBanner(){
+  var a=JSON.parse(localStorage.getItem('le_ann')||'{}');
+  var ex=document.getElementById('le-banner');
+  if(ex) ex.remove();
+  if(a.enabled&&a.text){
+    var b=document.createElement('div');
+    b.id='le-banner';
+    b.style.cssText='position:fixed;top:68px;left:0;right:0;z-index:998;background:linear-gradient(90deg,#2563eb,#06b6d4);color:white;text-align:center;padding:.55rem 1rem;font-size:.82rem;font-weight:600;';
+    b.innerHTML=a.text+' <span onclick="this.parentElement.remove()" style="margin-left:.75rem;cursor:pointer;opacity:.7">✕</span>';
+    document.body.appendChild(b);
+  }
+}
+</script></body>
 </html>
