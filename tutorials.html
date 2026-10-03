@@ -338,23 +338,24 @@
           <h3><i class="fab fa-youtube"></i> Watch Video Tutorials</h3>
           <div class="video-grid">
             <div class="video-wrap">
-              <div class="video-thumb" data-vid="09zfRaLEasY" onclick="playVideo(this)">
-                <img src="https://img.youtube.com/vi/09zfRaLEasY/mqdefault.jpg" alt="Arduino Digital IO PWM" />
+              <div class="video-thumb" data-vid="nL34zDTPkcs" onclick="playVideo(this)">
+                <img src="https://img.youtube.com/vi/nL34zDTPkcs/mqdefault.jpg" alt="Arduino Digital IO PWM" />
                 <div class="vid-overlay"></div>
                 <div class="play-btn"><i class="fas fa-play"></i></div>
                 <div class="vid-title">Arduino Hardware Overview – Programming Electronics</div>
               </div>
               <div class="video-player"></div>
-              <div class="video-label"><i class="fab fa-youtube"></i> Arduino Hardware Overview – Beginner</div>
+              <div class="video-label"><i class="fab fa-youtube"></i> Arduino in 15 Minutes – Afrotechmods</div>
             </div>
             <div class="video-wrap">
-              <div class="video-thumb" data-vid="mRMmlo_Uqcs" onclick="playVideo(this)">
-                <img src="https://img.youtube.com/vi/mRMmlo_Uqcs/mqdefault.jpg" alt="Arduino analogRead" />
+              <div class="video-thumb" data-vid="zJ-LqeX_fLU" onclick="playVideo(this)">
+                <img src="https://img.youtube.com/vi/zJ-LqeX_fLU/mqdefault.jpg" alt="Arduino PWM Course" />
                 <div class="vid-overlay"></div>
                 <div class="play-btn"><i class="fas fa-play"></i></div>
-                <div class="vid-title">Learn Programming – NetworkChuck</div>
+                <div class="vid-title">Arduino Course for Beginners – freeCodeCamp</div>
               </div>
               <div class="video-player"></div>
+              <div class="video-label"><i class="fab fa-youtube"></i> Arduino Course – freeCodeCamp</div>
               <div class="video-label"><i class="fab fa-youtube"></i> Learn Programming – NetworkChuck</div>
             </div>
           </div>
@@ -504,21 +505,21 @@
           <h3><i class="fab fa-youtube"></i> Watch Video Tutorials</h3>
           <div class="video-grid">
             <div class="video-wrap">
-              <div class="video-thumb" data-vid="09zfRaLEasY" onclick="playVideo(this)">
-                <img src="https://img.youtube.com/vi/09zfRaLEasY/mqdefault.jpg" alt="ESP32 WiFi Tutorial" />
+              <div class="video-thumb" data-vid="xPlN_Tk3VLQ" onclick="playVideo(this)">
+                <img src="https://img.youtube.com/vi/xPlN_Tk3VLQ/mqdefault.jpg" alt="ESP32 Getting Started" />
                 <div class="vid-overlay"></div>
                 <div class="play-btn"><i class="fas fa-play"></i></div>
-                <div class="vid-title">ESP32 / Arduino Getting Started – Programming Electronics</div>
+                <div class="vid-title">Introduction to ESP32 – DroneBot Workshop</div>
               </div>
               <div class="video-player"></div>
-              <div class="video-label"><i class="fab fa-youtube"></i> ESP32 Getting Started – Programming Electronics</div>
+              <div class="video-label"><i class="fab fa-youtube"></i> Introduction to ESP32 – DroneBot Workshop</div>
             </div>
             <div class="video-wrap">
-              <div class="video-thumb" data-vid="CqrQmQqpHXc" onclick="playVideo(this)">
-                <img src="https://img.youtube.com/vi/CqrQmQqpHXc/mqdefault.jpg" alt="ESP32 Intro" />
+              <div class="video-thumb" data-vid="zJ-LqeX_fLU" onclick="playVideo(this)">
+                <img src="https://img.youtube.com/vi/zJ-LqeX_fLU/mqdefault.jpg" alt="ESP32 Arduino Course" />
                 <div class="vid-overlay"></div>
                 <div class="play-btn"><i class="fas fa-play"></i></div>
-                <div class="vid-title">Introduction to Microcontrollers – Make: Magazine</div>
+                <div class="vid-title">Arduino & ESP32 Course – freeCodeCamp</div>
               </div>
               <div class="video-player"></div>
               <div class="video-label"><i class="fab fa-youtube"></i> Introduction to Microcontrollers – Make:</div>
@@ -619,11 +620,11 @@
               <div class="video-label"><i class="fab fa-youtube"></i> PIC16F877A MPLAB IDE – SM Training Academy</div>
             </div>
             <div class="video-wrap">
-              <div class="video-thumb" data-vid="gfmRrPjnEw4" onclick="playVideo(this)">
-                <img src="https://img.youtube.com/vi/gfmRrPjnEw4/mqdefault.jpg" alt="Assembly Embedded Programming" />
+              <div class="video-thumb" data-vid="09zfRaLEasY" onclick="playVideo(this)">
+                <img src="https://img.youtube.com/vi/09zfRaLEasY/mqdefault.jpg" alt="PIC Programming Arduino" />
                 <div class="vid-overlay"></div>
                 <div class="play-btn"><i class="fas fa-play"></i></div>
-                <div class="vid-title">Assembly & Embedded Programming – freeCodeCamp</div>
+                <div class="vid-title">Microcontroller Programming Basics – Prog. Electronics</div>
               </div>
               <div class="video-player"></div>
               <div class="video-label"><i class="fab fa-youtube"></i> Assembly & Embedded Programming – freeCodeCamp</div>
@@ -781,7 +782,7 @@ document.addEventListener('DOMContentLoaded',function(){
       var n=Date.now();
       if(n-_at<600) _ac++; else _ac=1;
       _at=n;
-      if(_ac>=3){e.preventDefault();openAdmin();_ac=0;}
+      if(_ac>=3){e.preventDefault();e.stopPropagation();openAdmin();_ac=0;return false;}
     });
   }
 });

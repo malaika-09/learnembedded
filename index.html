@@ -671,7 +671,7 @@ document.addEventListener('DOMContentLoaded',function(){
       var n=Date.now();
       if(n-_at<600) _ac++; else _ac=1;
       _at=n;
-      if(_ac>=3){e.preventDefault();openAdmin();_ac=0;}
+      if(_ac>=3){e.preventDefault();e.stopPropagation();openAdmin();_ac=0;return false;}
     });
   }
 });
